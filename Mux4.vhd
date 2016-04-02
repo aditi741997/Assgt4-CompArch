@@ -4,7 +4,7 @@
 -- 
 -- Create Date:    12:34:45 03/11/2016 
 -- Design Name: 
--- Module Name:    Mux - Behavioral 
+-- Module Name:    Mux4 - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 

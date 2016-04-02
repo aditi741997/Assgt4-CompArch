@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    21:03:14 04/02/2016 
+-- Create Date:    00:16:28 04/03/2016 
 -- Design Name: 
--- Module Name:    Mem_WB - Behavioral 
+-- Module Name:    MiniMux - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,34 +29,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Mem_WB is
-port( rd:in std_logic_vector(31 downto 0);
-		wad_in:in std_logic_vector(3 downto 0);
-		alu_in:in std_logic_vector(31 downto 0);
-		wad_out:out std_logic_vector(3 downto 0);
-		alu_out:out std_logic_vector(31 downto 0);
-		rd_out:out std_logic_vector(31 downto 0);
-		clk,enable:in std_logic);
-end Mem_WB;
+entity MiniMux is
+port(A,B:in std_logic_vector(3 downto 0);
+control:in std_logic;
+OTPT:out std_logic_vector(3 downto 0));
+end MiniMux;
 
-architecture Behavioral of Mem_WB is
-
-signal rd1,aluIN:std_logic_vector(31 downnto 0);
-signal wadIN:std_logic_vector(3 downto 0);
+architecture Behavioral of MiniMux is
 
 begin
 
-MEMWB:process(clk)
+Mux:process(control,A,B)
 begin
-if (rising_edge(clk) and enable = '1') then
-	rd1 <= rd;
-	aluIN <= alu_in;
-	wadIN <= wad_in;
-	
-	alu_out <= aluIN;
-	wad_out <= wadIN;
-	rd_out <= rd1;
+if (control = '0') then OTPT <= A;
+else OTPT <= B;
 end if;
 end process;
 
 end Behavioral;
+
