@@ -49,9 +49,32 @@ port(
 end ID_EX;
 
 architecture Behavioral of ID_EX is
-
+	signal offset : std_logic_vector(31 downto 0);
+	signal rd1 : std_logic_vector(31 downto 0);
+	signal rd2 : std_logic_vector(31 downto 0);
+	signal imm8 : std_logic_vector(7 downto 0);
+	signal imm12 : std_logic_vector(11 downto 0);
+	signal wad : std_logic_vector(3 downto 0);
 begin
 
+process(clock)
+begin
+	if clock'event and clock = '1' and enable = '1' then
+		offset <= offset_in;
+		rd1 <= rd1_in;
+		rd2 <= rd2_in;
+		imm8 <= imm8_in;
+		imm12 <= imm12_in;
+		wad <= wad_in;
+	end if;
+end process
+
+offset_out <= offset;
+rd1_out <= rd1;
+rd2_out <= rd2;
+imm8_out <= imm8;
+imm12_out <= imm12;
+wad_out <= wad;
 
 end Behavioral;
 
