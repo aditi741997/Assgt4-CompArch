@@ -37,12 +37,12 @@ port(
 	imm8_in : in std_logic_vector(7 downto 0);
 	imm12_in : in std_logic_vector(11 downto 0);
 	wad_in : in std_logic_vector(3 downto 0);
-	offset_out : in std_logic_vector(31 downto 0);
-	rd1_out : in std_logic_vector(31 downto 0);
-	rd2_out : in std_logic_vector(31 downto 0);
-	imm8_out : in std_logic_vector(7 downto 0);
-	imm12_out : in std_logic_vector(11 downto 0);
-	wad_out : in std_logic_vector(3 downto 0);
+	offset_out : out std_logic_vector(31 downto 0);
+	rd1_out : out std_logic_vector(31 downto 0);
+	rd2_out : out std_logic_vector(31 downto 0);
+	imm8_out : out std_logic_vector(7 downto 0);
+	imm12_out : out std_logic_vector(11 downto 0);
+	wad_out : out std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -73,7 +73,7 @@ begin
 		imm12_out <= imm12;
 		wad_out <= wad;
 	end if;
-end process
+end process;
 
 
 

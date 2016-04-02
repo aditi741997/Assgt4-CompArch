@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Mem_WB is
 port( rd:in std_logic_vector(31 downto 0);
-		wad_in:in std_logic_vector(31 downto 0);
+		wad_in:in std_logic_vector(3 downto 0);
 		alu_in:in std_logic_vector(31 downto 0);
 		wad_out:out std_logic_vector(31 downto 0);
 		alu_out:out std_logic_vector(31 downto 0);
@@ -41,14 +41,21 @@ end Mem_WB;
 
 architecture Behavioral of Mem_WB is
 
+signal rd1,aluIN:std_logic_vector(31 downnto 0);
+signal wadIN:std_logic_vector(3 downto 0);
+
 begin
 
 MEMWB:process(clk)
 begin
 if (rising_edge(clk) and enable = '1') then
-	alu_out <= alu_in;
-	wad_out <= wad_in;
-	rd_out <= rd_in;
+	rd1 <= rd;
+	aluIN <= alu_in;
+	wadIN <= wad_in;
+	
+	alu_out <= aluIN;
+	wad_out <= wadIN;
+	rd_out <= rd1;
 end if;
 end process;
 

@@ -15,13 +15,13 @@
 		rd2:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		wad_out:out std_logic_vector(3 downto 0);
-		DM_ad:out std_logic_vector(3 downto 0);
+		DM_ad:out std_logic_vector(31 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
 		clk,enable:in std_logic);
 		END COMPONENT;          
 		
-		signal alu_in,rd2,DM_wd: std_logic_Vector(31 downto 0);
-		signal wad_in,wad_out,DM_ad: std_logic_vector(3 downto 0);
+		signal alu_in,rd2,DM_wd,DM_ad: std_logic_Vector(31 downto 0);
+		signal wad_in,wad_out: std_logic_vector(3 downto 0);
 		signal clk,enable: std_logic := '0';
 		
 		    constant clk_period : time := 20 ns;
@@ -60,10 +60,16 @@
 			rd2 <= "10011001100110011001100110011001";
 			
 			wait for 20 ns;
-			
+			enable <= '0';
 			wad_in <= "1111";
 			alu_in <= "11111111111111111111111111111111";
 			rd2 <= "00000000000000000000000000000000";
+			
+			wait for 20 ns;
+			enable <= '1';
+			wad_in <= "0000";
+			alu_in <= "00000000000000000000000000000000";
+			rd2 <= "11111111111111111111111111111111";
 
         wait; -- will wait forever
      END PROCESS tb;
