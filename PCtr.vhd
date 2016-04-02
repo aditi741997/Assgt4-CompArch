@@ -30,7 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity PCtr is
-port(clk,sel:in std_logic;
+port(clk:in std_logic;
 in_pc:in std_logic_vector(31 downto 0);
 out_pc:out std_logic_vector(31 downto 0));
 end PCtr;
@@ -47,9 +47,7 @@ out_pc <= pc;
 Clock:process(clk)
 begin
 if (clk = '1' and clk'event) then
- if sel = '1' then
  pc <= in_pc;
- end if;
 else
 	null;
 -- output present value
