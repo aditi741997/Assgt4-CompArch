@@ -58,7 +58,7 @@ architecture Behavioral of ALU is
 	);
 	end component;
 
-	component Mulitplier is
+	component Multiplier is
 	port(
 		A : in std_logic_vector(31 downto 0);
 		B : in std_logic_vector(31 downto 0);
@@ -90,7 +90,7 @@ begin
 		ALU : ALU_Basic port map (temp1(I), temp2(I), carry(I), input_control, op, carry(I+1), res1(I));
 	end generate GEN;
 
-	MULL : Mulitplier port map (a, b, res2);
+	MULL : Multiplier port map (a, b, res2);
 	MUX32 : Mux port map (res1, res2, mul, c);
 
 process(operation, a, b, c_in)
