@@ -30,12 +30,28 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity EX_Mem is
+port( alu_in:in std_logic_vector(31 downto 0);
+		rd2:in std_logic_vector(31 downto 0);
+		wad_in:in std_logic_vector;
+		wad_out:out std_logic_vector(31 downto 0);
+		DM_ad:out std_logic_vector(31 downto 0);
+		DM_wd:out std_logic_vector(31 downto 0);
+		wad_out:out std_logic_vector;
+		clk,enable:in std_logic);
 end EX_Mem;
 
 architecture Behavioral of EX_Mem is
 
 begin
 
+EXMem:process(clk)
+begin
+if (rising_edge(clk) and enable = '1') then
+	DM_ad <= alu_in;
+	DM_wd <= rd2;
+	wad_out <= wad_in;
+end if;
+end process;
 
 end Behavioral;
 
