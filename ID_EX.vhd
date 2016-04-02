@@ -66,15 +66,16 @@ begin
 		imm8 <= imm8_in;
 		imm12 <= imm12_in;
 		wad <= wad_in;
+		offset_out <= offset;
+		rd1_out <= rd1;
+		rd2_out <= rd2;
+		imm8_out <= imm8;
+		imm12_out <= imm12;
+		wad_out <= wad;
 	end if;
 end process
 
-offset_out <= offset;
-rd1_out <= rd1;
-rd2_out <= rd2;
-imm8_out <= imm8;
-imm12_out <= imm12;
-wad_out <= wad;
+
 
 end Behavioral;
 
