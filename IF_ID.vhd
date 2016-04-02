@@ -51,15 +51,16 @@ process(clock)
 begin
 	if clock'event and clock = '1' and enable = '1' then
 		ins <= instruction_in;
+		offset_out <= ins(23 downto 0);
+		Rn_out <= ins(19 downto 16);
+		Rm_out <= ins(3 downto 0);
+		Rd_out <= ins(15 downto 12);
+		imm8_out <= ins(7 downto 0);
+		imm12_out <= ins(11 downto 0);
 	end if;
 end process;
 
-offset_out <= ins(23 downto 0);
-Rn_out <= ins(19 downto 16);
-Rm_out <= ins(3 downto 0);
-Rd_out <= ins(15 downto 12);
-imm8_out <= ins(7 downto 0);
-imm12_out <= ins(11 downto 0);
+
 
 end Behavioral;
 
