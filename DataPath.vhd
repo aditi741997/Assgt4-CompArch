@@ -92,13 +92,13 @@ end component;
 
 component ID_EX is
 port(
-	offset_in : in std_logic_vector(31 downto 0);
+	offset_in : in std_logic_vector(23 downto 0);
 	rd1_in : in std_logic_vector(31 downto 0);
 	rd2_in : in std_logic_vector(31 downto 0);
 	imm8_in : in std_logic_vector(7 downto 0);
 	imm12_in : in std_logic_vector(11 downto 0);
 	wad_in : in std_logic_vector(3 downto 0);
-	offset_out : out std_logic_vector(31 downto 0);
+	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
@@ -211,9 +211,24 @@ end component;
 	signal DM_wd: std_logic_vector(31 downto 0);
 
 	signal wad_out_4: std_logic_vector(31 downto 0);		--Mem_WB output
-	signal alu_out: std_logic_vector(31 downto 0);
+	signal alu_out_4: std_logic_vector(31 downto 0);
 	signal rd_out_4: std_logic_vector(31 downto 0);
 
+	signal muxRF_out : std_logic_vector(31 downto 0);
+	signal RD1, RD2 : std_logic_vector(31 downto 0);
+	signal IIMux_out : std_logic_vector(31 downto 0);
+	signal Asrc_out : std_logic_vector(31 downto 0);
+	signal fwdC_out : std_logic_vector(31 downto 0);
+	signal M2R_out: std_logic_vector(31 downto 0);
+
+	signal ext8,ext12,extOff: std_logic_vector(31 downto 0);
+
+	signal alu1_in, alu2_in, alu_out: std_logic_vector(31 downto 0);
+
+	signal Flag_In,Flag_Out:std_logic_vector(3 downto 0);
+
+	signal DM_out:std_logic_vector(31 downto 0);
+	signal PC4 : std_logic_vector(31 downto 0);
 
 begin
 
@@ -228,12 +243,176 @@ IM : InMem port map(
 	current_ins
 );
 
-MuxRF : MiniMux port map(
-	
+IFID : IF_ID port map(
+	current_ins,
+	offset_out_1,
+	Rn_out,
+	Rm_out.
+	Rd_out,
+	imm8_out_1,
+	imm12_out_1,
+	eIF_ID,
+	clk
 );
 
-RF : 
+MuxRF : MiniMux port map(
+	Rm_out,
+	Rd_out,
+	Rsrc,
+	muxRF_out
+);
 
+RF : Register_Array port map(
+	Rn_out,
+	muxRF_out,
+	wad_out_4,
+	M2R_out,
+	RW,
+	RD1,
+	RD2,
+	clk
+);
+
+IDEX : ID_EX port map(
+	offset_out_1,
+	RD1,
+	RD2,
+	imm8_out_1,
+	imm12_out_1,
+	Rd_out,
+	offset_out_2,
+	rd1_out,
+	rd2_out,  	
+	imm8_out_2, 
+	imm12_out_2,
+	wad_out_2,
+	eID_EX,
+	clk
+);
+
+ext8(7 downto 0) <= imm8_out_2;
+ext8(31 downto 8) <= "000000000000000000000000";
+
+ext12(11 downto 0) <= imm12_out_2;
+ext12(31 downto 12) <= "00000000000000000000";
+
+IIMux : Mux port map(
+	ext12,
+	ext8,
+	II,
+	IIMux_out
+);
+
+AsrcMux : Mux port map(
+	rd2_out,
+	IIMux_out,
+	Asrc,
+	Asrc_out
+);
+
+
+ALUMux1 : Mux4 port map(
+	rd1_out,
+	pc_out,
+	DM_ad,
+	M2R_out,
+	alu1_mux,
+	alu_in
+);
+
+extOff(23 downto 0) <= offset_out_2;
+extOff(24) <= offset_out_2(23);
+extOff(25) <= offset_out_2(23);
+extOff(26) <= offset_out_2(23);
+extOff(27) <= offset_out_2(23);
+extOff(28) <= offset_out_2(23);
+extOff(29) <= offset_out_2(23);
+extOff(30) <= offset_out_2(23);
+extOff(31) <= offset_out_2(23);
+
+ALUMux2 : Mux4 port map(
+	Asrc_out,
+	extOff,
+	DM_ad,
+	M2R_out,
+	alu2_mux,
+	alu2_in
+);
+
+ALU_sa : ALU port map(
+	alu1_in,
+	alu2_in,
+	Flag_Out(1),
+	alu_out,
+	Opern,
+	Flag_In,
+	Mul_sel
+);
+
+EXMEM : EX_Mem port map(
+	alu_out,
+	rd2_out,
+	wad_out_2,
+	wad_out_3,
+	DM_ad,
+	DM_wd,
+	clk,
+	eEX_Mem
+);
+
+fwdC : Mux port map(
+	DM_wd,
+	M2R_out,
+	DM_fwd,
+	fwdC_out
+);
+
+DM : Data_Memory port map(
+	DM_ad,
+	fwdC_out,
+	MW,
+	MR,
+	clk,
+	DM_out
+);
+
+MemWB : Mem_WB port map(
+	DM_out,
+	wad_out_3,
+	DM_ad,
+	wad_out_4,
+	alu_out_4,
+	rd_out_4,
+	clk,
+	eMem_WB
+);
+
+M2RMux : Mux port map(
+	alu_out_4,
+	rd_out_4,
+	M2R,
+	M2R_out
+);
+
+Flag : Flags port map(
+	Flag_In,
+	Flag_Out,
+	Fset,
+	clk
+);
+
+PsrcM : mux port map(
+	PC4,
+	alu_out,
+	Psrc,
+	pc_in
+);
+
+Add : Adder4 port map(
+	pc_out,
+	"00000000000000000000000000000001",
+	PC4
+);
 
 end Behavioral;
 
