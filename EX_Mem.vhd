@@ -32,11 +32,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity EX_Mem is
 port( alu_in:in std_logic_vector(31 downto 0);
 		rd2:in std_logic_vector(31 downto 0);
-		wad_in:in std_logic_vector;
-		wad_out:out std_logic_vector(31 downto 0);
-		DM_ad:out std_logic_vector(31 downto 0);
+		wad_in:in std_logic_vector(3 downto 0);
+		wad_out:out std_logic_vector(3 downto 0);
+		DM_ad:out std_logic_vector(3 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
-		wad_out:out std_logic_vector;
 		clk,enable:in std_logic);
 end EX_Mem;
 
