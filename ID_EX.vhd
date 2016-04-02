@@ -31,13 +31,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ID_EX is
 port(
-	offset_in : in std_logic_vector(31 downto 0);
+	offset_in : in std_logic_vector(23 downto 0);
 	rd1_in : in std_logic_vector(31 downto 0);
 	rd2_in : in std_logic_vector(31 downto 0);
 	imm8_in : in std_logic_vector(7 downto 0);
 	imm12_in : in std_logic_vector(11 downto 0);
 	wad_in : in std_logic_vector(3 downto 0);
-	offset_out : out std_logic_vector(31 downto 0);
+	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
@@ -49,7 +49,7 @@ port(
 end ID_EX;
 
 architecture Behavioral of ID_EX is
-	signal offset : std_logic_vector(31 downto 0);
+	signal offset : std_logic_vector(23 downto 0);
 	signal rd1 : std_logic_vector(31 downto 0);
 	signal rd2 : std_logic_vector(31 downto 0);
 	signal imm8 : std_logic_vector(7 downto 0);
