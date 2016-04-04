@@ -194,4 +194,3 @@ flag(2) <= not(c(31) or c(30) or c(29) or c(28) or c(27) or c(26) or c(25) or c(
 flag(3) <= c(31);
 
 end Behavioral;
-

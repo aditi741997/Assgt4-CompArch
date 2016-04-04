@@ -58,10 +58,10 @@ begin
 		Rd_out <= ins(15 downto 12);
 		imm8_out <= ins(7 downto 0);
 		imm12_out <= ins(11 downto 0);
+		instruction_out <= ins;
 	end if;
 end process;
 
 
 
 end Behavioral;
-
