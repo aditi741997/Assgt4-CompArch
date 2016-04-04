@@ -30,7 +30,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity DataPath is
-port(clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
+port(
+	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
 	DM_fwd:in std_logic;
 	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
@@ -75,9 +76,11 @@ component EX_Mem is
 port( alu_in:in std_logic_vector(31 downto 0);
 		rd2:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
+		fwdCMux_in, M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
 		wad_out:out std_logic_vector(3 downto 0);
 		DM_ad:out std_logic_vector(31 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
+		fwdCMux_out, M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 		clk,enable:in std_logic);
 end component;
 
@@ -98,12 +101,18 @@ port(
 	imm8_in : in std_logic_vector(7 downto 0);
 	imm12_in : in std_logic_vector(11 downto 0);
 	wad_in : in std_logic_vector(3 downto 0);
+	IIMux_in, AsrcMux_in,  fwdCMux_in, 
+	M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
+	ALUMux1_in, ALUMux2_in : in std_logic_vector(1 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
 	imm12_out : out std_logic_vector(11 downto 0);
 	wad_out : out std_logic_vector(3 downto 0);
+	IIMux_out, AsrcMux_out, fwdCMux_out, 
+	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
+	ALUMux1_out, ALUMux2_out : in std_logic_vector(1 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -118,6 +127,7 @@ port(
 	Rd_out : out std_logic_vector(3 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
 	imm12_out : out std_logic_vector(11 downto 0);
+	instruction_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -132,9 +142,11 @@ component Mem_WB is
 port( rd:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		alu_in:in std_logic_vector(31 downto 0);
-		wad_out:out std_logic_vector(31 downto 0);
+		M2RMux_in, RW_in : in std_logic;
+		wad_out:out std_logic_vector(3 downto 0);
 		alu_out:out std_logic_vector(31 downto 0);
 		rd_out:out std_logic_vector(31 downto 0);
+		M2RMux_out, RW_out : out std_logic;
 		clk,enable:in std_logic);
 end component;
 
@@ -199,22 +211,25 @@ end component;
 	signal imm8_out_1 : std_logic_vector(7 downto 0);
 	signal imm12_out_1 : std_logic_vector(11 downto 0);
 
-	signal offset_out_2 : 	std_logic_vector(31 downto 0);	--ID_EX output
+	signal offset_out_2 : 	std_logic_vector(23 downto 0);	--ID_EX output
 	signal rd1_out : 	std_logic_vector(31 downto 0);
 	signal rd2_out : 	std_logic_vector(31 downto 0);
 	signal imm8_out_2 : 	std_logic_vector(7 downto 0);
 	signal imm12_out_2 : std_logic_vector(11 downto 0);
 	signal wad_out_2 : 	std_logic_vector(3 downto 0);
+	signal temp_2 : std_logic_vector(10 downto 0);
 
 	signal wad_out_3: std_logic_vector(3 downto 0);		--EX_Mem output
 	signal DM_ad: std_logic_vector(31 downto 0);
 	signal DM_wd: std_logic_vector(31 downto 0);
+	signal temp_3 : std_logic_vector(4 downto 0);
 
-	signal wad_out_4: std_logic_vector(31 downto 0);		--Mem_WB output
+	signal wad_out_4: std_logic_vector(3 downto 0);		--Mem_WB output
 	signal alu_out_4: std_logic_vector(31 downto 0);
 	signal rd_out_4: std_logic_vector(31 downto 0);
+	signal temp_4 : std_logic_vector(2 downto 0);
 
-	signal muxRF_out : std_logic_vector(31 downto 0);
+	signal muxRF_out : std_logic_vector(3 downto 0);
 	signal RD1, RD2 : std_logic_vector(31 downto 0);
 	signal IIMux_out : std_logic_vector(31 downto 0);
 	signal Asrc_out : std_logic_vector(31 downto 0);
@@ -229,6 +244,8 @@ end component;
 
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
+
+
 
 begin
 
@@ -247,10 +264,11 @@ IFID : IF_ID port map(
 	current_ins,
 	offset_out_1,
 	Rn_out,
-	Rm_out.
+	Rm_out,
 	Rd_out,
 	imm8_out_1,
 	imm12_out_1,
+	Instruction,
 	eIF_ID,
 	clk
 );
@@ -267,7 +285,7 @@ RF : Register_Array port map(
 	muxRF_out,
 	wad_out_4,
 	M2R_out,
-	RW,
+	temp_4(0),
 	RD1,
 	RD2,
 	clk
@@ -280,12 +298,16 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
+	II,Asrc,DM_fwd,M2R,RW,MW,MR,
+	alu1_mux, alu2_mux,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
 	imm8_out_2, 
 	imm12_out_2,
 	wad_out_2,
+	temp_2(6),temp_2(5),temp_2(4),temp_2(3),temp_2(2),temp_2(1),temp_2(0),
+	temp_2(8 downto 7), temp_2(10 downto 9),
 	eID_EX,
 	clk
 );
@@ -299,14 +321,14 @@ ext12(31 downto 12) <= "00000000000000000000";
 IIMux : Mux port map(
 	ext12,
 	ext8,
-	II,
+	temp_2(6),
 	IIMux_out
 );
 
 AsrcMux : Mux port map(
 	rd2_out,
 	IIMux_out,
-	Asrc,
+	temp_2(5),
 	Asrc_out
 );
 
@@ -316,8 +338,8 @@ ALUMux1 : Mux4 port map(
 	pc_out,
 	DM_ad,
 	M2R_out,
-	alu1_mux,
-	alu_in
+	temp_2(8 downto 7),
+	alu1_in
 );
 
 extOff(23 downto 0) <= offset_out_2;
@@ -335,7 +357,7 @@ ALUMux2 : Mux4 port map(
 	extOff,
 	DM_ad,
 	M2R_out,
-	alu2_mux,
+	temp_2(10 downto 9),
 	alu2_in
 );
 
@@ -353,9 +375,11 @@ EXMEM : EX_Mem port map(
 	alu_out,
 	rd2_out,
 	wad_out_2,
+	temp_2(4), temp_2(3), temp_2(2), temp_2(1), temp_2(0),
 	wad_out_3,
 	DM_ad,
 	DM_wd,
+	temp_3(4), temp_3(3), temp_3(2), temp_3(1), temp_3(0),
 	clk,
 	eEX_Mem
 );
@@ -363,15 +387,15 @@ EXMEM : EX_Mem port map(
 fwdC : Mux port map(
 	DM_wd,
 	M2R_out,
-	DM_fwd,
+	temp_3(4),
 	fwdC_out
 );
 
 DM : Data_Memory port map(
 	DM_ad,
 	fwdC_out,
-	MW,
-	MR,
+	temp_3(1),
+	temp_3(0),
 	clk,
 	DM_out
 );
@@ -380,9 +404,11 @@ MemWB : Mem_WB port map(
 	DM_out,
 	wad_out_3,
 	DM_ad,
+	temp_3(3), temp_3(2),
 	wad_out_4,
 	alu_out_4,
 	rd_out_4,
+	temp_4(1), temp_4(0),
 	clk,
 	eMem_WB
 );
@@ -390,7 +416,7 @@ MemWB : Mem_WB port map(
 M2RMux : Mux port map(
 	alu_out_4,
 	rd_out_4,
-	M2R,
+	temp_4(1),
 	M2R_out
 );
 

@@ -37,12 +37,18 @@ port(
 	imm8_in : in std_logic_vector(7 downto 0);
 	imm12_in : in std_logic_vector(11 downto 0);
 	wad_in : in std_logic_vector(3 downto 0);
+	IIMux_in, AsrcMux_in,  fwdCMux_in, 
+	M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
+	ALUMux1_in, ALUMux2_in : in std_logic_vector(1 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
 	imm12_out : out std_logic_vector(11 downto 0);
 	wad_out : out std_logic_vector(3 downto 0);
+	IIMux_out, AsrcMux_out, fwdCMux_out, 
+	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
+	ALUMux1_out, ALUMux2_out : in std_logic_vector(1 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );

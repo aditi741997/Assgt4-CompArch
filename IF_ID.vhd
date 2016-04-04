@@ -38,6 +38,7 @@ port(
 	Rd_out : out std_logic_vector(3 downto 0);
 	imm8_out : out std_logic_vector(7 downto 0);
 	imm12_out : out std_logic_vector(11 downto 0);
+	instruction_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );

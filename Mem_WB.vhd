@@ -33,15 +33,17 @@ entity Mem_WB is
 port( rd:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		alu_in:in std_logic_vector(31 downto 0);
+		M2RMux_in, RW_in : in std_logic;
 		wad_out:out std_logic_vector(3 downto 0);
 		alu_out:out std_logic_vector(31 downto 0);
 		rd_out:out std_logic_vector(31 downto 0);
+		M2RMux_out, RW_out : out std_logic;
 		clk,enable:in std_logic);
 end Mem_WB;
 
 architecture Behavioral of Mem_WB is
 
-signal rd1,aluIN:std_logic_vector(31 downnto 0);
+signal rd1,aluIN:std_logic_vector(31 downto 0);
 signal wadIN:std_logic_vector(3 downto 0);
 
 begin

@@ -40,12 +40,12 @@ port(
 );
 end Mux4;
 
-architecture Behavioral of Mux is
+architecture Behavioral of Mux4 is
 begin
 
 process(inval0,inval1,inval2,inval3,control)
 begin
-	case control of
+	case control is
 		when "00" => outval <= inval0;
 		when "01" => outval <= inval1;
 		when "10" => outval <= inval2;
