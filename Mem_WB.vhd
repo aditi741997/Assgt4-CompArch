@@ -65,5 +65,3 @@ if (rising_edge(clk) and enable = '1') then
 	RW_out <= RW;
 end if;
 end process;
-
-end Behavioral;
