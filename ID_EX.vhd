@@ -61,8 +61,8 @@ architecture Behavioral of ID_EX is
 	signal imm8 : std_logic_vector(7 downto 0);
 	signal imm12 : std_logic_vector(11 downto 0);
 	signal wad : std_logic_vector(3 downto 0);
-	signal IIMux, AsrcMux, fwdCMux, M2RMux, RW, MW, MR : in std_logic;
-	signal ALUMux1, ALUMux2 : in std_logic_vector(1 downto 0);
+	signal IIMux, AsrcMux, fwdCMux, M2RMux, RW, MW, MR : std_logic;
+	signal ALUMux1, ALUMux2 : std_logic_vector(1 downto 0);
 begin
 
 process(clock)
@@ -87,12 +87,12 @@ begin
 		imm8_out <= imm8;
 		imm12_out <= imm12;
 		wad_out <= wad;
-		IIMux_out <= IIMux
-		AsrcMux_out <= AsrcMux
-		fwdCMux_out <= fwdCMux 
-		M2RMux_out <= M2RMux 
-		RW_out <= RW
-		MR_out <= MR
+		IIMux_out <= IIMux;
+		AsrcMux_out <= AsrcMux;
+		fwdCMux_out <= fwdCMux ;
+		M2RMux_out <= M2RMux ;
+		RW_out <= RW;
+		MR_out <= MR;
 
 	end if;
 end process;

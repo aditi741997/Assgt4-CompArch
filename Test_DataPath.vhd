@@ -161,7 +161,7 @@ BEGIN
           s_type <= "00";
           s_amt <= "00000";
           Opern <= "0100";
-          Fset <= '0';
+          Fset <= "0000";
           Mul_sel <= '0';
 
 		

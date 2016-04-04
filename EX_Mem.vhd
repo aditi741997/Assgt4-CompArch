@@ -45,7 +45,7 @@ architecture Behavioral of EX_Mem is
 
 signal aluIN,rd22: std_logic_vector(31 downto 0);
 signal wadIN: std_logic_vector(3 downto 0);
-signal fwdCMux, M2RMux, RW, MW, MR : in std_logic;
+signal fwdCMux, M2RMux, RW, MW, MR : std_logic;
 
 begin
 

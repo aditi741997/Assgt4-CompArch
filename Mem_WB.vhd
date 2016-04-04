@@ -45,7 +45,7 @@ architecture Behavioral of Mem_WB is
 
 signal rd1,aluIN:std_logic_vector(31 downto 0);
 signal wadIN:std_logic_vector(3 downto 0);
-signal M2RMux, RW : in std_logic;
+signal M2RMux, RW : std_logic;
 
 begin
 
@@ -65,3 +65,5 @@ if (rising_edge(clk) and enable = '1') then
 	RW_out <= RW;
 end if;
 end process;
+
+end Behavioral;
