@@ -62,17 +62,14 @@ architecture Behavioral of ALU is
 	port(
 		A : in std_logic_vector(31 downto 0);
 		B : in std_logic_vector(31 downto 0);
-		C : out std_logic_vector(31 downto 0)
+		OTP: out std_logic_vector(31 downto 0)
 	);
 	end component;
 
 	component Mux is
-	port(
-		inval0 : in std_logic_vector(31 downto 0);
-		inval1 : in std_logic_vector(31 downto 0);
-		control : in std_logic;
-		outval : out std_logic_vector(31 downto 0)
-	);
+	port(A,B:in std_logic_vector(31 downto 0);
+	control:in std_logic;
+	OTPT:out std_logic_vector(31 downto 0));
 	end component;
 
 	signal carry : std_logic_vector(32 downto 0) := (others => '0');
