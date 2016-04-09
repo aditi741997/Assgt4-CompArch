@@ -186,6 +186,14 @@ port(
 );
 end component;
 
+component MicroMux is
+port(
+	in0, in1 : in std_logic;
+	enable : in std_logic;
+	outp : out std_logic
+);
+end component;
+
 component shifter is
 port(stype:in std_logic_vector(1 downto 0);
 shift_amt:in std_logic_vector(4 downto 0);
@@ -291,6 +299,20 @@ RF : Register_Array port map(
 	clk
 );
 
+Bubble_RW : MicroMux port map(
+	RW,
+	'0',
+	Bubble,
+	RW_out
+);
+
+Bubble_RW : MicroMux port map(
+	MW,
+	'0',
+	Bubble,
+	MW_out
+);
+
 IDEX : ID_EX port map(
 	offset_out_1,
 	RD1,
@@ -298,7 +320,7 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
-	II,Asrc,DM_fwd,M2R,RW,MW,MR,
+	II,Asrc,DM_fwd,M2R,RW_out,MW_out,MR,
 	alu1_mux, alu2_mux,
 	offset_out_2,
 	rd1_out,
