@@ -1,16 +1,16 @@
-Release 14.4 - xst P.49d (nt64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst/projnav.tmp
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.41 secs
+Total CPU time to Xst completion: 0.17 secs
  
---> Parameter xsthdpdir set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst
+--> Parameter xsthdpdir set to D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.41 secs
+Total CPU time to Xst completion: 0.17 secs
  
 --> Reading design: Control.prj
 
@@ -39,32 +39,94 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" into library work
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shift8.vhd" into library work
+Parsing entity <shift8>.
+Parsing architecture <Behavioral> of entity <shift8>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shift4.vhd" into library work
+Parsing entity <shift4>.
+Parsing architecture <Behavioral> of entity <shift4>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shift2.vhd" into library work
+Parsing entity <shift2>.
+Parsing architecture <Behavioral> of entity <shift2>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shift16.vhd" into library work
+Parsing entity <shift16>.
+Parsing architecture <Behavioral> of entity <shift16>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shift1.vhd" into library work
+Parsing entity <shift1>.
+Parsing architecture <Behavioral> of entity <shift1>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\shifter.vhd" into library work
+Parsing entity <shifter>.
+Parsing architecture <Behavioral> of entity <shifter>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Adder4_Unit.vhd" into library work
+Parsing entity <Adder4_Unit>.
+Parsing architecture <Behavioral> of entity <adder4_unit>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\mult_unit.vhd" into library work
+Parsing entity <mult_unit>.
+Parsing architecture <Behavioral> of entity <mult_unit>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Adder4.vhd" into library work
+Parsing entity <Adder4>.
+Parsing architecture <Behavioral> of entity <adder4>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Mux.vhd" into library work
+Parsing entity <Mux>.
+Parsing architecture <Behavioral> of entity <mux>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Multiplier.vhd" into library work
+Parsing entity <Multiplier>.
+Parsing architecture <Behavioral> of entity <multiplier>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\ALU_Basic.vhd" into library work
+Parsing entity <ALU_Basic>.
+Parsing architecture <Behavioral> of entity <alu_basic>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Register_Array.vhd" into library work
+Parsing entity <Register_Array>.
+Parsing architecture <Behavioral> of entity <register_array>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\PCtr.vhd" into library work
+Parsing entity <PCtr>.
+Parsing architecture <Behavioral> of entity <pctr>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Mux4.vhd" into library work
+Parsing entity <Mux4>.
+Parsing architecture <Behavioral> of entity <mux4>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\MiniMux.vhd" into library work
+Parsing entity <MiniMux>.
+Parsing architecture <Behavioral> of entity <minimux>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Mem_WB.vhd" into library work
+Parsing entity <Mem_WB>.
+Parsing architecture <Behavioral> of entity <mem_wb>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\InMem.vhd" into library work
+Parsing entity <InMem>.
+Parsing architecture <Behavioral> of entity <inmem>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\IF_ID.vhd" into library work
+Parsing entity <IF_ID>.
+Parsing architecture <Behavioral> of entity <if_id>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\ID_EX.vhd" into library work
+Parsing entity <ID_EX>.
+Parsing architecture <Behavioral> of entity <id_ex>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Flags.vhd" into library work
+Parsing entity <Flags>.
+Parsing architecture <Behavioral> of entity <flags>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\EX_Mem.vhd" into library work
+Parsing entity <EX_Mem>.
+Parsing architecture <Behavioral> of entity <ex_mem>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Data_Memory.vhd" into library work
+Parsing entity <Data_Memory>.
+Parsing architecture <Behavioral> of entity <data_memory>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\ALU.vhd" into library work
+Parsing entity <ALU>.
+Parsing architecture <Behavioral> of entity <alu>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\DataPath.vhd" into library work
+Parsing entity <DataPath>.
+Parsing architecture <Behavioral> of entity <datapath>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\src\Control.vhd" into library work
 Parsing entity <Control>.
 Parsing architecture <Behavioral> of entity <control>.
-ERROR:HDLCompiler:806 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 36: Syntax error near "port".
-ERROR:HDLCompiler:806 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Syntax error near "mux_1".
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Type error near mux_3 ; current type std_logic; expected type std_logic_vector
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 93: Type error near om_instruction ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 94: Type error near om_field ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 95: Type error near alu_operation ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 97: Type error near flag ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 98: Type error near ins ; current type std_logic_vector; expected type std_logic
-ERROR:HDLCompiler:432 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 88: Formal <m2r> has no actual or default value.
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 45. m2r is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 45. ii is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 46. s_type is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 47. s_amt is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 48. opern is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 48. fset is declared here
-INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 49. mul_sel is declared here
-ERROR:HDLCompiler:854 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 35: Unit <behavioral> ignored due to previous errors.
-VHDL file C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd ignored due to errors
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.75 secs
+ 
 --> 
 
-Total memory usage is 263852 kilobytes
+Total memory usage is 268032 kilobytes
 
-Number of errors   :   10 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

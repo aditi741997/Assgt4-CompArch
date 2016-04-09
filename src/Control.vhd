@@ -88,7 +88,7 @@ begin
 	DP : DataPath port map (
 		clock, '1','1','1','1',
 		alu1_mux, alu2_mux, --to be decided
-		fwdC -- to be decided
+		fwdC, -- to be decided
 		mux_1, mux_4, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,

@@ -1,34 +1,35 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_beh.prj" "work.Test_DataPath" 
-ISim P.49d (signature 0x7708f090)
-Number of CPUs detected in this system: 4
-Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_Control_isim_beh.exe" -prj "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_Control_beh.prj" "Test_Control" 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shift8.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shift4.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shift2.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shift16.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shift1.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/shifter.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Adder4_Unit.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/mult_unit.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Adder4.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Mux.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Multiplier.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/ALU_Basic.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Register_Array.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/PCtr.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Mux4.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/MiniMux.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Mem_WB.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/InMem.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/IF_ID.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/ID_EX.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Flags.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/EX_Mem.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Data_Memory.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/ALU.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/DataPath.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/src/Test_DataPath.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift8.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift4.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift2.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift16.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift1.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shifter.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Adder4_Unit.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/mult_unit.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Adder4.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Mux.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Multiplier.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/ALU_Basic.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Register_Array.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/PCtr.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Mux4.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/MiniMux.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Mem_WB.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/InMem.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/IF_ID.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/ID_EX.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Flags.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/EX_Mem.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Data_Memory.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/ALU.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Control.vhd" into library work
+Parsing VHDL file "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Test_Control.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
@@ -61,10 +62,11 @@ Compiling architecture behavioral of entity Data_Memory [data_memory_default]
 Compiling architecture behavioral of entity Mem_WB [mem_wb_default]
 Compiling architecture behavioral of entity Flags [flags_default]
 Compiling architecture behavioral of entity DataPath [datapath_default]
-Compiling architecture behavior of entity test_datapath
+Compiling architecture behavioral of entity Control [control_default]
+Compiling architecture behavior of entity test_control
 Time Resolution for simulation is 1ps.
-Waiting for 19 sub-compilation(s) to finish...
-Compiled 56 VHDL Units
-Built simulation executable C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_isim_beh.exe
-Fuse Memory Usage: 37876 KB
-Fuse CPU Usage: 858 ms
+Waiting for 2 sub-compilation(s) to finish...
+Compiled 58 VHDL Units
+Built simulation executable D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_Control_isim_beh.exe
+Fuse Memory Usage: 38548 KB
+Fuse CPU Usage: 905 ms

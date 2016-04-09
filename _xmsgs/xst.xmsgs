@@ -5,35 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="806" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 36: Syntax error near &quot;<arg fmt="%s" index="1">port</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="806" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Syntax error near &quot;<arg fmt="%s" index="1">mux_1</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Type error near <arg fmt="%s" index="1">mux_3</arg> ; current type <arg fmt="%s" index="2">std_logic</arg>; expected type <arg fmt="%s" index="3">std_logic_vector</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 93: Type error near <arg fmt="%s" index="1">om_instruction</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">std_logic</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 94: Type error near <arg fmt="%s" index="1">om_field</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">std_logic</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 95: Type error near <arg fmt="%s" index="1">alu_operation</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">std_logic</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 97: Type error near <arg fmt="%s" index="1">flag</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">std_logic</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1728" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 98: Type error near <arg fmt="%s" index="1">ins</arg> ; current type <arg fmt="%s" index="2">std_logic_vector</arg>; expected type <arg fmt="%s" index="3">std_logic</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="432" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 88: Formal &lt;<arg fmt="%s" index="1">m2r</arg>&gt; has no actual or default value.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="854" delta="new" >"C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 35: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
-</msg>
-
 </messages>
 

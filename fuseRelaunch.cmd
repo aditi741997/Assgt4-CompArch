@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_beh.prj" "work.Test_DataPath" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_Control_isim_beh.exe" -prj "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_Control_beh.prj" "Test_Control" 

@@ -40,7 +40,7 @@ architecture Behavioral of InMem is
 -- array of vectors. 
 type IM is array(0 to 1023) of std_logic_vector(31 downto 0);
 
-signal IMemory:IM:=("11100010100000000010000000000001" , others => (others => '0'));
+signal IMemory:IM:=("11100011101000000000000000000011" , others => (others => '0'));
 signal InstNo:integer:=0;
 
 -- 1101: mov.
