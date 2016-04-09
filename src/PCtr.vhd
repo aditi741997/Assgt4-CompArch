@@ -42,12 +42,13 @@ signal pc:std_logic_vector(31 downto 0):="00000000000000000000000000000000";
 
 begin
 
-out_pc <= pc;
+ out_pc <= pc;
 
 Clock:process(clk)
 begin
 if (clk = '1' and clk'event) then
  pc <= in_pc;
+
 else
 	null;
 -- output present value

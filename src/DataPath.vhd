@@ -254,7 +254,7 @@ end component;
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
 	signal RW_out, MW_out : std_logic;
-
+	signal PSrc_temp : std_logic := '0';
 
 
 begin
@@ -454,7 +454,7 @@ Flag : Flags port map(
 PsrcM : mux port map(
 	PC4,
 	alu_out,
-	Psrc,
+	PSrc_temp,
 	pc_in
 );
 

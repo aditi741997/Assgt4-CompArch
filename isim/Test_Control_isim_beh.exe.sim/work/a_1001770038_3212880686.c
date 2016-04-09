@@ -83,7 +83,7 @@ LAB6:    t1 = (unsigned char)0;
 LAB7:    if (t1 != 0)
         goto LAB2;
 
-LAB4:    xsi_set_current_line(52, ng0);
+LAB4:    xsi_set_current_line(53, ng0);
 
 LAB3:    t2 = (t0 + 3256);
     *((int *)t2) = 1;

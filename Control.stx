@@ -1,0 +1,132 @@
+Release 14.4 - xst P.49d (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: Control.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shift8.vhd" into library work
+Parsing entity <shift8>.
+Parsing architecture <Behavioral> of entity <shift8>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shift4.vhd" into library work
+Parsing entity <shift4>.
+Parsing architecture <Behavioral> of entity <shift4>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shift2.vhd" into library work
+Parsing entity <shift2>.
+Parsing architecture <Behavioral> of entity <shift2>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shift16.vhd" into library work
+Parsing entity <shift16>.
+Parsing architecture <Behavioral> of entity <shift16>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shift1.vhd" into library work
+Parsing entity <shift1>.
+Parsing architecture <Behavioral> of entity <shift1>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\shifter.vhd" into library work
+Parsing entity <shifter>.
+Parsing architecture <Behavioral> of entity <shifter>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Adder4_Unit.vhd" into library work
+Parsing entity <Adder4_Unit>.
+Parsing architecture <Behavioral> of entity <adder4_unit>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\mult_unit.vhd" into library work
+Parsing entity <mult_unit>.
+Parsing architecture <Behavioral> of entity <mult_unit>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Adder4.vhd" into library work
+Parsing entity <Adder4>.
+Parsing architecture <Behavioral> of entity <adder4>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Mux.vhd" into library work
+Parsing entity <Mux>.
+Parsing architecture <Behavioral> of entity <mux>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Multiplier.vhd" into library work
+Parsing entity <Multiplier>.
+Parsing architecture <Behavioral> of entity <multiplier>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\ALU_Basic.vhd" into library work
+Parsing entity <ALU_Basic>.
+Parsing architecture <Behavioral> of entity <alu_basic>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Register_Array.vhd" into library work
+Parsing entity <Register_Array>.
+Parsing architecture <Behavioral> of entity <register_array>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\PCtr.vhd" into library work
+Parsing entity <PCtr>.
+Parsing architecture <Behavioral> of entity <pctr>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Mux4.vhd" into library work
+Parsing entity <Mux4>.
+Parsing architecture <Behavioral> of entity <mux4>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\MiniMux.vhd" into library work
+Parsing entity <MiniMux>.
+Parsing architecture <Behavioral> of entity <minimux>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Mem_WB.vhd" into library work
+Parsing entity <Mem_WB>.
+Parsing architecture <Behavioral> of entity <mem_wb>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\InMem.vhd" into library work
+Parsing entity <InMem>.
+Parsing architecture <Behavioral> of entity <inmem>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\IF_ID.vhd" into library work
+Parsing entity <IF_ID>.
+Parsing architecture <Behavioral> of entity <if_id>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\ID_EX.vhd" into library work
+Parsing entity <ID_EX>.
+Parsing architecture <Behavioral> of entity <id_ex>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Flags.vhd" into library work
+Parsing entity <Flags>.
+Parsing architecture <Behavioral> of entity <flags>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\EX_Mem.vhd" into library work
+Parsing entity <EX_Mem>.
+Parsing architecture <Behavioral> of entity <ex_mem>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Data_Memory.vhd" into library work
+Parsing entity <Data_Memory>.
+Parsing architecture <Behavioral> of entity <data_memory>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\ALU.vhd" into library work
+Parsing entity <ALU>.
+Parsing architecture <Behavioral> of entity <alu>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\DataPath.vhd" into library work
+Parsing entity <DataPath>.
+Parsing architecture <Behavioral> of entity <datapath>.
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" into library work
+Parsing entity <Control>.
+Parsing architecture <Behavioral> of entity <control>.
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.72 secs
+ 
+--> 
+
+Total memory usage is 266220 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

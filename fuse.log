@@ -19,6 +19,7 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Register_Arr
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/PCtr.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Mux4.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/MiniMux.vhd" into library work
+Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/MicroMux.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Mem_WB.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/InMem.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/IF_ID.vhd" into library work
@@ -31,7 +32,43 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Control.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Test_Control.vhd" into library work
 Starting static elaboration
-WARNING:HDLCompiler:89 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 304: <micromux> remains a black-box since it has no binding entity.
-WARNING:HDLCompiler:89 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 311: <micromux> remains a black-box since it has no binding entity.
-ERROR:HDLCompiler:432 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 42: Formal <bubble> has no actual or default value.
-ERROR:Simulator:777 - Static elaboration of top level VHDL design unit test_control in library work failed
+Completed static elaboration
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package numeric_std
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity PCtr [pctr_default]
+Compiling architecture behavioral of entity InMem [inmem_default]
+Compiling architecture behavioral of entity IF_ID [if_id_default]
+Compiling architecture behavioral of entity MiniMux [minimux_default]
+Compiling architecture behavioral of entity Register_Array [register_array_default]
+Compiling architecture behavioral of entity MicroMux [micromux_default]
+Compiling architecture behavioral of entity ID_EX [id_ex_default]
+Compiling architecture behavioral of entity Mux [mux_default]
+Compiling architecture behavioral of entity Mux4 [mux4_default]
+Compiling architecture behavioral of entity ALU_Basic [alu_basic_default]
+Compiling architecture behavioral of entity shift1 [shift1_default]
+Compiling architecture behavioral of entity shift2 [shift2_default]
+Compiling architecture behavioral of entity shift4 [shift4_default]
+Compiling architecture behavioral of entity shift8 [shift8_default]
+Compiling architecture behavioral of entity shift16 [shift16_default]
+Compiling architecture behavioral of entity shifter [shifter_default]
+Compiling architecture behavioral of entity mult_unit [mult_unit_default]
+Compiling architecture behavioral of entity Adder4_Unit [adder4_unit_default]
+Compiling architecture behavioral of entity Adder4 [adder4_default]
+Compiling architecture behavioral of entity Multiplier [multiplier_default]
+Compiling architecture behavioral of entity ALU [alu_default]
+Compiling architecture behavioral of entity EX_Mem [ex_mem_default]
+Compiling architecture behavioral of entity Data_Memory [data_memory_default]
+Compiling architecture behavioral of entity Mem_WB [mem_wb_default]
+Compiling architecture behavioral of entity Flags [flags_default]
+Compiling architecture behavioral of entity DataPath [datapath_default]
+Compiling architecture behavioral of entity Control [control_default]
+Compiling architecture behavior of entity test_control
+Time Resolution for simulation is 1ps.
+Waiting for 20 sub-compilation(s) to finish...
+Compiled 60 VHDL Units
+Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_isim_beh.exe
+Fuse Memory Usage: 38796 KB
+Fuse CPU Usage: 1015 ms
