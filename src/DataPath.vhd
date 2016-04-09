@@ -112,7 +112,7 @@ port(
 	wad_out : out std_logic_vector(3 downto 0);
 	IIMux_out, AsrcMux_out, fwdCMux_out, 
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
-	ALUMux1_out, ALUMux2_out : in std_logic_vector(1 downto 0);
+	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );

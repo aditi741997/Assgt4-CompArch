@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Data_Memory.vhd";
+static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Data_Memory.vhd";
 extern char *IEEE_P_3620187407;
 extern char *IEEE_P_2592010699;
 
@@ -45,7 +45,7 @@ LAB0:    xsi_set_current_line(52, ng0);
 
 LAB3:    t1 = (t0 + 1032U);
     t2 = *((char **)t1);
-    t1 = (t0 + 6512U);
+    t1 = (t0 + 6608U);
     t3 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t2, t1);
     t4 = (t0 + 3976);
     t5 = (t4 + 56U);
@@ -111,7 +111,7 @@ LAB2:    xsi_set_current_line(57, ng0);
     t5 = *((char **)t1);
     t1 = (t0 + 1032U);
     t6 = *((char **)t1);
-    t1 = (t0 + 6512U);
+    t1 = (t0 + 6608U);
     t7 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t6, t1);
     t8 = (t7 - 0);
     t9 = (t8 * 1);
@@ -142,7 +142,7 @@ LAB8:    xsi_set_current_line(61, ng0);
     t6 = *((char **)t5);
     t5 = (t0 + 1032U);
     t12 = *((char **)t5);
-    t5 = (t0 + 6512U);
+    t5 = (t0 + 6608U);
     t7 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t12, t5);
     t8 = (t7 - 0);
     t9 = (t8 * 1);

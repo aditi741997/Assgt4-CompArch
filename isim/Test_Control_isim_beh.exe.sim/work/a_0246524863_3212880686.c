@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Register_Array.vhd";
+static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Register_Array.vhd";
 extern char *IEEE_P_3620187407;
 
 int ieee_p_3620187407_sub_514432868_3965413181(char *, char *, char *);
@@ -82,7 +82,7 @@ LAB2:    xsi_set_current_line(55, ng0);
     t12 = *((char **)t8);
     t8 = (t0 + 1352U);
     t13 = *((char **)t8);
-    t8 = (t0 + 7152U);
+    t8 = (t0 + 7264U);
     t14 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t13, t8);
     t15 = (t14 - 15);
     t16 = (t15 * -1);
@@ -135,7 +135,7 @@ LAB3:    t1 = (t0 + 2312U);
     t2 = *((char **)t1);
     t1 = (t0 + 1032U);
     t3 = *((char **)t1);
-    t1 = (t0 + 7120U);
+    t1 = (t0 + 7232U);
     t4 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t3, t1);
     t5 = (t4 - 15);
     t6 = (t5 * -1);
@@ -183,7 +183,7 @@ LAB3:    t1 = (t0 + 2312U);
     t2 = *((char **)t1);
     t1 = (t0 + 1192U);
     t3 = *((char **)t1);
-    t1 = (t0 + 7136U);
+    t1 = (t0 + 7248U);
     t4 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t3, t1);
     t5 = (t4 - 15);
     t6 = (t5 * -1);
