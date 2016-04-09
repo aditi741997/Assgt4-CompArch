@@ -1,2 +1,0 @@
-vhdl isim_temp "src/EX_Mem.vhd"
-vhdl isim_temp "src/EXMem_Test.vhd"
