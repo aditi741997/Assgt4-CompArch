@@ -40,6 +40,7 @@ port(
 	IIMux_in, AsrcMux_in,  fwdCMux_in, 
 	M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
 	ALUMux1_in, ALUMux2_in : in std_logic_vector(1 downto 0);
+	ALU_opern_in : in std_logic_vector(3 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -49,6 +50,7 @@ port(
 	IIMux_out, AsrcMux_out, fwdCMux_out, 
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
+	ALU_opern_out : std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -63,6 +65,7 @@ architecture Behavioral of ID_EX is
 	signal wad : std_logic_vector(3 downto 0);
 	signal IIMux, AsrcMux, fwdCMux, M2RMux, RW, MW, MR : std_logic;
 	signal ALUMux1, ALUMux2 : std_logic_vector(1 downto 0);
+	signal ALU_opern : std_logic_vector(3 downto 0);
 begin
 
 process(clock)
@@ -82,6 +85,7 @@ begin
 		MR <= MR_in;
 		ALUMux1 <= ALUMux1_in;
 		ALUMux2 <= ALUMux2_in;
+		ALU_opern <= ALU_opern_in;
 
 		offset_out <= offset;
 		rd1_out <= rd1;
@@ -97,6 +101,7 @@ begin
 		MR_out <= MR;
 		ALUMux1_out <= ALUMux1;
 		ALUMux2_out <= ALUMux2;
+		ALU_opern_out <= ALU_opern;
 
 	end if;
 end process;

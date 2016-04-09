@@ -78,10 +78,12 @@ port( alu_in:in std_logic_vector(31 downto 0);
 		rd2:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		fwdCMux_in, M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
+		ALU_opern_in : in std_logic_vector(3 downto 0);
 		wad_out:out std_logic_vector(3 downto 0);
 		DM_ad:out std_logic_vector(31 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
 		fwdCMux_out, M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
+		ALU_opern_out : out std_logic_vector(3 downto 0);
 		clk,enable:in std_logic);
 end component;
 
@@ -105,6 +107,7 @@ port(
 	IIMux_in, AsrcMux_in,  fwdCMux_in, 
 	M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
 	ALUMux1_in, ALUMux2_in : in std_logic_vector(1 downto 0);
+	ALU_opern_in : in std_logic_vector(3 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -114,6 +117,7 @@ port(
 	IIMux_out, AsrcMux_out, fwdCMux_out, 
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
+	ALU_opern_out : std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -122,6 +126,7 @@ end component;
 component IF_ID is
 port(
 	instruction_in : in std_logic_vector(31 downto 0);
+	ALU_opern_in : in std_logic_vector(3 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -129,6 +134,7 @@ port(
 	imm8_out : out std_logic_vector(7 downto 0);
 	imm12_out : out std_logic_vector(11 downto 0);
 	instruction_out : out std_logic_vector(31 downto 0);
+	ALU_opern_out : out std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -254,6 +260,7 @@ end component;
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
 	signal RW_out, MW_out : std_logic;
+	signal alu_opern_out1, alu_opern_out2, alu_opern_out3 : std_logic_vector(3 downto 0);
 
 
 
@@ -272,6 +279,7 @@ IM : InMem port map(
 
 IFID : IF_ID port map(
 	current_ins,
+	Opern,
 	offset_out_1,
 	Rn_out,
 	Rm_out,
@@ -279,6 +287,7 @@ IFID : IF_ID port map(
 	imm8_out_1,
 	imm12_out_1,
 	Instruction,
+	alu_opern_out1,
 	eIF_ID,
 	clk
 );
@@ -324,6 +333,7 @@ IDEX : ID_EX port map(
 	Rd_out,
 	II,Asrc,DM_fwd,M2R,RW_out,MW_out,MR,
 	alu1_mux, alu2_mux,
+	alu_opern_out1,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -332,6 +342,7 @@ IDEX : ID_EX port map(
 	wad_out_2,
 	temp_2(6),temp_2(5),temp_2(4),temp_2(3),temp_2(2),temp_2(1),temp_2(0),
 	temp_2(8 downto 7), temp_2(10 downto 9),
+	alu_opern_out2,
 	eID_EX,
 	clk
 );
@@ -390,7 +401,7 @@ ALU_sa : ALU port map(
 	alu2_in,
 	Flag_Out(1),
 	alu_out,
-	Opern,
+	alu_opern_out2,
 	Flag_In,
 	Mul_sel
 );
@@ -400,10 +411,12 @@ EXMEM : EX_Mem port map(
 	rd2_out,
 	wad_out_2,
 	temp_2(4), temp_2(3), temp_2(2), temp_2(1), temp_2(0),
+	alu_opern_out2,
 	wad_out_3,
 	DM_ad,
 	DM_wd,
 	temp_3(4), temp_3(3), temp_3(2), temp_3(1), temp_3(0),
+	alu_opern_out3,
 	clk,
 	eEX_Mem
 );
