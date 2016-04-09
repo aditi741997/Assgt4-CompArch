@@ -39,6 +39,7 @@ port(
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
 	Mul_sel:in std_logic;
+	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
 	Instruction:out std_logic_vector(31 downto 0)
 	);
@@ -252,6 +253,7 @@ end component;
 
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
+	signal RW_out, MW_out : std_logic;
 
 
 
@@ -306,7 +308,7 @@ Bubble_RW : MicroMux port map(
 	RW_out
 );
 
-Bubble_RW : MicroMux port map(
+Bubble_MW : MicroMux port map(
 	MW,
 	'0',
 	Bubble,

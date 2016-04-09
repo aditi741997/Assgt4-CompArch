@@ -46,7 +46,8 @@ end Register_Array;
 
 architecture Behavioral of Register_Array is
 	type register_array is array (15 downto 0) of std_logic_vector(31 downto 0);
-	signal reg : register_array := (others => (others => '0'));
+	--signal reg : register_array := (others => (others => '0'));
+	signal reg : register_array;
 begin
 
 process(clock)

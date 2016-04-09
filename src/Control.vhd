@@ -47,6 +47,7 @@ port(
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
 	Mul_sel:in std_logic;
+	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
 	Instruction:out std_logic_vector(31 downto 0)
 	);
@@ -82,6 +83,7 @@ end component;
 	
 	signal alu1_mux, alu2_mux : std_logic_vector(1 downto 0);
 	signal fwdC : std_logic;
+	signal bubble : std_logic := '0';
 
 begin
 
@@ -94,6 +96,7 @@ begin
 		om_field,
 		alu_operation, flag_enable,
 		mul,
+		bubble,
 		flag,
 		ins
 	);

@@ -5,5 +5,17 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="89" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 304: &lt;<arg fmt="%s" index="1">micromux</arg>&gt; remains a black-box since it has no binding entity.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="89" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 311: &lt;<arg fmt="%s" index="1">micromux</arg>&gt; remains a black-box since it has no binding entity.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="432" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 42: Formal &lt;<arg fmt="%s" index="1">bubble</arg>&gt; has no actual or default value.
+</msg>
+
+<msg type="error" file="Simulator" num="777" delta="unknown" >Static elaboration of top level VHDL design unit <arg fmt="%s" index="1">test_control</arg> in library <arg fmt="%s" index="2">work</arg> failed
+</msg>
+
 </messages>
 
