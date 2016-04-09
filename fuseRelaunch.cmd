@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/Assgt4_SA/Assgt4_SA/Test_DataPath_beh.prj" "work.Test_DataPath" 
