@@ -1,0 +1,70 @@
+Release 14.4 - xst P.49d (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.41 secs
+ 
+--> Reading design: Control.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" into library work
+Parsing entity <Control>.
+Parsing architecture <Behavioral> of entity <control>.
+ERROR:HDLCompiler:806 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 36: Syntax error near "port".
+ERROR:HDLCompiler:806 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Syntax error near "mux_1".
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 92: Type error near mux_3 ; current type std_logic; expected type std_logic_vector
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 93: Type error near om_instruction ; current type std_logic_vector; expected type std_logic
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 94: Type error near om_field ; current type std_logic_vector; expected type std_logic
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 95: Type error near alu_operation ; current type std_logic_vector; expected type std_logic
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 97: Type error near flag ; current type std_logic_vector; expected type std_logic
+ERROR:HDLCompiler:1728 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 98: Type error near ins ; current type std_logic_vector; expected type std_logic
+ERROR:HDLCompiler:432 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 88: Formal <m2r> has no actual or default value.
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 45. m2r is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 45. ii is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 46. s_type is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 47. s_amt is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 48. opern is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 48. fset is declared here
+INFO:HDLCompiler:1408 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 49. mul_sel is declared here
+ERROR:HDLCompiler:854 - "C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd" Line 35: Unit <behavioral> ignored due to previous errors.
+VHDL file C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\src\Control.vhd ignored due to errors
+--> 
+
+Total memory usage is 263852 kilobytes
+
+Number of errors   :   10 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

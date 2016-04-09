@@ -30,12 +30,250 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity Control is
+port(
+	clock : in std_logic
+);
 end Control;
 
 architecture Behavioral of Control is
 
+component DataPath is
+port(
+	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
+	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
+	DM_fwd:in std_logic;		-- fwdC
+	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
+	s_type:in std_logic_vector(1 downto 0);
+	s_amt:in std_logic_vector(4 downto 0);
+	Opern,Fset:in std_logic_vector(3 downto 0);
+	Mul_sel:in std_logic;
+	Flags_out:out std_logic_vector(3 downto 0);
+	Instruction:out std_logic_vector(31 downto 0)
+	);
+end component;
+
+	signal mul : std_logic;
+	signal mux_1 : std_logic;
+	signal mux_2 : std_logic;
+	signal mux_3 : std_logic;
+	signal mux_4 : std_logic;
+	signal mux_5 : std_logic;
+	signal regwrite : std_logic;
+	signal mem_write : std_logic;
+	signal flag_enable : std_logic_vector(3 downto 0);
+	signal alu_operation : std_logic_vector(3 downto 0);
+	signal om_instruction : std_logic_vector(1 downto 0);
+	signal om_field : std_logic_vector(4 downto 0);
+	signal ins : std_logic_vector(31 downto 0);
+	signal flag : std_logic_vector(3 downto 0);
+	
+
+	signal cond : std_logic_vector(3 downto 0);
+	signal instruction_type : std_logic_vector(1 downto 0);
+	signal immediate : std_logic;
+	signal opc : std_logic_vector(3 downto 0);
+	signal flag_set : std_logic;
+	signal ipubwl : std_logic_vector(5 downto 0);
+	signal s_amt : std_logic_vector(4 downto 0);
+	signal s_typ : std_logic_vector(1 downto 0);
+	signal rot : std_logic_vector(3 downto 0);
+	
+	signal p : std_logic;
+	
+	signal alu1_mux, alu2_mux : std_logic_vector(1 downto 0);
+	signal fwdC : std_logic;
+
 begin
 
+	DP : DataPath port map (
+		clock, '1','1','1','1',
+		alu1_mux, alu2_mux, --to be decided
+		fwdC -- to be decided
+		mux_1, mux_4, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		om_instruction,
+		om_field,
+		alu_operation, flag_enable,
+		mul,
+		flag,
+		ins
+	);
+
+	cond <= ins(31 downto 28);
+	instruction_type <= ins(27 downto 26);
+	immediate <= ins(25);
+	opc <= ins(24 downto 21);
+	flag_set <= ins(20);
+	ipubwl <= ins(25 downto 20);
+	-- 19 to 16
+	-- 15 to 12
+	rot <= ins(11 downto 8);
+	s_amt <= ins(11 downto 7);
+	s_typ <= ins(6 downto 5);
+
+	alu2_mux <= "00";
+	alu1_mux <= "00";
+	fwdC <= '0';
+
+
+	-- set the value of p
+	process(cond, flag)		-- p has data whether instruction
+	begin					-- is executed
+		case cond is --NZCV
+			when "0000" => p <= flag(2);		--Z
+			when "0001" => p <= not flag(2);
+			when "0010" => p <= flag(1);		--C
+			when "0011" => p <= not flag(1);
+			when "0100" => p <= flag(3);		--N
+			when "0101" => p <= not flag(3);
+			when "0110" => p <= flag(0);		--V
+			when "0111" => p <= not flag(0);
+			when "1000" => p <= flag(1) and not flag(2);
+			when "1001" => p <= not (flag(1) and not flag(2));
+			when "1010" => p <= not (flag(3) xor flag(0));
+			when "1011" => p <= flag(3) xor flag(0);
+			when "1100" => p <= (not (flag(3) xor flag(0))) and not flag(2);
+			when "1101" => p <= not ((not (flag(3) xor flag(0))) and not flag(2));
+			when "1110" => p <= '1';
+			when others => null;
+		end case;
+	end process;
+
+
+	-- setting mux values
+	process(p, instruction_type, immediate, mul, ipubwl)
+	begin
+		if p = '0' then --pc = pc +1
+			mux_4 <= '0';
+		else
+			case instruction_type is
+				when "00" =>
+					if mul = '1' then
+						mux_1 <= '0';
+						mux_2 <= '0';
+						mux_3 <= '0';
+						mux_4 <= '0';
+					else 
+						if immediate = '0' then
+							mux_1 <= '0'; 
+							mux_2 <= '0'; 
+							mux_3 <= '0'; 
+							mux_4 <= '0'; 
+						else
+							mux_2 <= '1'; 
+							mux_3 <= '0'; 
+							mux_4 <= '0'; 
+							mux_5 <= '1'; 
+						end if;
+					end if;
+				when "01" =>
+					if ipubwl(0) = '1' then
+						mux_1 <= '1';
+						mux_2 <= '1';
+						mux_3 <= '1';
+						mux_4 <= '0';
+						mux_5 <= '0';
+					else
+						mux_1 <= '1';
+						mux_2 <= '1';
+						mux_3 <= '0';
+						mux_4 <= '0';
+						mux_5 <= '0';
+					end if;
+				when "10" =>
+					mux_4 <= '1';
+				when others => null;
+			end case;
+		end if;
+	end process;
+
+	-- setting register read/ write
+	process(p, instruction_type, ipubwl, opc)
+	begin
+		if p = '1' then
+			if instruction_type = "00" then
+				if opc(3 downto 2) = "10" then
+					mem_write <= '0';
+					regwrite <= '0';
+				else 
+					mem_write <= '0';
+					regwrite <= '1';
+				end if;
+			elsif instruction_type = "01" then
+				if ipubwl(0) = '1' then
+					mem_write <= '0';
+					regwrite <= '1';
+				else 
+					mem_write <= '1';
+					regwrite <= '0';
+				end if;
+			else
+				mem_write <= '0';
+				regwrite <= '0';
+			end if;
+		else 
+			mem_write <= '0';
+			regwrite <= '0';
+		end if;
+	end process;
+
+	-- setting flag_enable
+	process(p, instruction_type, opc, mul, flag_set)
+	begin
+		if p = '1' then
+		case instruction_type is 	--NZCV
+			when "00" =>
+				if opc = "1010" or opc = "1011" then
+					flag_enable <= "1111";
+				elsif opc = "1000" or opc = "1001" then
+					flag_enable <= "1100";
+				elsif flag_set = '1' then
+					if mul = '1' then flag_enable <= "1100";
+					else flag_enable <= "1111";
+					end if;
+				else flag_enable <= "0000";
+				end if;
+			when others => flag_enable <= "0000";
+		end case;
+		else null; end if;
+	end process;
+
+	-- setting alu_operation
+	process(instruction_type, ipubwl, opc)
+	begin
+		if instruction_type = "00" then
+			alu_operation <= opc;
+		elsif instruction_type = "01" then
+			if ipubwl(3) = '1' then alu_operation <= "0100";
+			else alu_operation <= "0010";
+			end if;
+		else null;
+		end if;
+	end process;
+
+	-- setting shift
+	process(instruction_type, mul, immediate, rot, s_amt, s_typ)
+	begin
+		if instruction_type = "00" then
+			if mul = '1' then
+				om_field <= "00000";
+				om_instruction <= "00";
+			else
+				if immediate = '1' then
+					om_field(3 downto 0) <= rot;
+					om_field(4) <= '0';
+					om_instruction <= "11";
+				else
+					om_field <= s_amt;
+					om_instruction <= s_typ ;
+				end if;
+			end if;
+		else 
+			om_field <= "00000";
+			om_instruction <= "00";
+		end if;
+	end process;
+
+	mul <= ins(4) and not ins(5) and not ins(6) and ins(7) and not ins(27) and not ins(26) and not ins(25) and not ins(24) and not ins(23) and not ins(22);
 
 end Behavioral;
 
