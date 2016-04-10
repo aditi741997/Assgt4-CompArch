@@ -50,7 +50,7 @@ port(
 	IIMux_out, AsrcMux_out, fwdCMux_out, 
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
-	ALU_opern_out : std_logic_vector(3 downto 0);
+	ALU_opern_out : out std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -83,9 +83,15 @@ begin
 		M2RMux <= M2RMux_in;
 		RW <= RW_in;
 		MR <= MR_in;
+		MW <= MW_in;
 		ALUMux1 <= ALUMux1_in;
 		ALUMux2 <= ALUMux2_in;
 		ALU_opern <= ALU_opern_in;
+
+
+
+	end if;
+end process;
 
 		offset_out <= offset;
 		rd1_out <= rd1;
@@ -99,13 +105,9 @@ begin
 		M2RMux_out <= M2RMux ;
 		RW_out <= RW;
 		MR_out <= MR;
+		MW_out <= MW;
 		ALUMux1_out <= ALUMux1;
 		ALUMux2_out <= ALUMux2;
 		ALU_opern_out <= ALU_opern;
-
-	end if;
-end process;
-
-
 
 end Behavioral;

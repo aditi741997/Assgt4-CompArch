@@ -67,8 +67,8 @@ Compiling architecture behavioral of entity DataPath [datapath_default]
 Compiling architecture behavioral of entity Control [control_default]
 Compiling architecture behavior of entity test_control
 Time Resolution for simulation is 1ps.
-Waiting for 20 sub-compilation(s) to finish...
+Waiting for 16 sub-compilation(s) to finish...
 Compiled 60 VHDL Units
 Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_isim_beh.exe
-Fuse Memory Usage: 38796 KB
-Fuse CPU Usage: 1015 ms
+Fuse Memory Usage: 39000 KB
+Fuse CPU Usage: 1046 ms

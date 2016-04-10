@@ -58,12 +58,12 @@ if (rising_edge(clk) and enable = '1') then
 	M2RMux <= M2RMux_in;
 	RW <= RW_in;
 	
+
+end if;
+end process;
 	alu_out <= aluIN;
 	wad_out <= wadIN;
 	rd_out <= rd1;
 	M2RMux_out <= M2RMux;
 	RW_out <= RW;
-end if;
-end process;
-
 end Behavioral;

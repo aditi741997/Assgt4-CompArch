@@ -117,7 +117,7 @@ port(
 	IIMux_out, AsrcMux_out, fwdCMux_out, 
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
-	ALU_opern_out : std_logic_vector(3 downto 0);
+	ALU_opern_out : out std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -333,7 +333,7 @@ IDEX : ID_EX port map(
 	Rd_out,
 	II,Asrc,DM_fwd,M2R,RW_out,MW_out,MR,
 	alu1_mux, alu2_mux,
-	alu_opern_out1,
+	Opern,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	

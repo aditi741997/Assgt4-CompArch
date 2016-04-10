@@ -58,6 +58,10 @@ begin
 		ins <= instruction_in;
 		ALU_opern <= ALU_opern_in;
 		
+
+	end if;
+end process;
+
 		offset_out <= ins(23 downto 0);
 		Rn_out <= ins(19 downto 16);
 		Rm_out <= ins(3 downto 0);
@@ -66,9 +70,5 @@ begin
 		imm12_out <= ins(11 downto 0);
 		instruction_out <= ins;
 		ALU_opern_out <= ALU_opern;
-	end if;
-end process;
-
-
 
 end Behavioral;

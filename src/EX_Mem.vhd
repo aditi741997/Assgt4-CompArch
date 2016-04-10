@@ -65,6 +65,9 @@ if (rising_edge(clk) and enable = '1') then
 	MR <= MR_in;
 	ALU_opern <= ALU_opern_in;
 	
+
+end if;
+end process;
 	DM_ad <= aluIN;
 	DM_wd <= rd22;
 	wad_out <= wadIN;
@@ -74,7 +77,4 @@ if (rising_edge(clk) and enable = '1') then
 	MW_out <= MW;
 	MR_out <= MR;
 	ALU_opern_out <= ALU_opern;
-end if;
-end process;
-
 end Behavioral;

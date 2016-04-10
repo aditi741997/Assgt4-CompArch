@@ -41,15 +41,19 @@ end Data_Memory;
 architecture Behavioral of Data_Memory is
 
 type DM is array(0 to 511) of std_logic_vector(31 downto 0);
-signal Data:DM:=("11110000111100001111000011110000",
-"01010101010101010101010101010101",
-"10101010101010101010101010101010",
-"00110011001100110011001100110011",others => "00000000000000000000000000000000");
+signal Data:DM
+:=(
+"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+"11001100110011001100110011001100",
+"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+"UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+others => "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
 signal ad_Int:integer;
-
+--Data(7) := "10101010101010101010101010101010";
 begin
 
 ad_Int <= conv_integer(ad);
+
 
 MWrite:process(MW,MR,ad,wdDM,clk)
 begin
@@ -62,6 +66,8 @@ if (MW = '1') then
 	end if;
 end if;
 end process;
+
+
 
 end Behavioral;
 
