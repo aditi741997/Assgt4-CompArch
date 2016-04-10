@@ -108,6 +108,9 @@ port(
 	M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
 	ALUMux1_in, ALUMux2_in : in std_logic_vector(1 downto 0);
 	ALU_opern_in : in std_logic_vector(3 downto 0);
+	Mul_sel_in: in std_logic;
+	s_type_in:in std_logic_vector(1 downto 0);
+	s_amt_in: in std_logic_Vector(4 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -118,6 +121,9 @@ port(
 	M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 	ALUMux1_out, ALUMux2_out : out std_logic_vector(1 downto 0);
 	ALU_opern_out : out std_logic_vector(3 downto 0);
+	Mul_sel_out : out std_logic;
+	s_type_out : out std_logic_vector(1 downto 0);
+	s_amt_out : out std_logic_vector(4 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -262,6 +268,9 @@ end component;
 	signal RW_out, MW_out : std_logic;
 	signal PSrc_temp : std_logic := '0';
 	signal alu_opern_out1, alu_opern_out2, alu_opern_out3 : std_logic_vector(3 downto 0);
+	signal Mul_sel_final : std_logic;
+	signal s_type_final : std_logic_vector(1 downto 0);
+	signal s_amt_final : std_logic_vector(4 downto 0);
 
 
 begin
@@ -334,6 +343,9 @@ IDEX : ID_EX port map(
 	II,Asrc,DM_fwd,M2R,RW_out,MW_out,MR,
 	alu1_mux, alu2_mux,
 	Opern,
+	Mul_sel,
+	s_type,
+	s_amt,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -343,6 +355,9 @@ IDEX : ID_EX port map(
 	temp_2(6),temp_2(5),temp_2(4),temp_2(3),temp_2(2),temp_2(1),temp_2(0),
 	temp_2(8 downto 7), temp_2(10 downto 9),
 	alu_opern_out2,
+	Mul_sel_final,
+	s_type_final,
+	s_amt_final,
 	eID_EX,
 	clk
 );
@@ -403,7 +418,7 @@ ALU_sa : ALU port map(
 	alu_out,
 	alu_opern_out2,
 	Flag_In,
-	Mul_sel
+	Mul_sel_final
 );
 
 EXMEM : EX_Mem port map(

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/shift4.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/shift4.vhd";
 
 
 
@@ -78,22 +78,22 @@ LAB1:    return;
 LAB2:    xsi_set_current_line(46, ng0);
     t1 = (t0 + 1192U);
     t5 = *((char **)t1);
-    t1 = (t0 + 4927);
+    t1 = (t0 + 4871);
     t7 = xsi_mem_cmp(t1, t5, 2U);
     if (t7 == 1)
         goto LAB6;
 
-LAB11:    t8 = (t0 + 4929);
+LAB11:    t8 = (t0 + 4873);
     t10 = xsi_mem_cmp(t8, t5, 2U);
     if (t10 == 1)
         goto LAB7;
 
-LAB12:    t11 = (t0 + 4931);
+LAB12:    t11 = (t0 + 4875);
     t13 = xsi_mem_cmp(t11, t5, 2U);
     if (t13 == 1)
         goto LAB8;
 
-LAB13:    t14 = (t0 + 4933);
+LAB13:    t14 = (t0 + 4877);
     t16 = xsi_mem_cmp(t14, t5, 2U);
     if (t16 == 1)
         goto LAB9;
@@ -113,7 +113,7 @@ LAB10:    xsi_set_current_line(66, ng0);
 LAB5:    goto LAB3;
 
 LAB6:    xsi_set_current_line(49, ng0);
-    t17 = (t0 + 4935);
+    t17 = (t0 + 4879);
     t19 = (4U != 4U);
     if (t19 == 1)
         goto LAB16;
@@ -142,7 +142,7 @@ LAB17:    t20 = (t0 + 3072);
     goto LAB5;
 
 LAB7:    xsi_set_current_line(53, ng0);
-    t1 = (t0 + 4939);
+    t1 = (t0 + 4883);
     t3 = (4U != 4U);
     if (t3 == 1)
         goto LAB18;
