@@ -296,6 +296,8 @@ end component;
 	signal cond : std_logic_vector(3 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	signal p : std_logic;
+
+	signal bubble_IFID, bubble_IDEX, bubble_EXMem : std_logic;
 begin
 
 Current_Inst <= current_ins;  -- needed for branch prediction.
@@ -331,6 +333,19 @@ flag <= Flag_Out;
 		end case;
 	end process;
 
+	process(p, Psrc_pred2, Psrc_actual_2, PC4_2)
+	begin
+		if Psrc_pred = '1' and ((Psrc_actual2 and p) = '0') then
+			bubble_IDEX <= '0';
+			bubble_IFID <= '0';
+		elsif Psrc_pred = '0' and ((Psrc_actual2 and p) = '1') then
+			bubble_IDEX <= '0';
+			bubble_IFID <= '0';
+		else 
+			bubble_IDEX <= '1';
+			bubble_IFID <= '1';
+		end if;
+	end process;
 
 PC : PCtr port map(
 	clk,
@@ -399,7 +414,7 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
-	II,Asrc,DM_fwd,M2R,RW_out,MW_out,MR,
+	II,Asrc,DM_fwd,M2R,RW_out and bubble_IDEX,MW_out and bubble_IDEX,MR,
 	alu1_mux, alu2_mux,
 	Opern,
 	Mul_sel,
