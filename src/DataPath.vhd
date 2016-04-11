@@ -71,7 +71,7 @@ Port(
 end component;
 
 component Data_Memory is
-port(ad:in std_logic_vector(31 downto 0);
+port(ad:in std_logic_vector(8 downto 0);
 wdDM:in std_logic_vector(31 downto 0);
 MW,MR,clk:in std_logic;
 rd:out std_logic_vector(31 downto 0));
@@ -117,7 +117,8 @@ port(
 	Mul_sel_in: in std_logic;
 	s_type_in:in std_logic_vector(1 downto 0);
 	s_amt_in: in std_logic_Vector(4 downto 0);
-	ID_inst_in : in std_logic_vector(31 downto 0);
+	IDEX_inst_in : in std_logic_vector(31 downto 0);
+	flag_enable_in : in std_logic_vector(3 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -131,7 +132,8 @@ port(
 	Mul_sel_out : out std_logic;
 	s_type_out : out std_logic_vector(1 downto 0);
 	s_amt_out : out std_logic_vector(4 downto 0);
-	ID_inst_out : out std_logic_vector(31 downto 0);
+	IDEX_inst_out : out std_logic_vector(31 downto 0);
+	flag_enable_out : out std_logic_vector(3 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -249,6 +251,7 @@ end component;
 	signal imm12_out_2 : std_logic_vector(11 downto 0);
 	signal wad_out_2 : 	std_logic_vector(3 downto 0);
 	signal temp_2 : std_logic_vector(10 downto 0);
+	signal flag_set_2 : std_logic_vector(3 downto 0);
 
 	signal wad_out_3: std_logic_vector(3 downto 0);		--EX_Mem output
 	signal DM_ad: std_logic_vector(31 downto 0);
@@ -368,6 +371,7 @@ IDEX : ID_EX port map(
 	s_type,
 	s_amt,
 	Instruction_IFID,
+	Fset,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -381,6 +385,7 @@ IDEX : ID_EX port map(
 	s_type_final,
 	s_amt_final,
 	Instruction_IDEX,
+	flag_set_2,
 	eID_EX,
 	clk
 );
@@ -477,7 +482,7 @@ fwdC : Mux port map(
 );
 
 DM : Data_Memory port map(
-	DM_ad,
+	DM_ad(8 downto 0),
 	fwdC_out,
 	temp_3(1),
 	temp_3(0),
@@ -510,7 +515,7 @@ M2RMux : Mux port map(
 Flag : Flags port map(
 	Flag_In,
 	Flag_Out,
-	Fset,
+	flag_set_2,
 	clk
 );
 
