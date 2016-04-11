@@ -116,7 +116,7 @@ port(
 	Mul_sel_in: in std_logic;
 	s_type_in:in std_logic_vector(1 downto 0);
 	s_amt_in: in std_logic_Vector(4 downto 0);
-	ID_inst_in : in std_logic_vector(31 downto 0);
+	IDEX_inst_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -130,7 +130,7 @@ port(
 	Mul_sel_out : out std_logic;
 	s_type_out : out std_logic_vector(1 downto 0);
 	s_amt_out : out std_logic_vector(4 downto 0);
-	ID_inst_out : out std_logic_vector(31 downto 0);
+	IDEX_inst_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
