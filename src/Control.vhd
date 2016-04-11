@@ -83,7 +83,7 @@ end component;
 	signal alu_operation : std_logic_vector(3 downto 0);
 	signal om_instruction : std_logic_vector(1 downto 0);
 	signal om_field : std_logic_vector(4 downto 0);
-	signal curr_ins, ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
+	signal curr_ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
 	signal ins : std_logic_vector(31 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	
@@ -116,6 +116,7 @@ begin
 		om_field,
 		alu_operation, flag_enable,
 		mul,
+		bubble,
 		flag,
 		curr_ins,
 		ins,

@@ -5,13 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 493: Actual for formal port <arg fmt="%s" index="1">rw_in</arg> is neither a static name nor a globally static expression
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1156" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Control.vhd" Line 51: Formal port &lt;<arg fmt="%s" index="1">Instruction</arg>&gt; does not exist in entity &lt;<arg fmt="%s" index="2">DataPath</arg>&gt;.  Please compare the definition of block &lt;<arg fmt="%s" index="3">DataPath</arg>&gt; to its component declaration and its instantion to detect the mismatch.
-</msg>
-
-<msg type="error" file="Simulator" num="777" delta="unknown" >Static elaboration of top level VHDL design unit <arg fmt="%s" index="1">test_control</arg> in library <arg fmt="%s" index="2">work</arg> failed
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 503: Actual for formal port <arg fmt="%s" index="1">rw_in</arg> is neither a static name nor a globally static expression
 </msg>
 
 </messages>

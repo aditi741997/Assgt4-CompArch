@@ -5,10 +5,14 @@
 <!--     behavior or data corruption.  It is strongly advised that -->
 <!--     users do not edit the contents of this file.              -->
 <!--                                                               -->
-<!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
+<!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<<<<<<< HEAD
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Data_Forward.vhd&quot; into library work</arg>
+=======
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/InMem.vhd&quot; into library work</arg>
+>>>>>>> 14c9471f13d9e59280cd9d925501244d37584dec
 </msg>
 
 </messages>

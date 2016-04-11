@@ -15,7 +15,7 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
@@ -31,10 +31,124 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Data_Forward.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="Data_Forward.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="Data_Forward.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_Control_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_Control_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_Control_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_Control_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1460410082" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1460410082">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410364" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1460410364">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="src/ALU.vhd"/>
+      <outfile xil_pn:name="src/ALU_Basic.vhd"/>
+      <outfile xil_pn:name="src/Adder4.vhd"/>
+      <outfile xil_pn:name="src/Adder4_Unit.vhd"/>
+      <outfile xil_pn:name="src/Branch_Predictor.vhd"/>
+      <outfile xil_pn:name="src/Control.vhd"/>
+      <outfile xil_pn:name="src/DataPath.vhd"/>
+      <outfile xil_pn:name="src/Data_Forward.vhd"/>
+      <outfile xil_pn:name="src/Data_Memory.vhd"/>
+      <outfile xil_pn:name="src/EXMem_Test.vhd"/>
+      <outfile xil_pn:name="src/EX_Mem.vhd"/>
+      <outfile xil_pn:name="src/Flags.vhd"/>
+      <outfile xil_pn:name="src/ID_EX.vhd"/>
+      <outfile xil_pn:name="src/IF_ID.vhd"/>
+      <outfile xil_pn:name="src/IF_ID_Test.vhd"/>
+      <outfile xil_pn:name="src/InMem.vhd"/>
+      <outfile xil_pn:name="src/Mem_WB.vhd"/>
+      <outfile xil_pn:name="src/MicroMux.vhd"/>
+      <outfile xil_pn:name="src/MiniMux.vhd"/>
+      <outfile xil_pn:name="src/Multiplier.vhd"/>
+      <outfile xil_pn:name="src/Mux.vhd"/>
+      <outfile xil_pn:name="src/Mux4.vhd"/>
+      <outfile xil_pn:name="src/PCtr.vhd"/>
+      <outfile xil_pn:name="src/Register_Array.vhd"/>
+      <outfile xil_pn:name="src/Test_Control.vhd"/>
+      <outfile xil_pn:name="src/Test_DataPath.vhd"/>
+      <outfile xil_pn:name="src/mult_unit.vhd"/>
+      <outfile xil_pn:name="src/shift1.vhd"/>
+      <outfile xil_pn:name="src/shift16.vhd"/>
+      <outfile xil_pn:name="src/shift2.vhd"/>
+      <outfile xil_pn:name="src/shift4.vhd"/>
+      <outfile xil_pn:name="src/shift8.vhd"/>
+      <outfile xil_pn:name="src/shifter.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410082" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="6560896077937483830" xil_pn:start_ts="1460410082">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410082" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="107493537328948834" xil_pn:start_ts="1460410082">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410082" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-2137599654014212559" xil_pn:start_ts="1460410082">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410364" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1460410364">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="src/ALU.vhd"/>
+      <outfile xil_pn:name="src/ALU_Basic.vhd"/>
+      <outfile xil_pn:name="src/Adder4.vhd"/>
+      <outfile xil_pn:name="src/Adder4_Unit.vhd"/>
+      <outfile xil_pn:name="src/Branch_Predictor.vhd"/>
+      <outfile xil_pn:name="src/Control.vhd"/>
+      <outfile xil_pn:name="src/DataPath.vhd"/>
+      <outfile xil_pn:name="src/Data_Forward.vhd"/>
+      <outfile xil_pn:name="src/Data_Memory.vhd"/>
+      <outfile xil_pn:name="src/EXMem_Test.vhd"/>
+      <outfile xil_pn:name="src/EX_Mem.vhd"/>
+      <outfile xil_pn:name="src/Flags.vhd"/>
+      <outfile xil_pn:name="src/ID_EX.vhd"/>
+      <outfile xil_pn:name="src/IF_ID.vhd"/>
+      <outfile xil_pn:name="src/IF_ID_Test.vhd"/>
+      <outfile xil_pn:name="src/InMem.vhd"/>
+      <outfile xil_pn:name="src/Mem_WB.vhd"/>
+      <outfile xil_pn:name="src/MicroMux.vhd"/>
+      <outfile xil_pn:name="src/MiniMux.vhd"/>
+      <outfile xil_pn:name="src/Multiplier.vhd"/>
+      <outfile xil_pn:name="src/Mux.vhd"/>
+      <outfile xil_pn:name="src/Mux4.vhd"/>
+      <outfile xil_pn:name="src/PCtr.vhd"/>
+      <outfile xil_pn:name="src/Register_Array.vhd"/>
+      <outfile xil_pn:name="src/Test_Control.vhd"/>
+      <outfile xil_pn:name="src/Test_DataPath.vhd"/>
+      <outfile xil_pn:name="src/mult_unit.vhd"/>
+      <outfile xil_pn:name="src/shift1.vhd"/>
+      <outfile xil_pn:name="src/shift16.vhd"/>
+      <outfile xil_pn:name="src/shift2.vhd"/>
+      <outfile xil_pn:name="src/shift4.vhd"/>
+      <outfile xil_pn:name="src/shift8.vhd"/>
+      <outfile xil_pn:name="src/shifter.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410369" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6990660115673760419" xil_pn:start_ts="1460410364">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Test_Control_beh.prj"/>
+      <outfile xil_pn:name="Test_Control_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1460410369" xil_pn:in_ck="3796392992694117295" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7882452695880538934" xil_pn:start_ts="1460410369">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Test_Control_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+    </transform>
+  </transforms>
 
 </generated_project>
