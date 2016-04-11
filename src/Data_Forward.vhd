@@ -106,6 +106,7 @@ fwA:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rn then
+			fwdA <= "";
 		end if;
 	end if;
 end process;
@@ -113,6 +114,10 @@ end process;
 
 fwB:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB)
 begin
+	if (EXMEM_rw = '1') then
+		if EXMEM_Rd = IDEX_Rm then
+		end if;
+	end if;
 end process;
 
 
