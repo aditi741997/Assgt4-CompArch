@@ -41,6 +41,7 @@ port(
 	Mul_sel:in std_logic;
 	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
+	Current_Inst:out std_logic_Vector(31 downto 0);
 	InstructionIFID:out std_logic_vector(31 downto 0);
 	InstructionIDEX:out std_logic_vector(31 downto 0);
 	InstructionEXMEM:out std_logic_vector(31 downto 0);
@@ -275,20 +276,25 @@ end component;
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
 	signal RW_out, MW_out : std_logic;
-	signal PSrc_temp : std_logic := '0';
+	signal PSrc_temp : std_logic;
 	signal alu_opern_out1, alu_opern_out2, alu_opern_out3 : std_logic_vector(3 downto 0);
 	signal Mul_sel_final : std_logic;
 	signal s_type_final : std_logic_vector(1 downto 0);
 	signal s_amt_final : std_logic_vector(4 downto 0);
 	signal Instruction_IFID,Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : std_logic_Vector(31 downto 0);
+	signal PC4_1, PC_off : std_logic_Vector(31 downto 0);
+	signal pc_offset : std_logic_Vector(23 downto 0);
+	signal ext_pc_offset : std_logic_Vector(31 downto 0);
 
 
 begin
 
+Current_Inst <= current_ins;  -- needed for branch prediction.
 InstructionIFID <= Instruction_IFID;
 InstructionIDEX <= Instruction_IDEX;
 InstructionEXMEM <= Instruction_EXMEM;
 InstructionMEMWB <= Instruction_MEMWB;
+PSrc_temp <= Psrc;
 
 PC : PCtr port map(
 	clk,
@@ -361,7 +367,7 @@ IDEX : ID_EX port map(
 	Mul_sel,
 	s_type,
 	s_amt,
-	Instruction,
+	Instruction_IFID,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -510,7 +516,7 @@ Flag : Flags port map(
 
 PsrcM : mux port map(
 	PC4,
-	alu_out,
+	PC_off,
 	PSrc_temp,
 	pc_in
 );
@@ -519,6 +525,31 @@ Add : Adder4 port map(
 	pc_out,
 	"00000000000000000000000000000001",
 	PC4
+);
+
+-- TODO: inputs :
+Add4_Predict : Adder4 port map(
+	pc_out,
+	"00000000000000000000000000000001",
+	PC4_1
+);
+
+-- offset = extend 23 to 0 of which inst?
+pc_offset <= current_ins(23 downto 0);
+ext_pc_offset(23 downto 0) <= pc_offset;
+ext_pc_offset(24) <= pc_offset(23);
+ext_pc_offset(25) <= pc_offset(23);
+ext_pc_offset(26) <= pc_offset(23);
+ext_pc_offset(27) <= pc_offset(23);
+ext_pc_offset(28) <= pc_offset(23);
+ext_pc_offset(29) <= pc_offset(23);
+ext_pc_offset(30) <= pc_offset(23);
+ext_pc_offset(31) <= pc_offset(23);
+
+AddO_Predict : Adder4 port map(
+	PC4_1,
+	ext_pc_offset,
+	PC_off
 );
 
 end Behavioral;
