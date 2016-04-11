@@ -34,10 +34,12 @@ port( rd:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		alu_in:in std_logic_vector(31 downto 0);
 		M2RMux_in, RW_in : in std_logic;
+		MemWB_inst_in : in std_logic_Vector(31 downto 0);
 		wad_out:out std_logic_vector(3 downto 0);
 		alu_out:out std_logic_vector(31 downto 0);
 		rd_out:out std_logic_vector(31 downto 0);
 		M2RMux_out, RW_out : out std_logic;
+		MemWB_inst_out : out std_logic_Vector(31 downto 0);
 		clk,enable:in std_logic);
 end Mem_WB;
 
@@ -46,6 +48,7 @@ architecture Behavioral of Mem_WB is
 signal rd1,aluIN:std_logic_vector(31 downto 0);
 signal wadIN:std_logic_vector(3 downto 0);
 signal M2RMux, RW : std_logic;
+signal MemWB_inst : std_logic_Vector(31 downto 0);
 
 begin
 
@@ -57,7 +60,7 @@ if (rising_edge(clk) and enable = '1') then
 	wadIN <= wad_in;
 	M2RMux <= M2RMux_in;
 	RW <= RW_in;
-	
+	MemWB_inst <= MemWB_inst_in;
 
 end if;
 end process;
@@ -66,4 +69,6 @@ end process;
 	rd_out <= rd1;
 	M2RMux_out <= M2RMux;
 	RW_out <= RW;
+	MemWB_inst_out <= MemWB_inst;
+
 end Behavioral;

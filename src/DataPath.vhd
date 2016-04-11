@@ -41,7 +41,10 @@ port(
 	Mul_sel:in std_logic;
 	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
-	Instruction:out std_logic_vector(31 downto 0)
+	InstructionIFID:out std_logic_vector(31 downto 0);
+	InstructionIDEX:out std_logic_vector(31 downto 0);
+	InstructionEXMEM:out std_logic_vector(31 downto 0);
+	InstructionMEMWB:out std_logic_vector(31 downto 0)
 	);
 end DataPath;
 
@@ -79,11 +82,13 @@ port( alu_in:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		fwdCMux_in, M2RMux_in, RW_in, MW_in, MR_in : in std_logic;
 		ALU_opern_in : in std_logic_vector(3 downto 0);
+		EXMEM_inst_in : in std_logic_Vector(31 downto 0);
 		wad_out:out std_logic_vector(3 downto 0);
 		DM_ad:out std_logic_vector(31 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
 		fwdCMux_out, M2RMux_out, RW_out, MW_out, MR_out : out std_logic;
 		ALU_opern_out : out std_logic_vector(3 downto 0);
+		EXMEM_inst_out : out std_logic_vector(31 downto 0);
 		clk,enable:in std_logic);
 end component;
 
@@ -111,6 +116,7 @@ port(
 	Mul_sel_in: in std_logic;
 	s_type_in:in std_logic_vector(1 downto 0);
 	s_amt_in: in std_logic_Vector(4 downto 0);
+	ID_inst_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -124,6 +130,7 @@ port(
 	Mul_sel_out : out std_logic;
 	s_type_out : out std_logic_vector(1 downto 0);
 	s_amt_out : out std_logic_vector(4 downto 0);
+	ID_inst_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -156,10 +163,12 @@ port( rd:in std_logic_vector(31 downto 0);
 		wad_in:in std_logic_vector(3 downto 0);
 		alu_in:in std_logic_vector(31 downto 0);
 		M2RMux_in, RW_in : in std_logic;
+		MemWB_inst_in : in std_logic_Vector(31 downto 0);
 		wad_out:out std_logic_vector(3 downto 0);
 		alu_out:out std_logic_vector(31 downto 0);
 		rd_out:out std_logic_vector(31 downto 0);
 		M2RMux_out, RW_out : out std_logic;
+		MemWB_inst_out : out std_logic_Vector(31 downto 0);
 		clk,enable:in std_logic);
 end component;
 
@@ -271,9 +280,15 @@ end component;
 	signal Mul_sel_final : std_logic;
 	signal s_type_final : std_logic_vector(1 downto 0);
 	signal s_amt_final : std_logic_vector(4 downto 0);
+	signal Instruction_IFID,Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : std_logic_Vector(31 downto 0);
 
 
 begin
+
+InstructionIFID <= Instruction_IFID;
+InstructionIDEX <= Instruction_IDEX;
+InstructionEXMEM <= Instruction_EXMEM;
+InstructionMEMWB <= Instruction_MEMWB;
 
 PC : PCtr port map(
 	clk,
@@ -295,7 +310,7 @@ IFID : IF_ID port map(
 	Rd_out,
 	imm8_out_1,
 	imm12_out_1,
-	Instruction,
+	Instruction_IFID,
 	alu_opern_out1,
 	eIF_ID,
 	clk
@@ -346,6 +361,7 @@ IDEX : ID_EX port map(
 	Mul_sel,
 	s_type,
 	s_amt,
+	Instruction,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -358,6 +374,7 @@ IDEX : ID_EX port map(
 	Mul_sel_final,
 	s_type_final,
 	s_amt_final,
+	Instruction_IDEX,
 	eID_EX,
 	clk
 );
@@ -427,11 +444,13 @@ EXMEM : EX_Mem port map(
 	wad_out_2,
 	temp_2(4), temp_2(3), temp_2(2), temp_2(1), temp_2(0),
 	alu_opern_out2,
+	Instruction_IDEX,
 	wad_out_3,
 	DM_ad,
 	DM_wd,
 	temp_3(4), temp_3(3), temp_3(2), temp_3(1), temp_3(0),
 	alu_opern_out3,
+	Instruction_EXMEM,
 	clk,
 	eEX_Mem
 );
@@ -457,10 +476,12 @@ MemWB : Mem_WB port map(
 	wad_out_3,
 	DM_ad,
 	temp_3(3), temp_3(2),
+	Instruction_EXMEM,
 	wad_out_4,
 	alu_out_4,
 	rd_out_4,
 	temp_4(1), temp_4(0),
+	Instruction_MEMWB,
 	clk,
 	eMem_WB
 );
