@@ -42,7 +42,7 @@ port(
 	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
 	DM_fwd:in std_logic;		-- fwdC
-	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
+	Rsrc,Psrc,Psrc_Actual,RW,Asrc,MW,MR,M2R,II:in std_logic;
 	s_type:in std_logic_vector(1 downto 0);
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
@@ -111,7 +111,7 @@ begin
 		clock, '1','1','1','1',
 		fwdA_f, fwdB_f,
 		fwdC_f,
-		mux_1, predicted_src, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		mux_1, predicted_src, mux_4 ,regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
 		alu_operation, flag_enable,
