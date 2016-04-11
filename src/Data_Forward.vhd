@@ -106,8 +106,17 @@ fwA:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rn then
-			fwdA <= "";
+			fwdA <= "10";
+		else
+			fwdA <= "00";
 		end if;
+	elsif MEMWB_rw = '1' then
+		if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
+			fwdA <= "11";
+		else
+			fwdA <= "00";
+		end if;
+	else fwdA <= "00";
 	end if;
 end process;
 
@@ -116,6 +125,15 @@ fwB:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rm then
+			fwdB <= "10";
+		else
+			fwdB <= "00";
+		end if;
+	elsif MEMWB_rw = '1' then
+		if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
+			fwdB <= "11";
+		else
+			fwdB <= "00";
 		end if;
 	end if;
 end process;
@@ -123,6 +141,15 @@ end process;
 
 fwC:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB)
 begin
+	if MEMWB_rw = '1' then
+		if MEMWB_Rd = EXMEM_Rd then
+			fwdC <= '1';
+		else
+			fwdC <= '0';
+			end if;
+	else
+		fwdC <= '0';
+	end if;
 end process;
 
 end Behavioral;

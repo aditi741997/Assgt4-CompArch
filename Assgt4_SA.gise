@@ -22,6 +22,9 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Assgt4_SA.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Branch_Predictor.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="Branch_Predictor.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="Branch_Predictor.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DataPath.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="DataPath.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="DataPath.xst"/>

@@ -100,8 +100,8 @@ end component;
 	
 	signal p : std_logic := '1';
 	
-	signal alu1_mux, alu2_mux : std_logic_vector(1 downto 0);
-	signal fwdC : std_logic;
+	signal fwdA_f, fwdB_f : std_logic_vector(1 downto 0);
+	signal fwdC_f : std_logic;
 	signal bubble : std_logic := '0';
 	signal predicted_psrc : std_logic;
 
@@ -109,8 +109,8 @@ begin
 
 	DP : DataPath port map (
 		clock, '1','1','1','1',
-		alu1_mux, alu2_mux, --to be decided
-		fwdC, -- to be decided
+		fwdA_f, fwdB_f,
+		fwdC_f,
 		mux_1, predicted_src, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
@@ -125,9 +125,17 @@ begin
 		
 	Branch_Pred : Branch_Predictor port map(
 		curr_ins,
-		predicted_psrc,
-		ins
+		predicted_psrc
  	);
+	
+	DFwd : Data_Forward port map(
+		ins_IDEX,
+		ins_EXMEM,
+		ins_MEMWB,
+		fwdA_f,
+		fwdB_f,
+		fwdC_f
+	);
 	
 	cond <= ins(31 downto 28);
 	instruction_type <= ins(27 downto 26);
@@ -141,8 +149,8 @@ begin
 	s_amt <= ins(11 downto 7);
 	s_typ <= ins(6 downto 5);
 
-	alu2_mux <= "00";
-	alu1_mux <= "00";
+--	alu2_mux <= "00";
+--	alu1_mux <= "00";
 	fwdC <= '0';
 	--p <= '1';
 	--process(instruction_type, immediate, mul, ipubwl, opc, instruction_type, flag_set, rot, s_amt, s_typ)
