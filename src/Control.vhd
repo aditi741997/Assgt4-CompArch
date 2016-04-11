@@ -83,7 +83,7 @@ end component;
 	signal alu_operation : std_logic_vector(3 downto 0);
 	signal om_instruction : std_logic_vector(1 downto 0);
 	signal om_field : std_logic_vector(4 downto 0);
-	signal curr_ins, ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
+	signal curr_ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
 	signal ins : std_logic_vector(31 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	
@@ -111,11 +111,12 @@ begin
 		clock, '1','1','1','1',
 		alu1_mux, alu2_mux, --to be decided
 		fwdC, -- to be decided
-		mux_1, predicted_src, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		mux_1, predicted_psrc, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
 		alu_operation, flag_enable,
 		mul,
+		bubble,
 		flag,
 		curr_ins,
 		ins,
@@ -125,8 +126,7 @@ begin
 		
 	Branch_Pred : Branch_Predictor port map(
 		curr_ins,
-		predicted_psrc,
-		ins
+		predicted_psrc
  	);
 	
 	cond <= ins(31 downto 28);
