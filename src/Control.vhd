@@ -64,6 +64,14 @@ port(
 );
 end component;
 
+component Data_Forward is
+port(
+	Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : in std_logic_Vector(31 downto 0);
+	fwdA, fwdB : out std_logic_vector(1 downto 0);
+	fwdC : out std_logic
+);
+end component;
+
 	signal mul : std_logic;
 	signal mux_1 : std_logic;
 	signal mux_2 : std_logic;
@@ -123,7 +131,7 @@ begin
 		curr_ins,
 		predicted_psrc
 	);
-
+	
 	cond <= ins(31 downto 28);
 	instruction_type <= ins(27 downto 26);
 	immediate <= ins(25);

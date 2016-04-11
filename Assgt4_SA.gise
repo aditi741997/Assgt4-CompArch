@@ -15,21 +15,27 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Assgt4_SA.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ID_EX.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ID_EX.stx"/>
+    <file xil_pn:fileType="FILE_VHDL_INSTTEMPLATE" xil_pn:name="ID_EX.vhi"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="ID_EX.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_Control_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_Control_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_Control_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
@@ -40,6 +46,10 @@
     <transform xil_pn:end_ts="1460390344" xil_pn:in_ck="-7482252462805221221" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1460390344">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="src/ALU.vhd"/>
       <outfile xil_pn:name="src/ALU_Basic.vhd"/>
       <outfile xil_pn:name="src/Adder4.vhd"/>
@@ -88,6 +98,11 @@
     <transform xil_pn:end_ts="1460390344" xil_pn:in_ck="-7482252462805221221" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1460390344">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="src/ALU.vhd"/>
       <outfile xil_pn:name="src/ALU_Basic.vhd"/>
       <outfile xil_pn:name="src/Adder4.vhd"/>
@@ -124,6 +139,9 @@
     <transform xil_pn:end_ts="1460390352" xil_pn:in_ck="-7482252462805221221" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6990660115673760419" xil_pn:start_ts="1460390344">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="Test_Control_beh.prj"/>
       <outfile xil_pn:name="Test_Control_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -134,6 +152,7 @@
     <transform xil_pn:end_ts="1460390352" xil_pn:in_ck="3796392992694117295" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7882452695880538934" xil_pn:start_ts="1460390352">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="Test_Control_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>

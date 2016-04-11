@@ -33,6 +33,7 @@ entity IF_ID is
 port(
 	instruction_in : in std_logic_vector(31 downto 0);
 	ALU_opern_in : in std_logic_vector(3 downto 0);
+	Psrc_in : in std_logic;
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -41,6 +42,7 @@ port(
 	imm12_out : out std_logic_vector(11 downto 0);
 	instruction_out : out std_logic_vector(31 downto 0);
 	ALU_opern_out : out std_logic_vector(3 downto 0);
+	Psrc_out : out std_logic;
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -49,6 +51,7 @@ end IF_ID;
 architecture Behavioral of IF_ID is
 signal ins : std_logic_vector(31 downto 0);
 signal ALU_opern : std_logic_vector(3 downto 0);
+signal Psrc : std_logic;
 
 begin
 
@@ -57,6 +60,7 @@ begin
 	if clock'event and clock = '1' and enable = '1' then
 		ins <= instruction_in;
 		ALU_opern <= ALU_opern_in;
+		Psrc <= Psrc_in;
 		
 
 	end if;
@@ -70,5 +74,6 @@ end process;
 		imm12_out <= ins(11 downto 0);
 		instruction_out <= ins;
 		ALU_opern_out <= ALU_opern;
+		Psrc_out <= Psrc;
 
 end Behavioral;

@@ -1,0 +1,2 @@
+vhdtdtfi -prj Assgt4_SA -o D:/Sem4/CompArch/Lab/Assgt4-CompArch/ID_EX.vhi -module ID_EX -template C:/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work src/ID_EX.vhd 
+vhdtdtfi -prj Assgt4_SA -o D:/Sem4/CompArch/Lab/Assgt4-CompArch/ID_EX.vhi -module ID_EX -template C:/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work src/ID_EX.vhd 
