@@ -293,7 +293,9 @@ end component;
 	signal pc_offset : std_logic_Vector(23 downto 0);
 	signal ext_pc_offset : std_logic_Vector(31 downto 0);
 
-
+	signal cond : std_logic_vector(3 downto 0);
+	signal flag : std_logic_vector(3 downto 0);
+	signal p : std_logic;
 begin
 
 Current_Inst <= current_ins;  -- needed for branch prediction.
@@ -302,6 +304,33 @@ InstructionIDEX <= Instruction_IDEX;
 InstructionEXMEM <= Instruction_EXMEM;
 InstructionMEMWB <= Instruction_MEMWB;
 PSrc_pred <= Psrc;
+
+cond <= Instruction_IDEX(31 downto 28);
+flag <= Flag_Out;
+
+	-- set the value of p
+	process(cond, flag)		-- p has data whether instruction
+	begin					-- is executed
+		case cond is --NZCV
+			when "0000" => p <= flag(2);		--Z
+			when "0001" => p <= not flag(2);
+			when "0010" => p <= flag(1);		--C
+			when "0011" => p <= not flag(1);
+			when "0100" => p <= flag(3);		--N
+			when "0101" => p <= not flag(3);
+			when "0110" => p <= flag(0);		--V
+			when "0111" => p <= not flag(0);
+			when "1000" => p <= flag(1) and not flag(2);
+			when "1001" => p <= not (flag(1) and not flag(2));
+			when "1010" => p <= not (flag(3) xor flag(0));
+			when "1011" => p <= flag(3) xor flag(0);
+			when "1100" => p <= (not (flag(3) xor flag(0))) and not flag(2);
+			when "1101" => p <= not ((not (flag(3) xor flag(0))) and not flag(2));
+			when "1110" => p <= '1';
+			when others => null;
+		end case;
+	end process;
+
 
 PC : PCtr port map(
 	clk,
@@ -471,7 +500,7 @@ EXMEM : EX_Mem port map(
 	alu_out,
 	rd2_out,
 	wad_out_2,
-	temp_2(4), temp_2(3), temp_2(2), temp_2(1), temp_2(0),
+	temp_2(4), temp_2(3), temp_2(2) and p, temp_2(1) and p, temp_2(0),
 	alu_opern_out2,
 	Instruction_IDEX,
 	wad_out_3,
@@ -522,7 +551,7 @@ M2RMux : Mux port map(
 	M2R_out
 );
 
-Flag : Flags port map(
+Flag_Bla : Flags port map(
 	Flag_In,
 	Flag_Out,
 	flag_set_2,
