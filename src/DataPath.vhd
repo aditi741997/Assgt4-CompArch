@@ -268,7 +268,7 @@ end component;
 
 	signal ext8,ext12,extOff: std_logic_vector(31 downto 0);
 
-	signal alu1_in, alu2_in, alu_out: std_logic_vector(31 downto 0);
+	signal alu1_in, alu2_in, alu_out, alu2_in_final: std_logic_vector(31 downto 0);
 
 	signal Flag_In,Flag_Out:std_logic_vector(3 downto 0);
 
@@ -428,9 +428,17 @@ ALUMux2 : Mux4 port map(
 	alu2_in
 );
 
+ShiftIt : shifter port map(
+	s_type_final,
+	s_amt_final,
+	alu2_in,
+	alu2_in_final
+);
+
+
 ALU_sa : ALU port map(
 	alu1_in,
-	alu2_in,
+	alu2_in_final,
 	Flag_Out(1),
 	alu_out,
 	alu_opern_out2,

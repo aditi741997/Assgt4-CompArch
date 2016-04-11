@@ -2,11 +2,12 @@ Command line:
    Test_Control_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  49395
+     -socket  60056
 
-Sun Apr 10 20:26:07 2016
+Sun Apr 10 20:55:01 2016
 
 
+<<<<<<< HEAD
  Elaboration Time: 0.1875 sec
 
  Current Memory Usage: 920.596 Meg
@@ -27,3 +28,6 @@ Total Line Count : 5749
 
 Sun Apr 10 23:54:29 2016
 
+=======
+ Elaboration Time: 0.171875 sec
+>>>>>>> 8903cffe38c5b9a2de74a78d878a662d7623d34d
