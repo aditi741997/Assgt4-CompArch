@@ -47,9 +47,20 @@ port(
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
 	Mul_sel:in std_logic;
-	Flags_out:out std_logic_vector(3 downto 0);
-	Instruction:out std_logic_vector(31 downto 0)
-	);
+	Bubble : in std_logic;
+ 	Flags_out:out std_logic_vector(3 downto 0);
+	Current_Inst:out std_logic_Vector(31 downto 0);
+	InstructionIFID:out std_logic_vector(31 downto 0);
+	InstructionIDEX:out std_logic_vector(31 downto 0);
+	InstructionEXMEM:out std_logic_vector(31 downto 0);
+	InstructionMEMWB:out std_logic_vector(31 downto 0)	);
+end component;
+
+component Branch_Predictor is
+port(
+	curr_inst : in std_logic_Vector(31 downto 0);
+	branch_pred : out std_logic
+);
 end component;
 
 component Data_Forward is
@@ -72,6 +83,7 @@ end component;
 	signal alu_operation : std_logic_vector(3 downto 0);
 	signal om_instruction : std_logic_vector(1 downto 0);
 	signal om_field : std_logic_vector(4 downto 0);
+	signal curr_ins, ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
 	signal ins : std_logic_vector(31 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	
@@ -90,6 +102,8 @@ end component;
 	
 	signal alu1_mux, alu2_mux : std_logic_vector(1 downto 0);
 	signal fwdC : std_logic;
+	signal bubble : std_logic := '0';
+	signal predicted_psrc : std_logic;
 
 begin
 
@@ -97,14 +111,23 @@ begin
 		clock, '1','1','1','1',
 		alu1_mux, alu2_mux, --to be decided
 		fwdC, -- to be decided
-		mux_1, mux_4, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		mux_1, predicted_src, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
 		alu_operation, flag_enable,
 		mul,
 		flag,
+		curr_ins,
+		ins,
+		ins_IDEX,
+		ins_EXMEM,
+		ins_MEMWB	);
+		
+	Branch_Pred : Branch_Predictor port map(
+		curr_ins,
+		predicted_psrc,
 		ins
-	);
+ 	);
 	
 	cond <= ins(31 downto 28);
 	instruction_type <= ins(27 downto 26);
