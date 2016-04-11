@@ -1,10 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
+<<<<<<< HEAD
   <ImplementationReportsDirectory>C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch\</ImplementationReportsDirectory>
   <ModuleName>Control</ModuleName>
   <DateModified>2016-04-12T03:44:15</DateModified>
   <SavedFilePath>C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/iseconfig/Control.xreport</SavedFilePath>
+=======
+  <ImplementationReportsDirectory>D:/Sem4/CompArch/Lab/Assgt4-CompArch\</ImplementationReportsDirectory>
+  <ModuleName>Control</ModuleName>
+  <DateModified>2016-04-12T03:42:47</DateModified>
+  <SavedFilePath>D:/Sem4/CompArch/Lab/Assgt4-CompArch/iseconfig/Control.xreport</SavedFilePath>
+>>>>>>> f18793213fed78526709153d5b0a384af5fb2e88
   <DateInitialized>2016-04-12T03:15:54</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

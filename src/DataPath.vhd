@@ -34,7 +34,7 @@ port(
 	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
 	DM_fwd:in std_logic;
-	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
+	Rsrc,Psrc,Psrc_Actual,RW,Asrc,MW,MR,M2R,II:in std_logic;
 	s_type:in std_logic_vector(1 downto 0);
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
@@ -119,7 +119,8 @@ port(
 	s_amt_in: in std_logic_Vector(4 downto 0);
 	IDEX_inst_in : in std_logic_vector(31 downto 0);
 	flag_enable_in : in std_logic_vector(3 downto 0);
-	Psrc_in : in std_logic;
+	Psrc_in, Psrc_Actual_in : in std_logic;
+	PC4_in : in std_logic_Vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -135,7 +136,8 @@ port(
 	s_amt_out : out std_logic_vector(4 downto 0);
 	IDEX_inst_out : out std_logic_vector(31 downto 0);
 	flag_enable_out : out std_logic_vector(3 downto 0);
-	Psrc_out : out std_logic;
+	Psrc_out, Psrc_Actual_out : out std_logic;
+	PC4_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -146,6 +148,7 @@ port(
 	instruction_in : in std_logic_vector(31 downto 0);
 	ALU_opern_in : in std_logic_vector(3 downto 0);
 	Psrc_in : in std_logic;
+	PC4_in : in std_logic_Vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -155,6 +158,7 @@ port(
 	instruction_out : out std_logic_vector(31 downto 0);
 	ALU_opern_out : out std_logic_vector(3 downto 0);
 	Psrc_out : out std_logic;
+	PC4_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -289,7 +293,7 @@ end component;
 	signal s_type_final : std_logic_vector(1 downto 0);
 	signal s_amt_final : std_logic_vector(4 downto 0);
 	signal Instruction_IFID,Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : std_logic_Vector(31 downto 0);
-	signal PC4_1, PC_off : std_logic_Vector(31 downto 0);
+	signal PC4_1, PC_off, PC4_2, PC4_o1 : std_logic_Vector(31 downto 0);
 	signal pc_offset : std_logic_Vector(23 downto 0);
 	signal ext_pc_offset : std_logic_Vector(31 downto 0);
 
@@ -362,6 +366,7 @@ IFID : IF_ID port map(
 	current_ins,
 	Opern,
 	Psrc_pred,
+	PC4,
 	offset_out_1,
 	Rn_out,
 	Rm_out,
@@ -371,6 +376,7 @@ IFID : IF_ID port map(
 	Instruction_IFID,
 	alu_opern_out1,
 	Psrc_pred1,
+	PC4_o1,
 	eIF_ID,
 	clk
 );
@@ -423,6 +429,8 @@ IDEX : ID_EX port map(
 	Instruction_IFID,
 	Fset,
 	Psrc_pred1,
+	Psrc_Actual_1,
+	PC4_o1,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -438,6 +446,8 @@ IDEX : ID_EX port map(
 	Instruction_IDEX,
 	flag_set_2,
 	Psrc_pred2,
+	Psrc_Actual_2,
+	PC4_2,	
 	eID_EX,
 	clk
 );
@@ -589,7 +599,7 @@ Add : Adder4 port map(
 -- TODO: inputs :
 Add4_Predict : Adder4 port map(
 	pc_out,
-	"00000000000000000000000000000001",
+	"00000000000000000000000000000010",
 	PC4_1
 );
 
