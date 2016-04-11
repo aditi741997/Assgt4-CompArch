@@ -41,27 +41,15 @@ component DataPath is
 port(
 	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
-	DM_fwd:in std_logic;
+	DM_fwd:in std_logic;		-- fwdC
 	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
 	s_type:in std_logic_vector(1 downto 0);
 	s_amt:in std_logic_vector(4 downto 0);
 	Opern,Fset:in std_logic_vector(3 downto 0);
 	Mul_sel:in std_logic;
-	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
-	Current_Inst:out std_logic_Vector(31 downto 0);
-	InstructionIFID:out std_logic_vector(31 downto 0);
-	InstructionIDEX:out std_logic_vector(31 downto 0);
-	InstructionEXMEM:out std_logic_vector(31 downto 0);
-	InstructionMEMWB:out std_logic_vector(31 downto 0)
-);
-end component;
-
-component Branch_Predictor is
-port(
-	curr_inst : in std_logic_Vector(31 downto 0);
-	branch_pred : out std_logic
-);
+	Instruction:out std_logic_vector(31 downto 0)
+	);
 end component;
 
 	signal mul : std_logic;
@@ -76,7 +64,7 @@ end component;
 	signal alu_operation : std_logic_vector(3 downto 0);
 	signal om_instruction : std_logic_vector(1 downto 0);
 	signal om_field : std_logic_vector(4 downto 0);
-	signal curr_ins, ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
+	signal ins : std_logic_vector(31 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	
 
@@ -90,38 +78,24 @@ end component;
 	signal s_typ : std_logic_vector(1 downto 0);
 	signal rot : std_logic_vector(3 downto 0);
 	
-	signal p : std_logic;
+	signal p : std_logic := '1';
 	
 	signal alu1_mux, alu2_mux : std_logic_vector(1 downto 0);
 	signal fwdC : std_logic;
-	signal bubble : std_logic := '0';
-	signal predicted_psrc : std_logic;
 
 begin
-
--- mux_4 ka any point? TODO
 
 	DP : DataPath port map (
 		clock, '1','1','1','1',
 		alu1_mux, alu2_mux, --to be decided
 		fwdC, -- to be decided
-		mux_1, (predicted_psrc), regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		mux_1, mux_4, regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
 		alu_operation, flag_enable,
 		mul,
-		bubble,
 		flag,
-		curr_ins,
-		ins,
-		ins_IDEX,
-		ins_EXMEM,
-		ins_MEMWB
-	);
-	
-	Branch_Pred : Branch_Predictor port map(
-		curr_ins,
-		predicted_psrc
+		ins
 	);
 
 	cond <= ins(31 downto 28);
@@ -139,32 +113,11 @@ begin
 	alu2_mux <= "00";
 	alu1_mux <= "00";
 	fwdC <= '0';
-
-	p <= '1';
-	-- set the value of p
-	process(cond, flag)		-- p has data whether instruction
-	begin					-- is executed
-		case cond is --NZCV
-			when "0000" => p <= flag(2);		--Z
-			when "0001" => p <= not flag(2);
-			when "0010" => p <= flag(1);		--C
-			when "0011" => p <= not flag(1);
-			when "0100" => p <= flag(3);		--N
-			when "0101" => p <= not flag(3);
-			when "0110" => p <= flag(0);		--V
-			when "0111" => p <= not flag(0);
-			when "1000" => p <= flag(1) and not flag(2);
-			when "1001" => p <= not (flag(1) and not flag(2));
-			when "1010" => p <= not (flag(3) xor flag(0));
-			when "1011" => p <= flag(3) xor flag(0);
-			when "1100" => p <= (not (flag(3) xor flag(0))) and not flag(2);
-			when "1101" => p <= not ((not (flag(3) xor flag(0))) and not flag(2));
-			when "1110" => p <= '1';
-			when others => null;
-		end case;
-	end process;
-
-
+	--p <= '1';
+	--process(instruction_type, immediate, mul, ipubwl, opc, instruction_type, flag_set, rot, s_amt, s_typ)
+	--begin
+	--	p <= '1';
+	--end process;
 	-- setting mux values
 	process(p, instruction_type, immediate, mul, ipubwl)
 	begin
