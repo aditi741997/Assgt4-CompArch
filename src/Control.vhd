@@ -41,7 +41,7 @@ component DataPath is
 port(
 	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
-	DM_fwd:in std_logic;		-- fwdC
+	DM_fwd:in std_logic;
 	Rsrc,Psrc,RW,Asrc,MW,MR,M2R,II:in std_logic;
 	s_type:in std_logic_vector(1 downto 0);
 	s_amt:in std_logic_vector(4 downto 0);
@@ -49,8 +49,11 @@ port(
 	Mul_sel:in std_logic;
 	Bubble : in std_logic;
 	Flags_out:out std_logic_vector(3 downto 0);
-	Instruction:out std_logic_vector(31 downto 0)
-	);
+	InstructionIFID:out std_logic_vector(31 downto 0);
+	InstructionIDEX:out std_logic_vector(31 downto 0);
+	InstructionEXMEM:out std_logic_vector(31 downto 0);
+	InstructionMEMWB:out std_logic_vector(31 downto 0)
+);
 end component;
 
 	signal mul : std_logic;
@@ -65,7 +68,7 @@ end component;
 	signal alu_operation : std_logic_vector(3 downto 0);
 	signal om_instruction : std_logic_vector(1 downto 0);
 	signal om_field : std_logic_vector(4 downto 0);
-	signal ins : std_logic_vector(31 downto 0);
+	signal ins, ins_IDEX, ins_EXMEM, ins_MEMWB : std_logic_vector(31 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
 	
 
@@ -98,7 +101,10 @@ begin
 		mul,
 		bubble,
 		flag,
-		ins
+		ins,
+		ins_IDEX,
+		ins_EXMEM,
+		ins_MEMWB
 	);
 
 	cond <= ins(31 downto 28);
@@ -117,7 +123,7 @@ begin
 	alu1_mux <= "00";
 	fwdC <= '0';
 
-
+	p <= '1';
 	-- set the value of p
 	process(cond, flag)		-- p has data whether instruction
 	begin					-- is executed
