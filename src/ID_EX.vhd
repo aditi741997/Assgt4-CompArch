@@ -46,6 +46,7 @@ port(
 	s_amt_in: in std_logic_Vector(4 downto 0);
 	IDEX_inst_in : in std_logic_vector(31 downto 0);
 	flag_enable_in : in std_logic_vector(3 downto 0);
+	Psrc_in : in std_logic;
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -61,6 +62,7 @@ port(
 	s_amt_out : out std_logic_vector(4 downto 0);
 	IDEX_inst_out : out std_logic_vector(31 downto 0);
 	flag_enable_out : out std_logic_vector(3 downto 0);
+	Psrc_out : out std_logic;
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -81,6 +83,7 @@ architecture Behavioral of ID_EX is
 	signal s_amt : std_logic_vector(4 downto 0);
 	signal IDEX_inst : std_logic_Vector(31 downto 0);
 	signal flag_enable : std_logic_vector(3 downto 0);
+	signal Psrc : std_logic;
 begin
 
 process(clock)
@@ -107,6 +110,7 @@ begin
 		s_amt <= s_amt_in;
 		IDEX_inst <= IDEX_inst_in;
 		flag_enable <= flag_enable_in;
+		Psrc <= Psrc_in;
 
 
 	end if;
@@ -133,5 +137,6 @@ end process;
 		s_amt_out <= s_amt;
 		IDEX_inst_out <= IDEX_inst;
 		flag_enable_out <= flag_enable;
+		Psrc_out <= Psrc;
 
 end Behavioral;

@@ -119,6 +119,7 @@ port(
 	s_amt_in: in std_logic_Vector(4 downto 0);
 	IDEX_inst_in : in std_logic_vector(31 downto 0);
 	flag_enable_in : in std_logic_vector(3 downto 0);
+	Psrc_in : in std_logic;
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -134,6 +135,7 @@ port(
 	s_amt_out : out std_logic_vector(4 downto 0);
 	IDEX_inst_out : out std_logic_vector(31 downto 0);
 	flag_enable_out : out std_logic_vector(3 downto 0);
+	Psrc_out : out std_logic;
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -143,6 +145,7 @@ component IF_ID is
 port(
 	instruction_in : in std_logic_vector(31 downto 0);
 	ALU_opern_in : in std_logic_vector(3 downto 0);
+	Psrc_in : in std_logic;
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -151,6 +154,7 @@ port(
 	imm12_out : out std_logic_vector(11 downto 0);
 	instruction_out : out std_logic_vector(31 downto 0);
 	ALU_opern_out : out std_logic_vector(3 downto 0);
+	Psrc_out : out std_logic;
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -279,7 +283,7 @@ end component;
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
 	signal RW_out, MW_out : std_logic;
-	signal PSrc_temp : std_logic;
+	signal PSrc_pred, Psrc_pred2, Psrc_pred1 : std_logic;
 	signal alu_opern_out1, alu_opern_out2, alu_opern_out3 : std_logic_vector(3 downto 0);
 	signal Mul_sel_final : std_logic;
 	signal s_type_final : std_logic_vector(1 downto 0);
@@ -299,7 +303,7 @@ InstructionIFID <= Instruction_IFID;
 InstructionIDEX <= Instruction_IDEX;
 InstructionEXMEM <= Instruction_EXMEM;
 InstructionMEMWB <= Instruction_MEMWB;
-PSrc_temp <= Psrc;
+PSrc_pred <= Psrc;
 
 cond <= Instruction_IDEX(31 downto 28);
 flag <= Flag_Out;
@@ -342,6 +346,7 @@ IM : InMem port map(
 IFID : IF_ID port map(
 	current_ins,
 	Opern,
+	Psrc_pred,
 	offset_out_1,
 	Rn_out,
 	Rm_out,
@@ -350,6 +355,7 @@ IFID : IF_ID port map(
 	imm12_out_1,
 	Instruction_IFID,
 	alu_opern_out1,
+	Psrc_pred1,
 	eIF_ID,
 	clk
 );
@@ -401,6 +407,7 @@ IDEX : ID_EX port map(
 	s_amt,
 	Instruction_IFID,
 	Fset,
+	Psrc_pred1,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -415,9 +422,12 @@ IDEX : ID_EX port map(
 	s_amt_final,
 	Instruction_IDEX,
 	flag_set_2,
+	Psrc_pred2,
 	eID_EX,
 	clk
 );
+
+-- predicted psrc passed on through 2 walls.
 
 ext8(7 downto 0) <= imm8_out_2;
 ext8(31 downto 8) <= "000000000000000000000000";
@@ -551,7 +561,7 @@ Flag_Bla : Flags port map(
 PsrcM : mux port map(
 	PC4,
 	PC_off,
-	PSrc_temp,
+	PSrc_pred,
 	pc_in
 );
 
