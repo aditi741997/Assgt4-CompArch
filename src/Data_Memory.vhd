@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 --use UNISIM.VComponents.all;
 
 entity Data_Memory is
-port(ad:in std_logic_vector(31 downto 0);
+port(ad:in std_logic_vector(8 downto 0);
 wdDM:in std_logic_vector(31 downto 0);
 MW,MR,clk:in std_logic;
 rd:out std_logic_vector(31 downto 0));
