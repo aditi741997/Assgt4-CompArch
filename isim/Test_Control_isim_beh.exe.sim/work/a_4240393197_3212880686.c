@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/InMem.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/InMem.vhd";
 extern char *IEEE_P_3620187407;
 
 int ieee_p_3620187407_sub_514432868_3965413181(char *, char *, char *);
@@ -43,7 +43,7 @@ LAB0:    xsi_set_current_line(50, ng0);
 
 LAB3:    t1 = (t0 + 1032U);
     t2 = *((char **)t1);
-    t1 = (t0 + 10488U);
+    t1 = (t0 + 10320U);
     t3 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t2, t1);
     t4 = (t0 + 6560);
     t5 = (t4 + 56U);
@@ -119,7 +119,7 @@ static void work_a_4240393197_3212880686_p_2(char *t0)
 
 LAB0:    xsi_set_current_line(54, ng0);
 
-LAB3:    t1 = (t0 + 43364);
+LAB3:    t1 = (t0 + 43196);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -153,7 +153,7 @@ static void work_a_4240393197_3212880686_p_3(char *t0)
 
 LAB0:    xsi_set_current_line(55, ng0);
 
-LAB3:    t1 = (t0 + 43396);
+LAB3:    t1 = (t0 + 43228);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -187,7 +187,7 @@ static void work_a_4240393197_3212880686_p_4(char *t0)
 
 LAB0:    xsi_set_current_line(56, ng0);
 
-LAB3:    t1 = (t0 + 43428);
+LAB3:    t1 = (t0 + 43260);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -221,7 +221,7 @@ static void work_a_4240393197_3212880686_p_5(char *t0)
 
 LAB0:    xsi_set_current_line(57, ng0);
 
-LAB3:    t1 = (t0 + 43460);
+LAB3:    t1 = (t0 + 43292);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -255,7 +255,7 @@ static void work_a_4240393197_3212880686_p_6(char *t0)
 
 LAB0:    xsi_set_current_line(58, ng0);
 
-LAB3:    t1 = (t0 + 43492);
+LAB3:    t1 = (t0 + 43324);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -289,7 +289,7 @@ static void work_a_4240393197_3212880686_p_7(char *t0)
 
 LAB0:    xsi_set_current_line(59, ng0);
 
-LAB3:    t1 = (t0 + 43524);
+LAB3:    t1 = (t0 + 43356);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -323,7 +323,7 @@ static void work_a_4240393197_3212880686_p_8(char *t0)
 
 LAB0:    xsi_set_current_line(60, ng0);
 
-LAB3:    t1 = (t0 + 43556);
+LAB3:    t1 = (t0 + 43388);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -357,7 +357,7 @@ static void work_a_4240393197_3212880686_p_9(char *t0)
 
 LAB0:    xsi_set_current_line(61, ng0);
 
-LAB3:    t1 = (t0 + 43588);
+LAB3:    t1 = (t0 + 43420);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -391,7 +391,7 @@ static void work_a_4240393197_3212880686_p_10(char *t0)
 
 LAB0:    xsi_set_current_line(62, ng0);
 
-LAB3:    t1 = (t0 + 43620);
+LAB3:    t1 = (t0 + 43452);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -425,7 +425,7 @@ static void work_a_4240393197_3212880686_p_11(char *t0)
 
 LAB0:    xsi_set_current_line(63, ng0);
 
-LAB3:    t1 = (t0 + 43652);
+LAB3:    t1 = (t0 + 43484);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -459,7 +459,7 @@ static void work_a_4240393197_3212880686_p_12(char *t0)
 
 LAB0:    xsi_set_current_line(64, ng0);
 
-LAB3:    t1 = (t0 + 43684);
+LAB3:    t1 = (t0 + 43516);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -493,7 +493,7 @@ static void work_a_4240393197_3212880686_p_13(char *t0)
 
 LAB0:    xsi_set_current_line(65, ng0);
 
-LAB3:    t1 = (t0 + 43716);
+LAB3:    t1 = (t0 + 43548);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
@@ -527,7 +527,7 @@ static void work_a_4240393197_3212880686_p_14(char *t0)
 
 LAB0:    xsi_set_current_line(66, ng0);
 
-LAB3:    t1 = (t0 + 43748);
+LAB3:    t1 = (t0 + 43580);
     t3 = (32U != 32U);
     if (t3 == 1)
         goto LAB5;
