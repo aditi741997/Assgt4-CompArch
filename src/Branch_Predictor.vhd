@@ -50,7 +50,7 @@ begin
 inst_type <= curr_inst(27 downto 26);
 up_Down <= curr_inst(23);
 
-BP:process(curr_inst)
+BP:process(curr_inst, inst_type, up_Down)
 begin
 if inst_type = "10" then
 	if up_Down = '1' then

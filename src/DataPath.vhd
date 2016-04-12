@@ -165,7 +165,7 @@ port(
 end component;
 
 component InMem is
-port(PC:in std_logic_vector(31 downto 0);
+port(PC:in std_logic_vector(9 downto 0);
 Instr:out std_logic_vector(31 downto 0));
 end component;
 
@@ -368,7 +368,7 @@ PC : PCtr port map(
 );
 
 IM : InMem port map(
-	pc_out,
+	pc_out(9 downto 0),
 	current_ins
 );
 
@@ -609,7 +609,7 @@ Add : Adder4 port map(
 );
 
 -- TODO: inputs :
-Add4_Predict : Adder4 port map(
+Add2_Predict : Adder4 port map(
 	pc_out,
 	"00000000000000000000000000000010",
 	PC4_1

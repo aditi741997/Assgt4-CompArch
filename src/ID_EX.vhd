@@ -144,6 +144,7 @@ end process;
 		IDEX_inst_out <= IDEX_inst;
 		flag_enable_out <= flag_enable;
 		Psrc_out <= Psrc;
+		Psrc_Actual_out <= Psrc_Actual;
 		PC4_out <= PC4;
 
 end Behavioral;
