@@ -492,7 +492,7 @@ ALUMux1 : Mux4 port map(
 	pc_out,
 	DM_ad,
 	M2R_out,
-	temp_2(8 downto 7),
+	alu1_mux,
 	alu1_in
 );
 
@@ -511,7 +511,7 @@ ALUMux2 : Mux4 port map(
 	extOff,
 	DM_ad,
 	M2R_out,
-	temp_2(10 downto 9),
+	alu2_mux,
 	alu2_in
 );
 
