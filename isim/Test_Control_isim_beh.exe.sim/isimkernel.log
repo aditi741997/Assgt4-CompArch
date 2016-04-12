@@ -2,6 +2,7 @@ Command line:
    Test_Control_isim_beh.exe
      -simmode  gui
      -simrunnum  0
+<<<<<<< HEAD
      -socket  64443
 
 Tue Apr 12 20:20:40 2016
@@ -27,3 +28,11 @@ Total Line Count : 6063
 
 Tue Apr 12 20:22:02 2016
 
+=======
+     -socket  61144
+
+Tue Apr 12 20:16:50 2016
+
+
+ Elaboration Time: 0.171875 sec
+>>>>>>> b0e652c7275b3a56079865098b587cac7873dd95

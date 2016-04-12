@@ -102,44 +102,58 @@ begin
 end process;
 
 
-fwA:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw)
+fwA:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rn AND (NOT (EXMEM_Rd = "UUUU")) then
 			fwdA <= "10";
-		else
-			fwdA <= "00";
+		elsif MEMWB_rw = '1' then
+			if not (MEMWB_Rd = "UUUU" or IDEX_Rn = "UUUU" or EXMEM_Rd = "UUUU") then
+				if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
+					fwdA <= "11";
+				else fwdA <= "00";
+				end if;
+			else fwdA <= "00";
+			end if;
+		else fwdA <= "00";			
 		end if;
 	elsif MEMWB_rw = '1' then
-		if not (MEMWB_Rd = "UUUU" or IDEX_Rn = "UUUU" or EXMEM_Rd = "UUUU") then
-			if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
-				fwdA <= "11";
-			else
-				fwdA <= "00";
+			if not (MEMWB_Rd = "UUUU" or IDEX_Rn = "UUUU" or EXMEM_Rd = "UUUU") then
+				if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
+					fwdA <= "11";
+				else fwdA <= "00";
+				end if;
+			else fwdA <= "00";
 			end if;
-		end if;
 	else fwdA <= "00";
 	end if;
 end process;
 
 
-fwB:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw)
+fwB:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rm AND (NOT (EXMEM_Rd = "UUUU")) then
 			fwdB <= "10";
-		else
-			fwdB <= "00";
+		elsif MEMWB_rw = '1' then
+			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
+				if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
+					fwdB <= "11";
+				else fwdB <= "00";
+				end if;
+			else fwdB <= "00";
+			end if;
+		else fwdB <= "00";			
 		end if;
 	elsif MEMWB_rw = '1' then
-		if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then		
-			if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
-				fwdB <= "11";
-			else
-				fwdB <= "00";
+			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
+				if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
+					fwdB <= "11";
+				else fwdB <= "00";
+				end if;
+			else fwdB <= "00";
 			end if;
-		end if;
-		else fwdB <= "00";
+	else fwdB <= "00";
 	end if;
 end process;
 
@@ -151,7 +165,7 @@ begin
 			fwdC <= '1';
 		else
 			fwdC <= '0';
-			end if;
+		end if;
 	else
 		fwdC <= '0';
 	end if;

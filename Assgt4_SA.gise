@@ -15,7 +15,7 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
@@ -37,7 +37,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
+<<<<<<< HEAD
     <transform xil_pn:end_ts="1460470313" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1460470313">
+=======
+    <transform xil_pn:end_ts="1460469933" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1460469932">
+>>>>>>> b0e652c7275b3a56079865098b587cac7873dd95
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="src/ALU.vhd"/>
@@ -86,7 +90,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
+<<<<<<< HEAD
     <transform xil_pn:end_ts="1460470313" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1460470313">
+=======
+    <transform xil_pn:end_ts="1460469933" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1460469933">
+>>>>>>> b0e652c7275b3a56079865098b587cac7873dd95
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="src/ALU.vhd"/>
@@ -123,9 +131,15 @@
       <outfile xil_pn:name="src/shift8.vhd"/>
       <outfile xil_pn:name="src/shifter.vhd"/>
     </transform>
+<<<<<<< HEAD
     <transform xil_pn:end_ts="1460470318" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6990660115673760419" xil_pn:start_ts="1460470313">
+=======
+    <transform xil_pn:end_ts="1460469940" xil_pn:in_ck="-4760660521477503504" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-6990660115673760419" xil_pn:start_ts="1460469933">
+>>>>>>> b0e652c7275b3a56079865098b587cac7873dd95
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Test_Control_beh.prj"/>
       <outfile xil_pn:name="Test_Control_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -133,7 +147,11 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
+<<<<<<< HEAD
     <transform xil_pn:end_ts="1460470319" xil_pn:in_ck="3796392992694117295" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7882452695880538934" xil_pn:start_ts="1460470318">
+=======
+    <transform xil_pn:end_ts="1460470039" xil_pn:in_ck="3796392992694117295" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-7882452695880538934" xil_pn:start_ts="1460470038">
+>>>>>>> b0e652c7275b3a56079865098b587cac7873dd95
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Test_Control_isim_beh.wdb"/>
