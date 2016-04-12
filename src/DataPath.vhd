@@ -287,7 +287,7 @@ end component;
 	signal DM_out:std_logic_vector(31 downto 0);
 	signal PC4 : std_logic_vector(31 downto 0);
 	signal RW_out, MW_out : std_logic;
-	signal PSrc_pred, Psrc_pred2, Psrc_pred1 : std_logic;
+	signal PSrc_pred, Psrc_pred2, Psrc_pred1, PSrc_final, Psrc_actual_2 : std_logic;
 	signal alu_opern_out1, alu_opern_out2, alu_opern_out3 : std_logic_vector(3 downto 0);
 	signal Mul_sel_final : std_logic;
 	signal s_type_final : std_logic_vector(1 downto 0);
@@ -299,7 +299,7 @@ end component;
 
 	signal cond : std_logic_vector(3 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
-	signal p : std_logic;
+	signal p, override_Psrc : std_logic;
 
 	signal bubble_IFID, bubble_IDEX, bubble_EXMem : std_logic;
 begin
@@ -309,7 +309,7 @@ InstructionIFID <= Instruction_IFID;
 InstructionIDEX <= Instruction_IDEX;
 InstructionEXMEM <= Instruction_EXMEM;
 InstructionMEMWB <= Instruction_MEMWB;
-PSrc_pred <= Psrc;
+--PSrc_pred <= Psrc;
 
 cond <= Instruction_IDEX(31 downto 28);
 flag <= Flag_Out;
@@ -337,17 +337,27 @@ flag <= Flag_Out;
 		end case;
 	end process;
 
+	process(Psrc_actual_2, Psrc)
+	begin
+		if override_Psrc = '1' then PSrc_final <= Psrc_actual_2;
+		else PSrc_final <= Psrc;
+		end if;
+	end process;
+
 	process(p, Psrc_pred2, Psrc_actual_2, PC4_2)
 	begin
-		if Psrc_pred = '1' and ((Psrc_actual2 and p) = '0') then
+		if Psrc_pred2 = '1' and ((Psrc_actual_2 and p) = '0') then
 			bubble_IDEX <= '0';
-			bubble_IFID <= '0';
-		elsif Psrc_pred = '0' and ((Psrc_actual2 and p) = '1') then
+			bubble_EXMem <= '0';
+			override_Psrc <= '1';
+		elsif Psrc_pred2 = '0' and ((Psrc_actual_2 and p) = '1') then
 			bubble_IDEX <= '0';
-			bubble_IFID <= '0';
+			bubble_EXMem <= '0';
+			override_Psrc <= '1';
 		else 
 			bubble_IDEX <= '1';
-			bubble_IFID <= '1';
+			bubble_EXMem <= '1';
+			override_Psrc <= '0';
 		end if;
 	end process;
 
@@ -365,7 +375,7 @@ IM : InMem port map(
 IFID : IF_ID port map(
 	current_ins,
 	Opern,
-	Psrc_pred,
+	Psrc,
 	PC4,
 	offset_out_1,
 	Rn_out,
@@ -399,19 +409,21 @@ RF : Register_Array port map(
 	clk
 );
 
-Bubble_RW : MicroMux port map(
-	RW,
-	'0',
-	Bubble,
-	RW_out
-);
+--Bubble_RW : MicroMux port map(
+--	RW,
+--	'0',
+--	Bubble,
+--	RW_out
+--);
 
-Bubble_MW : MicroMux port map(
-	MW,
-	'0',
-	Bubble,
-	MW_out
-);
+--Bubble_MW : MicroMux port map(
+--	MW,
+--	'0',
+--	Bubble,
+--	MW_out
+--);
+
+
 
 IDEX : ID_EX port map(
 	offset_out_1,
@@ -420,7 +432,7 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
-	II,Asrc,DM_fwd,M2R,RW_out and bubble_IDEX,MW_out and bubble_IDEX,MR,
+	II,Asrc,DM_fwd,M2R,RW and bubble_IDEX,MW and bubble_IDEX,MR,
 	alu1_mux, alu2_mux,
 	Opern,
 	Mul_sel,
@@ -429,7 +441,7 @@ IDEX : ID_EX port map(
 	Instruction_IFID,
 	Fset,
 	Psrc_pred1,
-	Psrc_Actual_1,
+	Psrc_Actual,
 	PC4_o1,
 	offset_out_2,
 	rd1_out,
@@ -525,7 +537,7 @@ EXMEM : EX_Mem port map(
 	alu_out,
 	rd2_out,
 	wad_out_2,
-	temp_2(4), temp_2(3), temp_2(2) and p, temp_2(1) and p, temp_2(0),
+	temp_2(4), temp_2(3), temp_2(2) and p and bubble_EXMem, temp_2(1) and p and bubble_EXMem, temp_2(0),
 	alu_opern_out2,
 	Instruction_IDEX,
 	wad_out_3,
@@ -586,7 +598,7 @@ Flag_Bla : Flags port map(
 PsrcM : mux port map(
 	PC4,
 	PC_off,
-	PSrc_pred,
+	PSrc_final,
 	pc_in
 );
 

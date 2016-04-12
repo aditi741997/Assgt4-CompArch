@@ -9,37 +9,20 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/ALU - Behavioral D:|Sem3|DHD|Assgt4_SA|src|ALU.vhd</ClosedNode>
          <ClosedNode>/Adder4 - Behavioral D:|Sem3|DHD|Assgt4_SA|src|Adder4.vhd</ClosedNode>
-<<<<<<< HEAD
          <ClosedNode>/Control - Behavioral C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral</ClosedNode>
-=======
-         <ClosedNode>/Control - Behavioral C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Control.vhd</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/ALU_sa - ALU - Behavioral</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/Add - Adder4 - Behavioral</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/Add4_Predict - Adder4 - Behavioral</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/AddO_Predict - Adder4 - Behavioral</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/ShiftIt - shifter - Behavioral</ClosedNode>
->>>>>>> f18793213fed78526709153d5b0a384af5fb2e88
          <ClosedNode>/DataPath - Behavioral C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|DataPath.vhd/ALU_sa - ALU - Behavioral</ClosedNode>
          <ClosedNode>/DataPath - Behavioral C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|DataPath.vhd/Add - Adder4 - Behavioral</ClosedNode>
          <ClosedNode>/Multiplier - Behavioral D:|Sem3|DHD|Assgt4_SA|src|Multiplier.vhd</ClosedNode>
          <ClosedNode>/mult_unit - Behavioral D:|Sem3|DHD|Assgt4_SA|src|mult_unit.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-<<<<<<< HEAD
          <SelectedItem>Control - Behavioral (C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Control.vhd)</SelectedItem>
-=======
-         <SelectedItem>IDEX - ID_EX - Behavioral (D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/ID_EX.vhd)</SelectedItem>
->>>>>>> f18793213fed78526709153d5b0a384af5fb2e88
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >5</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000015c000000020000000000000000000000000200000064ffffffff0000008100000003000000020000015c0000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001bd000000020000000000000000000000000200000064ffffffff000000810000000300000002000001bd0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-<<<<<<< HEAD
       <CurrentItem>Control - Behavioral (C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Control.vhd)</CurrentItem>
-=======
-      <CurrentItem>IDEX - ID_EX - Behavioral (D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/ID_EX.vhd)</CurrentItem>
->>>>>>> f18793213fed78526709153d5b0a384af5fb2e88
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>

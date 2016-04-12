@@ -111,7 +111,7 @@ begin
 		clock, '1','1','1','1',
 		fwdA_f, fwdB_f,
 		fwdC_f,
-		mux_1, predicted_src, mux_4 ,regwrite, mux_2, mem_write, '1', mux_3, mux_5,
+		mux_1, predicted_psrc, mux_4 ,regwrite, mux_2, mem_write, '1', mux_3, mux_5,
 		om_instruction,
 		om_field,
 		alu_operation, flag_enable,
@@ -152,7 +152,7 @@ begin
 
 --	alu2_mux <= "00";
 --	alu1_mux <= "00";
-	fwdC <= '0';
+--	fwdC <= '0';
 	--p <= '1';
 	--process(instruction_type, immediate, mul, ipubwl, opc, instruction_type, flag_set, rot, s_amt, s_typ)
 	--begin

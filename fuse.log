@@ -1,4 +1,4 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_beh.prj" "Test_Control" 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_beh.prj" "work.Test_Control" 
 ISim P.49d (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
@@ -19,7 +19,6 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Register_Arr
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/PCtr.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Mux4.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/MiniMux.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/MicroMux.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Mem_WB.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/InMem.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/IF_ID.vhd" into library work
@@ -28,8 +27,10 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Flags.vhd" i
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/EX_Mem.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Data_Memory.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/ALU.vhd" into library work
+Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Data_Forward.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" into library work
-WARNING:HDLCompiler:946 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 503: Actual for formal port rw_in is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 435: Actual for formal port rw_in is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/DataPath.vhd" Line 540: Actual for formal port rw_in is neither a static name nor a globally static expression
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Branch_Predictor.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Control.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Test_Control.vhd" into library work
@@ -45,7 +46,6 @@ Compiling architecture behavioral of entity InMem [inmem_default]
 Compiling architecture behavioral of entity IF_ID [if_id_default]
 Compiling architecture behavioral of entity MiniMux [minimux_default]
 Compiling architecture behavioral of entity Register_Array [register_array_default]
-Compiling architecture behavioral of entity MicroMux [micromux_default]
 Compiling architecture behavioral of entity ID_EX [id_ex_default]
 Compiling architecture behavioral of entity Mux [mux_default]
 Compiling architecture behavioral of entity Mux4 [mux4_default]
@@ -67,11 +67,12 @@ Compiling architecture behavioral of entity Mem_WB [mem_wb_default]
 Compiling architecture behavioral of entity Flags [flags_default]
 Compiling architecture behavioral of entity DataPath [datapath_default]
 Compiling architecture behavioral of entity Branch_Predictor [branch_predictor_default]
+Compiling architecture behavioral of entity Data_Forward [data_forward_default]
 Compiling architecture behavioral of entity Control [control_default]
 Compiling architecture behavior of entity test_control
 Time Resolution for simulation is 1ps.
-Waiting for 19 sub-compilation(s) to finish...
+Waiting for 18 sub-compilation(s) to finish...
 Compiled 62 VHDL Units
 Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_Control_isim_beh.exe
-Fuse Memory Usage: 38468 KB
-Fuse CPU Usage: 874 ms
+Fuse Memory Usage: 38508 KB
+Fuse CPU Usage: 1062 ms
