@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/Branch_Predictor.vhd";
+static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/src/Branch_Predictor.vhd";
 
 
 
@@ -126,7 +126,7 @@ static void work_a_1848946276_3212880686_p_2(char *t0)
 LAB0:    xsi_set_current_line(55, ng0);
     t1 = (t0 + 1352U);
     t2 = *((char **)t1);
-    t1 = (t0 + 5699);
+    t1 = (t0 + 5771);
     t4 = 1;
     if (2U == 2U)
         goto LAB5;

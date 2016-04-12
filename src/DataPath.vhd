@@ -121,6 +121,7 @@ port(
 	flag_enable_in : in std_logic_vector(3 downto 0);
 	Psrc_in, Psrc_Actual_in : in std_logic;
 	PC4_in : in std_logic_Vector(31 downto 0);
+	PC4_offset_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -138,6 +139,7 @@ port(
 	flag_enable_out : out std_logic_vector(3 downto 0);
 	Psrc_out, Psrc_Actual_out : out std_logic;
 	PC4_out : out std_logic_vector(31 downto 0);
+	PC4_offset_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -149,6 +151,7 @@ port(
 	ALU_opern_in : in std_logic_vector(3 downto 0);
 	Psrc_in : in std_logic;
 	PC4_in : in std_logic_Vector(31 downto 0);
+	PC4_offset_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -159,6 +162,7 @@ port(
 	ALU_opern_out : out std_logic_vector(3 downto 0);
 	Psrc_out : out std_logic;
 	PC4_out : out std_logic_vector(31 downto 0);
+	PC4_offset_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -251,6 +255,7 @@ end component;
 	signal Rd_out : std_logic_vector(3 downto 0);
 	signal imm8_out_1 : std_logic_vector(7 downto 0);
 	signal imm12_out_1 : std_logic_vector(11 downto 0);
+	signal PC4_offset_out_1 : std_logic_vector(31 downto 0);
 
 	signal offset_out_2 : 	std_logic_vector(23 downto 0);	--ID_EX output
 	signal rd1_out : 	std_logic_vector(31 downto 0);
@@ -260,6 +265,7 @@ end component;
 	signal wad_out_2 : 	std_logic_vector(3 downto 0);
 	signal temp_2 : std_logic_vector(10 downto 0);
 	signal flag_set_2 : std_logic_vector(3 downto 0);
+	signal PC4_offset_out_2 : std_logic_vector(31 downto 0);
 
 	signal wad_out_3: std_logic_vector(3 downto 0);		--EX_Mem output
 	signal DM_ad: std_logic_vector(31 downto 0);
@@ -299,9 +305,10 @@ end component;
 
 	signal cond : std_logic_vector(3 downto 0);
 	signal flag : std_logic_vector(3 downto 0);
-	signal p, override_Psrc : std_logic;
+	signal p, override_Psrc, bubble_val : std_logic;
+	signal PC_off_final, PC4_final : std_logic_vector(31 downto 0);
 
-	signal bubble_IFID, bubble_IDEX, bubble_EXMem : std_logic;
+	signal bubble_ins : std_logic_vector(31 downto 0);
 begin
 
 Current_Inst <= current_ins;  -- needed for branch prediction.
@@ -337,29 +344,42 @@ flag <= Flag_Out;
 		end case;
 	end process;
 
-	process(Psrc_actual_2, Psrc)
+	process(Psrc_actual_2, Psrc, override_Psrc, PC4_2, PC4, PC4_offset_out_2, PC_off)
 	begin
-		if override_Psrc = '1' then PSrc_final <= Psrc_actual_2;
-		else PSrc_final <= Psrc;
+		if override_Psrc = '1' then 
+			PSrc_final <= Psrc_actual_2;
+			PC_off_final <= PC4_offset_out_2;
+			PC4_final <= PC4_2;
+		else 
+			PSrc_final <= Psrc;
+			PC_off_final <= PC_off;
+			PC4_final <= PC4;
 		end if;
 	end process;
 
 	process(p, Psrc_pred2, Psrc_actual_2, PC4_2)
 	begin
 		if Psrc_pred2 = '1' and ((Psrc_actual_2 and p) = '0') then
-			bubble_IDEX <= '0';
-			bubble_EXMem <= '0';
+			bubble_ins <= "00000000000000000000000000000000";
+			bubble_val <= '0';
 			override_Psrc <= '1';
 		elsif Psrc_pred2 = '0' and ((Psrc_actual_2 and p) = '1') then
-			bubble_IDEX <= '0';
-			bubble_EXMem <= '0';
+			bubble_ins <= "00000000000000000000000000000000";
+			bubble_val <= '0';
 			override_Psrc <= '1';
 		else 
-			bubble_IDEX <= '1';
-			bubble_EXMem <= '1';
+			bubble_ins <= "11111111111111111111111111111111";
+			bubble_val <= '1';
 			override_Psrc <= '0';
 		end if;
 	end process;
+
+PsrcM : mux port map(
+	PC4_final,
+	PC_off_final,
+	PSrc_final,
+	pc_in
+);
 
 PC : PCtr port map(
 	clk,
@@ -373,10 +393,11 @@ IM : InMem port map(
 );
 
 IFID : IF_ID port map(
-	current_ins,
+	current_ins and bubble_ins,
 	Opern,
 	Psrc,
 	PC4,
+	PC_off,
 	offset_out_1,
 	Rn_out,
 	Rm_out,
@@ -387,6 +408,7 @@ IFID : IF_ID port map(
 	alu_opern_out1,
 	Psrc_pred1,
 	PC4_o1,
+	PC4_offset_out_1,
 	eIF_ID,
 	clk
 );
@@ -432,7 +454,7 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
-	II,Asrc,DM_fwd,M2R,RW and bubble_IDEX,MW and bubble_IDEX,MR,
+	II,Asrc,DM_fwd,M2R,RW and bubble_val,MW and bubble_val,MR,
 	alu1_mux, alu2_mux,
 	Opern,
 	Mul_sel,
@@ -440,9 +462,10 @@ IDEX : ID_EX port map(
 	s_amt,
 	Instruction_IFID,
 	Fset,
-	Psrc_pred1,
-	Psrc_Actual,
+	Psrc_pred1 and bubble_val,
+	Psrc_Actual and bubble_val,
 	PC4_o1,
+	PC4_offset_out_1,
 	offset_out_2,
 	rd1_out,
 	rd2_out,  	
@@ -459,7 +482,8 @@ IDEX : ID_EX port map(
 	flag_set_2,
 	Psrc_pred2,
 	Psrc_Actual_2,
-	PC4_2,	
+	PC4_2,
+	PC4_offset_out_2,
 	eID_EX,
 	clk
 );
@@ -537,7 +561,7 @@ EXMEM : EX_Mem port map(
 	alu_out,
 	rd2_out,
 	wad_out_2,
-	temp_2(4), temp_2(3), temp_2(2) and p and bubble_EXMem, temp_2(1) and p and bubble_EXMem, temp_2(0),
+	temp_2(4), temp_2(3), temp_2(2) and p, temp_2(1) and p, temp_2(0),
 	alu_opern_out2,
 	Instruction_IDEX,
 	wad_out_3,
@@ -595,12 +619,6 @@ Flag_Bla : Flags port map(
 	clk
 );
 
-PsrcM : mux port map(
-	PC4,
-	PC_off,
-	PSrc_final,
-	pc_in
-);
 
 Add : Adder4 port map(
 	pc_out,

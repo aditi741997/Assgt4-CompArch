@@ -48,6 +48,7 @@ port(
 	flag_enable_in : in std_logic_vector(3 downto 0);
 	Psrc_in, Psrc_Actual_in : in std_logic;
 	PC4_in : in std_logic_Vector(31 downto 0);
+	PC4_offset_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	rd1_out : out std_logic_vector(31 downto 0);
 	rd2_out : out std_logic_vector(31 downto 0);
@@ -65,6 +66,7 @@ port(
 	flag_enable_out : out std_logic_vector(3 downto 0);
 	Psrc_out, Psrc_Actual_out : out std_logic;
 	PC4_out : out std_logic_vector(31 downto 0);
+	PC4_offset_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -87,6 +89,7 @@ architecture Behavioral of ID_EX is
 	signal flag_enable : std_logic_vector(3 downto 0);
 	signal Psrc, Psrc_Actual : std_logic;
 	signal PC4 : std_logic_vector(31 downto 0);
+	signal PC4_offset : std_logic_vector(31 downto 0);
 	
 begin
 
@@ -117,7 +120,7 @@ begin
 		Psrc <= Psrc_in;
 		Psrc_Actual <= Psrc_Actual_in;
 		PC4 <= PC4_in;
-
+		PC4_offset <= PC4_offset_in;
 
 	end if;
 end process;
@@ -146,5 +149,6 @@ end process;
 		Psrc_out <= Psrc;
 		Psrc_Actual_out <= Psrc_Actual;
 		PC4_out <= PC4;
+		PC4_offset_out <= PC4_offset;
 
 end Behavioral;

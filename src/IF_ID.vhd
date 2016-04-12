@@ -35,6 +35,7 @@ port(
 	ALU_opern_in : in std_logic_vector(3 downto 0);
 	Psrc_in : in std_logic;
 	PC4_in : in std_logic_Vector(31 downto 0);
+	PC4_offset_in : in std_logic_vector(31 downto 0);
 	offset_out : out std_logic_vector(23 downto 0);
 	Rn_out : out std_logic_vector(3 downto 0);
 	Rm_out : out std_logic_vector(3 downto 0);
@@ -45,6 +46,7 @@ port(
 	ALU_opern_out : out std_logic_vector(3 downto 0);
 	Psrc_out : out std_logic;
 	PC4_out : out std_logic_vector(31 downto 0);
+	PC4_offset_out : out std_logic_vector(31 downto 0);
 	enable : in std_logic;
 	clock : in std_logic
 );
@@ -54,6 +56,7 @@ architecture Behavioral of IF_ID is
 signal ins, PC4 : std_logic_vector(31 downto 0);
 signal ALU_opern : std_logic_vector(3 downto 0);
 signal Psrc : std_logic;
+signal PC4_offset : std_logic_vector(31 downto 0);
 
 begin
 
@@ -63,7 +66,8 @@ begin
 		ins <= instruction_in;
 		ALU_opern <= ALU_opern_in;
 		Psrc <= Psrc_in;
-		PC4 <= PC4_in;		
+		PC4 <= PC4_in;
+		PC4_offset <= PC4_offset_in;	
 
 	end if;
 end process;
@@ -78,5 +82,6 @@ end process;
 		ALU_opern_out <= ALU_opern;
 		Psrc_out <= Psrc;
 		PC4_out <= PC4;
+		PC4_offset_out <= PC4_offset;
 
 end Behavioral;
