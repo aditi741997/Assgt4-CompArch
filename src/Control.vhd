@@ -39,7 +39,7 @@ architecture Behavioral of Control is
 
 component DataPath is
 port(
-	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
+	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB, Stall:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
 	DM_fwd:in std_logic;		-- fwdC
 	Rsrc,Psrc,Psrc_Actual,RW,Asrc,MW,MR,M2R,II:in std_logic;
@@ -104,11 +104,13 @@ end component;
 	signal fwdC_f : std_logic;
 	signal bubble : std_logic := '0';
 	signal predicted_psrc : std_logic;
-
+	
+	signal Stall: std_logic;
+-- Stall = 0 if ldr, dependance. ELSE ALWAYS 0.
 begin
 
 	DP : DataPath port map (
-		clock, '1','1','1','1',
+		clock, '1','1','1','1', Stall,
 		fwdA_f, fwdB_f,
 		fwdC_f,
 		mux_1, predicted_psrc, mux_4 ,regwrite, mux_2, mem_write, '1', mux_3, mux_5,
@@ -150,10 +152,16 @@ begin
 	s_amt <= ins(11 downto 7);
 	s_typ <= ins(6 downto 5);
 
---	alu2_mux <= "00";
---	alu1_mux <= "00";
---	fwdC <= '0';
-	--p <= '1';
+-- setting Stall value
+	process(ins, ins_IDEX)
+	begin
+		if (ins_IDEX(27 downto 26) = "01" and ins_IDEX(20) = '1' and ( ins_IDEX(15 downto 12) = ins(19 downto 16) or ins_IDEX(15 downto 12) = ins(3 downto 0) )) then
+			Stall <= '0';
+		else
+			Stall <= '1';
+		end if;
+	end process;
+	
 	--process(instruction_type, immediate, mul, ipubwl, opc, instruction_type, flag_set, rot, s_amt, s_typ)
 	--begin
 	--	p <= '1';

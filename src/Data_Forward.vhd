@@ -33,7 +33,7 @@ entity Data_Forward is
 port(
 	Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : in std_logic_Vector(31 downto 0);
 	fwdA, fwdB : out std_logic_vector(1 downto 0);
-	fwdC, Stall : out std_logic
+	fwdC : out std_logic
 );
 end Data_Forward;
 
@@ -177,5 +177,6 @@ begin
 		fwdC <= '0';
 	end if;
 end process;
+	
 
 end Behavioral;

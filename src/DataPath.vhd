@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity DataPath is
 port(
-	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB:in STD_LOGIC;
+	clk,eIF_ID,eID_EX,eEX_Mem,eMem_WB, Stall:in STD_LOGIC;
 	alu1_mux,alu2_mux:in STD_LOGIC_VECTOR(1 downto 0);
 	DM_fwd:in std_logic;
 	Rsrc,Psrc,Psrc_Actual,RW,Asrc,MW,MR,M2R,II:in std_logic;
@@ -205,7 +205,7 @@ port(
 end component;
 
 component PCtr is
-port(clk:in std_logic;
+port(clk,enable:in std_logic;
 in_pc:in std_logic_vector(31 downto 0);
 out_pc:out std_logic_vector(31 downto 0));
 end component;
@@ -309,11 +309,13 @@ end component;
 	signal PC_off_final, PC4_final : std_logic_vector(31 downto 0);
 
 	signal bubble_ins : std_logic_vector(31 downto 0);
+	
+	--signal Stall : std_logic;
 begin
 
-Current_Inst <= current_ins;  -- needed for branch prediction.
-InstructionIFID <= Instruction_IFID;
-InstructionIDEX <= Instruction_IDEX;
+Current_Inst <= current_ins;  -- needed for branch prediction., about to go to IFID
+InstructionIFID <= Instruction_IFID; -- About to go to IDEX
+InstructionIDEX <= Instruction_IDEX; -- About to go to EXMEM
 InstructionEXMEM <= Instruction_EXMEM;
 InstructionMEMWB <= Instruction_MEMWB;
 --PSrc_pred <= Psrc;
@@ -383,6 +385,7 @@ PsrcM : mux port map(
 
 PC : PCtr port map(
 	clk,
+	Stall,
 	pc_in,
 	pc_out
 );
@@ -409,7 +412,7 @@ IFID : IF_ID port map(
 	Psrc_pred1,
 	PC4_o1,
 	PC4_offset_out_1,
-	eIF_ID,
+	eIF_ID and Stall,
 	clk
 );
 
@@ -454,7 +457,7 @@ IDEX : ID_EX port map(
 	imm8_out_1,
 	imm12_out_1,
 	Rd_out,
-	II,Asrc,DM_fwd,M2R,RW and bubble_val,MW and bubble_val,MR,
+	II,Asrc,DM_fwd,M2R,RW and bubble_val and Stall,MW and bubble_val and Stall,MR,
 	alu1_mux, alu2_mux,
 	Opern,
 	Mul_sel,
@@ -462,8 +465,8 @@ IDEX : ID_EX port map(
 	s_amt,
 	Instruction_IFID,
 	Fset,
-	Psrc_pred1 and bubble_val,
-	Psrc_Actual and bubble_val,
+	Psrc_pred1 and bubble_val and Stall,
+	Psrc_Actual and bubble_val and Stall,
 	PC4_o1,
 	PC4_offset_out_1,
 	offset_out_2,
