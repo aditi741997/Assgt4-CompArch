@@ -347,7 +347,7 @@ flag <= Flag_Out;
 	process(Psrc_actual_2, Psrc, override_Psrc, PC4_2, PC4, PC4_offset_out_2, PC_off)
 	begin
 		if override_Psrc = '1' then 
-			PSrc_final <= Psrc_actual_2;
+			PSrc_final <= Psrc_actual_2 and p;
 			PC_off_final <= PC4_offset_out_2;
 			PC4_final <= PC4_2;
 		else 
@@ -577,7 +577,7 @@ EXMEM : EX_Mem port map(
 fwdC : Mux port map(
 	DM_wd,
 	M2R_out,
-	temp_3(4),
+	DM_fwd,
 	fwdC_out
 );
 

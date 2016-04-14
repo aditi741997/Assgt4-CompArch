@@ -33,7 +33,7 @@ entity Data_Forward is
 port(
 	Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB : in std_logic_Vector(31 downto 0);
 	fwdA, fwdB : out std_logic_vector(1 downto 0);
-	fwdC : out std_logic
+	fwdC, Stall : out std_logic
 );
 end Data_Forward;
 
@@ -45,6 +45,7 @@ signal EXMEM_Rd, IDEX_Rn, MEMWB_Rd, IDEX_Rm : std_logic_vector(3 downto 0);
 signal inst_type_EXMEM, inst_type_MEMWB : std_logic_Vector(1 downto 0);
 signal opc_EXMEM, opc_MEMWB : std_logic_vector(3 downto 0);
 signal ipubwl_ex, ipubwl_mem : std_logic_Vector(5 downto 0);
+signal is_str : std_logic;
 
 begin
 
@@ -101,15 +102,21 @@ begin
 	end if;
 end process;
 
+process(ipubwl_ex, inst_type_EXMEM)
+begin
+	if (inst_type_EXMEM = "01" and ipubwl_ex(0) = '0') then is_str <= '1';
+	else is_str <= '0';
+	end if;
+end process;
 
-fwA:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
+fwA:process(is_str, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rn AND (NOT (EXMEM_Rd = "UUUU")) then
 			fwdA <= "10";
 		elsif MEMWB_rw = '1' then
 			if not (MEMWB_Rd = "UUUU" or IDEX_Rn = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
+				if (MEMWB_Rd = IDEX_Rn) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
 					fwdA <= "11";
 				else fwdA <= "00";
 				end if;
@@ -119,7 +126,7 @@ begin
 		end if;
 	elsif MEMWB_rw = '1' then
 			if not (MEMWB_Rd = "UUUU" or IDEX_Rn = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rn) and (not (EXMEM_Rd = IDEX_Rn) ) then
+				if (MEMWB_Rd = IDEX_Rn) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
 					fwdA <= "11";
 				else fwdA <= "00";
 				end if;
@@ -130,14 +137,14 @@ begin
 end process;
 
 
-fwB:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
+fwB:process(is_str, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
 	if (EXMEM_rw = '1') then
 		if EXMEM_Rd = IDEX_Rm AND (NOT (EXMEM_Rd = "UUUU")) then
 			fwdB <= "10";
 		elsif MEMWB_rw = '1' then
 			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
+				if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
 					fwdB <= "11";
 				else fwdB <= "00";
 				end if;
@@ -147,7 +154,7 @@ begin
 		end if;
 	elsif MEMWB_rw = '1' then
 			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rm) and (not (EXMEM_Rd = IDEX_Rm) ) then
+				if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
 					fwdB <= "11";
 				else fwdB <= "00";
 				end if;
@@ -158,7 +165,7 @@ begin
 end process;
 
 
-fwC:process(Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw)
+fwC:process(MEMWB_Rd, EXMEM_Rd, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw)
 begin
 	if MEMWB_rw = '1' then
 		if MEMWB_Rd = EXMEM_Rd AND (NOT (EXMEM_Rd = "UUUU")) then
