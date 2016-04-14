@@ -106,6 +106,7 @@ end component;
 	signal predicted_psrc : std_logic;
 	
 	signal Stall: std_logic;
+	signal IDEX_Rd, Rm, Rn : std_logic_vector(3 downto 0);
 -- Stall = 0 if ldr, dependance. ELSE ALWAYS 0.
 begin
 
@@ -139,7 +140,7 @@ begin
 		fwdB_f,
 		fwdC_f
 	);
-	
+	-- SUNN... Voice call ho sakta hai? haan lol
 	cond <= ins(31 downto 28);
 	instruction_type <= ins(27 downto 26);
 	immediate <= ins(25);
@@ -152,10 +153,14 @@ begin
 	s_amt <= ins(11 downto 7);
 	s_typ <= ins(6 downto 5);
 
+	IDEX_Rd <= ins_IDEX(15 downto 12);
+	Rn <= ins(19 downto 16);
+	Rm <= ins(3 downto 0);
+
 -- setting Stall value
 	process(ins, ins_IDEX)
 	begin
-		if (ins_IDEX(27 downto 26) = "01" and ins_IDEX(20) = '1' and ( ins_IDEX(15 downto 12) = ins(19 downto 16) or ins_IDEX(15 downto 12) = ins(3 downto 0) )) then
+		if (ins_IDEX(27 downto 26) = "01" and ins_IDEX(20) = '1' and ( (ins_IDEX(15 downto 12) = ins(19 downto 16)) or( ins_IDEX(15 downto 12) = ins(3 downto 0)) )) then
 			Stall <= '0';
 		else
 			Stall <= '1';

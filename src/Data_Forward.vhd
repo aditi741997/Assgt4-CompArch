@@ -46,6 +46,7 @@ signal inst_type_EXMEM, inst_type_MEMWB : std_logic_Vector(1 downto 0);
 signal opc_EXMEM, opc_MEMWB : std_logic_vector(3 downto 0);
 signal ipubwl_ex, ipubwl_mem : std_logic_Vector(5 downto 0);
 signal is_str : std_logic;
+signal immediate_idex : std_logic;
 
 begin
 
@@ -53,6 +54,7 @@ EXMEM_Rd <= Instruction_EXMEM(15 downto 12);
 IDEX_Rn <= Instruction_IDEX(19 downto 16);
 MEMWB_Rd <= Instruction_MEMWB(15 downto 12);
 IDEX_Rm <= Instruction_IDEX(3 downto 0);
+immediate_idex <= Instruction_IDEX(25);
 
 inst_type_EXMEM <= Instruction_EXMEM(27 downto 26);
 inst_type_MEMWB <= Instruction_MEMWB(27 downto 26);
@@ -135,32 +137,34 @@ begin
 	else fwdA <= "00";
 	end if;
 end process;
+--WHY IS STALL NOT WORKING?
 
-
-fwB:process(is_str, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
+fwB:process(immediate_idex,is_str, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
-	if (EXMEM_rw = '1') then
-		if EXMEM_Rd = IDEX_Rm AND (NOT (EXMEM_Rd = "UUUU")) then
-			fwdB <= "10";
+	if immediate_idex = '1' then fwdB <= "00"; else
+		if (EXMEM_rw = '1') then
+			if EXMEM_Rd = IDEX_Rm AND (NOT (EXMEM_Rd = "UUUU")) then
+				fwdB <= "10";
+			elsif MEMWB_rw = '1' then
+				if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
+					if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
+						fwdB <= "11";
+					else fwdB <= "00";
+					end if;
+				else fwdB <= "00";
+				end if;
+			else fwdB <= "00";			
+			end if;
 		elsif MEMWB_rw = '1' then
-			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
-					fwdB <= "11";
+				if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
+					if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
+						fwdB <= "11";
+					else fwdB <= "00";
+					end if;
 				else fwdB <= "00";
 				end if;
-			else fwdB <= "00";
-			end if;
-		else fwdB <= "00";			
+		else fwdB <= "00";
 		end if;
-	elsif MEMWB_rw = '1' then
-			if not (MEMWB_Rd = "UUUU" or IDEX_Rm = "UUUU" or EXMEM_Rd = "UUUU") then
-				if (MEMWB_Rd = IDEX_Rm) and (is_str='1' or (is_str='0' and (not (EXMEM_Rd = IDEX_Rn))) ) then
-					fwdB <= "11";
-				else fwdB <= "00";
-				end if;
-			else fwdB <= "00";
-			end if;
-	else fwdB <= "00";
 	end if;
 end process;
 
