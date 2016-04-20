@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity coMultiplier is
 port(
 	sig1,sig2 : in std_logic_Vector(23 downto 0);
-	mult_out : out std_logic_Vector(26 downto 0)
+	mult_out : out std_logic_Vector(27 downto 0)
 );
 end coMultiplier;
 
@@ -71,7 +71,7 @@ add_all: for i in 23 downto 1 generate
 			
 add_done: coAdder_Mult port map(Ans(0),As(0),mult_ans1);
 
-mult_out(26 downto 0) <= mult_ans1(47 downto 21);
+mult_out <= mult_ans1(47 downto 20);
 
 
 end Behavioral;

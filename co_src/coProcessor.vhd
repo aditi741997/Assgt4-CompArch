@@ -54,22 +54,22 @@ architecture Behavioral of coProcessor is
 
 	component coAdder23 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (26 downto 0);
+		b : in std_logic_vector (26 downto 0);
 		c_in : in std_logic := '0';
 		input_control : in std_logic;
-		c : out std_logic_vector (25 downto 0);
+		c : out std_logic_vector (26 downto 0);
 		c_out : out std_logic
 	);
 	end component;
 
 	component coAdder8 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (7 downto 0);
+		b : in std_logic_vector (7 downto 0);
 		c_in : in std_logic := '0';
 		input_control : in std_logic;
-		c : out std_logic_vector (25 downto 0);
+		c : out std_logic_vector (7 downto 0);
 		c_out : out std_logic
 	);
 	end component;
@@ -84,8 +84,8 @@ architecture Behavioral of coProcessor is
 
 	component coComparer23 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (26 downto 0);
+		b : in std_logic_vector (26 downto 0);
 		s : out std_logic
 	);
 	end component;
@@ -93,8 +93,15 @@ architecture Behavioral of coProcessor is
 	component coShiftR_ALU is
 	port(
 		s_amt : in integer range 0 to 255;
-		inp: in std_logic_Vector(25 downto 0);
-		outp : out std_logic_Vector(25 downto 0)
+		inp: in std_logic_Vector(26 downto 0);
+		outp : out std_logic_Vector(26 downto 0)
+	);
+	end component;
+
+	component coMultiplier is
+	port(
+		sig1,sig2 : in std_logic_Vector(23 downto 0);
+		mult_out : out std_logic_Vector(26 downto 0)
 	);
 	end component;
 
@@ -103,7 +110,7 @@ signal fp1, fp2, cWd : std_logic_vector(31 downto 0);
 signal regwrite : std_logic;
 
 signal exp1, exp2 : std_logic_vector(7 downto 0);
-signal sig1, sig2, a, b : std_logic_vector(25 downto 0);
+signal sig1, sig2, a, b : std_logic_vector(26 downto 0);
 signal sign1, sign2, signA, signB : std_logic;
 signal fp1_is_greater : std_logic;
 
@@ -111,11 +118,12 @@ signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
 signal comp8_result, comp23_result, small_ALU_c_out : std_logic;
 
 signal shiftR_amt : integer;
-signal shiftR_outp : std_logic_vector(25 downto 0);
+signal shiftR_outp : std_logic_vector(26 downto 0);
 
 signal Big_ALU_cin, Big_ALU_cout, Big_ALU_input_control : std_logic;
-signal Big_ALU_output : std_logic_vector(25 downto 0);
+signal Big_ALU_output : std_logic_vector(26 downto 0);
 
+signal mult_out : std_logic_vector(26 downto 0);
 signal final_sign : std_logic;
 
 begin
@@ -124,11 +132,11 @@ begin
 	cRd <= instruction(15 downto 12);
 	cRm <= instruction(3 downto 0);
 	sig1(2 downto 0) <= "000";
-	sig1(24 downto 3) <= fp1(22 downto 0);
-	sig1(25) <= '1';
+	sig1(25 downto 3) <= fp1(22 downto 0);
+	sig1(26) <= '1';
 	sig2(2 downto 0) <= "000";
-	sig2(24 downto 3) <= fp2(22 downto 0);
-	sig2(25) <= '1';
+	sig2(25 downto 3) <= fp2(22 downto 0);
+	sig2(26) <= '1';
 	exp1 <= fp1(30 downto 23);
 	exp2 <= fp2(30 downto 23);
 	sign1 <= fp1(31);
@@ -139,6 +147,11 @@ begin
 		cWd, regwrite,
 		fp1, fp2,
 		clock
+	);
+
+	MUL : coMultiplier port map(
+		sig1(26 downto 3), sig2(26 downto 3),
+		mult_out
 	);
 
 	Comp8 : coComparer8 port map(

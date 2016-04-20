@@ -34,11 +34,11 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity coAdder23 is
 Port(
-	a : in std_logic_vector (25 downto 0);
-	b : in std_logic_vector (25 downto 0);
+	a : in std_logic_vector (26 downto 0);
+	b : in std_logic_vector (26 downto 0);
 	c_in : in std_logic := '0';
 	input_control : in std_logic;
-	c : out std_logic_vector (25 downto 0);
+	c : out std_logic_vector (26 downto 0);
 	c_out : out std_logic
 );
 end coAdder23;
@@ -56,16 +56,16 @@ architecture Behavioral of coAdder23 is
 	);
 	end component;
 
-	signal carry : std_logic_vector(8 downto 0) := (others => '0');
+	signal carry : std_logic_vector(27 downto 0) := (others => '0');
 
 begin
 
 	GEN:
-	for I in 0 to 25 generate
+	for I in 0 to 26 generate
 		coAdder : coAdder_Basic port map (a(I), b(I), carry(I), input_control, carry(I+1), c(I));
 	end generate GEN;
 
 	carry(0) <= c_in;
-	c_out <= carry(26);
+	c_out <= carry(27);
 
 end Behavioral;

@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity coShiftR_ALU is
 port(
 	s_amt : in integer range 0 to 255;
-	inp: in std_logic_Vector(25 downto 0);
-	outp : out std_logic_Vector(25 downto 0)
+	inp: in std_logic_Vector(26 downto 0);
+	outp : out std_logic_Vector(26 downto 0)
 );
 end coShiftR_ALU;
 
@@ -41,9 +41,9 @@ architecture Behavioral of coShiftR_ALU is
 
 
 signal shift_amt_int : integer range 0 to 255;
-signal ans: std_logic_vector(25 downto 0);
+signal ans: std_logic_vector(26 downto 0);
 signal shift: std_logic_vector(7 downto 0) := "00000000";
-signal zeroes :std_logic_vector(25 downto 0) := "00000000000000000000000000";
+signal zeroes :std_logic_vector(26 downto 0) := "000000000000000000000000000";
 
 begin
 
@@ -53,18 +53,18 @@ shift_amt_int <= s_amt;
 
 SHIFTR:process(shift_amt_int,inp)
 begin
-if (shift_amt_int > 26) then
+if (shift_amt_int > 27) then
 else
 	if (shift_amt_int > 0) then
-		ans(25 downto (26 - shift_amt_int)) <= zeroes((shift_amt_int - 1) downto 0);
-		ans((25 - shift_amt_int) downto 1) <= inp(25 downto (1 + shift_amt_int));
+		ans(26 downto (27 - shift_amt_int)) <= zeroes((shift_amt_int - 1) downto 0);
+		ans((26 - shift_amt_int) downto 1) <= inp(26 downto (1 + shift_amt_int));
 		if (inp(shift_amt_int downto 0) = zeroes(shift_amt_int downto 0)) then
 			ans(0) <= '0';
 		else
 			ans(0) <= '1';
 		end if;
 	else
-		ans(25 downto 0) <= inp(25 downto 0);
+		ans(26 downto 0) <= inp(26 downto 0);
 	end if;
 end if;
 end process;
