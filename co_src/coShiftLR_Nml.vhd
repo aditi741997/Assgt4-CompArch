@@ -31,8 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity coShiftLR_Nml is
 port(
-	inp : in std_logic_vector(26 downto 0);
-	outp : out std_logic_vector(25 downto 0);
+	inp : in std_logic_vector(27 downto 0);
+	outp : out std_logic_vector(26 downto 0);
 	s_amt : out integer range 0 to 26;
 	left_right, is_zero : out std_logic
 );
@@ -41,7 +41,7 @@ end coShiftLR_Nml;
 architecture Behavioral of coShiftLR_Nml is
 
 signal shift : integer range 0 to 24 := 0;
-signal zeroes : std_logic_Vector(25 downto 0) := (others => '0');
+signal zeroes : std_logic_Vector(26 downto 0) := (others => '0');
 
 begin
 
@@ -49,23 +49,23 @@ NML:process(inp)
 variable i : integer range 0 to 25;
 variable done : std_logic;
 begin
-if inp(26) = '1' then
+if inp(27) = '1' then
 	shift <= 1;
 	left_right <= '0';
 	is_zero <= '0';
-	outp(25 downto 1) <= inp(26 downto 2);
+	outp(26 downto 1) <= inp(27 downto 2);
 	outp(0) <= inp(1) or inp(0);
 	-- last bit is sticky bit. so if the last bit was 1, S should be 1.
 else
 	-- find the first 1.
-	if inp(25) = '1' then
-		outp(25 downto 0) <= inp(25 downto 0);
+	if inp(26) = '1' then
+		outp(26 downto 0) <= inp(26 downto 0);
 		shift <= 0;
 		is_zero <= '0';
 		left_right <= '0';
 	else
 		left_right <= '1';
-		i := 24;
+		i := 25;
 		done := '0';
 		L: while (done = '0' and i > -1) loop
 			if (inp(i) = '1') then
@@ -80,9 +80,9 @@ else
 			outp <= zeroes;
 		else
 			is_zero <= '0';
-			shift <= (25 - i);
-			outp(25 downto (25 - i)) <= inp( (i) downto 0);
-			outp((24 - i) downto 0) <= zeroes((24 - i) downto 0);
+			shift <= (26 - i);
+			outp(26 downto (26 - i)) <= inp( (i) downto 0);
+			outp((25 - i) downto 0) <= zeroes((25 - i) downto 0);
 		end if;
 	end if;
 end if;

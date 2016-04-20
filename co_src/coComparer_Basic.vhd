@@ -40,7 +40,7 @@ end coComparer_Basic;
 
 architecture Behavioral of coComparer_Basic is
 begin
-	process (a,b,c_in,)
+	process (a,b,c_in)
 	begin
 		
 		if a='1' and b='0' then c_out<='1';
