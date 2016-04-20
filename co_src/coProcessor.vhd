@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -138,7 +138,7 @@ signal fp1_is_greater : std_logic;
 signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
 signal comp8_result, comp23_result, small_ALU_c_out : std_logic;
 
-signal shiftR_amt : integer;
+signal shiftR_input : integer;
 signal shiftR_outp : std_logic_vector(26 downto 0);
 
 signal Big_ALU_cin, Big_ALU_cout, Big_ALU_input_control : std_logic;
@@ -155,7 +155,7 @@ signal final_addsub, final_mul : std_logic_vector(31 downto 0);
 signal BigALU_norm_in : std_logic_Vector(27 downto 0);
 signal Big_ALU_out_norm : std_logic_vector(26 downto 0);
 signal norm_shift_Exp : integer range 0 to 26;
-signal norm_shift_lr, norm_iszero : std_logic;
+signal norm_shift_lr, norm_iszero, bit4 : std_logic;
 signal final_ALU_mentissa : std_logic_Vector(22 downto 0);
 signal final_ALU_expo,  ALU_expo_norm1, ALU_norm2_final : std_logic_vector(7 downto 0);
 signal norm_changeExpo, norm2_changeExpo : std_logic_vector(7 downto 0);
@@ -258,7 +258,7 @@ begin
 	end process;
 
 	ShiftR : coShiftR_ALU port map(
-		shiftR_amt, a, shiftR_outp
+		shiftR_input, a, shiftR_outp
 	);
 
 	Big_ALU : coAdder23 port map(
@@ -298,7 +298,7 @@ begin
 			else 
 				final_sign <= fp1_is_greater;
 			end if;
-		elsif cp_opc(3 downto 1)="010" -- SUBTRACTION
+		elsif cp_opc(3 downto 1)="010" then -- SUBTRACTION
 			if (sign1='0' and sign2='1') or (sign1='1' and sign2='0') then
 				final_sign <= sign1;
 			elsif sign1='0' and sign2='0' then
@@ -472,10 +472,10 @@ begin
 			fp2 <= fp2_temp;
 			cRd_temp <= cRd;
 			regwrite <= '1';
-			if ((MULTIPLY)) then 
+			if (cp_opc(3 downto 1) = "100") then 
 				cWd <= final_addsub; --calculated_value
 			else
-				cWd <= final_addsub;yo --calculated_value
+				cWd <= final_addsub; --calculated_value
 			end if;
 		end if;
 	end process;

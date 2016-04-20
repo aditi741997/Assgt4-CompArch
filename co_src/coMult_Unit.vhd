@@ -53,7 +53,7 @@ signal x:std_logic_vector(4 downto 0);
 begin
 
 x <= std_logic_vector(to_unsigned(i,5));
-ShiftI:shifter port map(x,A,a0);
+ShiftI:coShifter_Mult port map(x,A,a0);
 
 OTP:process(Bi,i,A,a0)
 begin

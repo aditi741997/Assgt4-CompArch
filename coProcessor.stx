@@ -1,0 +1,114 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: coProcessor.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShift_Mult8.vhd" into library work
+Parsing entity <coShift_Mult8>.
+Parsing architecture <Behavioral> of entity <coshift_mult8>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShift_Mult4.vhd" into library work
+Parsing entity <coShift_Mult4>.
+Parsing architecture <Behavioral> of entity <coshift_mult4>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShift_Mult2.vhd" into library work
+Parsing entity <coShift_Mult2>.
+Parsing architecture <Behavioral> of entity <coshift_mult2>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShift_Mult16.vhd" into library work
+Parsing entity <coShift_Mult16>.
+Parsing architecture <Behavioral> of entity <coshift_mult16>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShift_Mult1.vhd" into library work
+Parsing entity <coShift_Mult1>.
+Parsing architecture <Behavioral> of entity <coshift_mult1>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShifter_Mult.vhd" into library work
+Parsing entity <coShifter_Mult>.
+Parsing architecture <Behavioral> of entity <coshifter_mult>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coAdder_Basic.vhd" into library work
+Parsing entity <coAdder_Basic>.
+Parsing architecture <Behavioral> of entity <coadder_basic>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coMult_Unit.vhd" into library work
+Parsing entity <coMult_Unit>.
+Parsing architecture <Behavioral> of entity <comult_unit>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coComparer_Basic.vhd" into library work
+Parsing entity <coComparer_Basic>.
+Parsing architecture <Behavioral> of entity <cocomparer_basic>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coAdder_Mult.vhd" into library work
+Parsing entity <coAdder_Mult>.
+Parsing architecture <Behavioral> of entity <coadder_mult>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShiftR_ALU.vhd" into library work
+Parsing entity <coShiftR_ALU>.
+Parsing architecture <Behavioral> of entity <coshiftr_alu>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coShiftLR_Nml.vhd" into library work
+Parsing entity <coShiftLR_Nml>.
+Parsing architecture <Behavioral> of entity <coshiftlr_nml>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coRegister_Array.vhd" into library work
+Parsing entity <coRegister_Array>.
+Parsing architecture <Behavioral> of entity <coregister_array>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coMultiplier.vhd" into library work
+Parsing entity <coMultiplier>.
+Parsing architecture <Behavioral> of entity <comultiplier>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coComparer8.vhd" into library work
+Parsing entity <coComparer8>.
+Parsing architecture <Behavioral> of entity <cocomparer8>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coComparer23.vhd" into library work
+Parsing entity <coComparer23>.
+Parsing architecture <Behavioral> of entity <cocomparer23>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coAdder8.vhd" into library work
+Parsing entity <coAdder8>.
+Parsing architecture <Behavioral> of entity <coadder8>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coAdder26.vhd" into library work
+Parsing entity <coAdder26>.
+Parsing architecture <Behavioral> of entity <coadder26>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coAdder23.vhd" into library work
+Parsing entity <coAdder23>.
+Parsing architecture <Behavioral> of entity <coadder23>.
+Parsing VHDL file "D:\Sem4\CompArch\Lab\Assgt4-CompArch\co_src\coProcessor.vhd" into library work
+Parsing entity <coProcessor>.
+Parsing architecture <Behavioral> of entity <coprocessor>.
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.24 secs
+ 
+--> 
+
+Total memory usage is 263504 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

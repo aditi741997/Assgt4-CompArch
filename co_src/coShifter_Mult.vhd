@@ -74,11 +74,11 @@ end component;
 
 begin
 
-s1:coShift_Mult1 port map(shift_amt(0),stype,inp,sh1);
-s2:coShift_Mult1 port map(shift_amt(1),stype,sh1,sh2);
-s4:coShift_Mult1 port map(shift_amt(2),stype,sh2,sh4);
-s8:coShift_Mult1 port map(shift_amt(3),stype,sh4,sh8);
-s16:coShift_Mult1 port map(shift_amt(4),stype,sh8,outp);
+s1:coShift_Mult1 port map(shift_amt(0),inp,sh1);
+s2:coShift_Mult2 port map(shift_amt(1),sh1,sh2);
+s4:coShift_Mult4 port map(shift_amt(2),sh2,sh4);
+s8:coShift_Mult8 port map(shift_amt(3),sh4,sh8);
+s16:coShift_Mult16 port map(shift_amt(4),sh8,outp);
 
 
 
