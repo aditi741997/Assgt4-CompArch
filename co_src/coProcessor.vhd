@@ -33,7 +33,7 @@ entity coProcessor is
 port(
 	clock : in std_logic;
 	instruction : in std_logic_vector(31 downto 0);
-	reg_data_in : in std_logic_Vector(31 downto 0);
+	reg_data_in : in std_logic_vector(31 downto 0);
 	result : out std_logic_vector(31 downto 0)
 );
 end coProcessor;
@@ -126,8 +126,8 @@ architecture Behavioral of coProcessor is
 	);
 	end component;
 
-signal cp_opc, cRn, cRd, cRm : std_logic_vector(3 downto 0);
-signal fp1, fp2, cWd : std_logic_vector(31 downto 0);
+signal cp_opc, cRn, cRd, cRm, cRd_temp : std_logic_vector(3 downto 0);
+signal fp1_temp, fp2_temp, fp1, fp2, cWd : std_logic_vector(31 downto 0);
 signal regwrite : std_logic;
 
 signal exp1, exp2 : std_logic_vector(7 downto 0);
@@ -147,6 +147,7 @@ signal Big_ALU_output : std_logic_vector(26 downto 0);
 signal mult_out : std_logic_vector(26 downto 0);
 signal final_sign : std_logic;
 
+signal final_addsub, final_mul : std_logic_vector(31 downto 0);
 
 
 
@@ -170,6 +171,8 @@ begin
 	cRn <= instruction(19 downto 16);
 	cRd <= instruction(15 downto 12);
 	cRm <= instruction(3 downto 0);
+	bit4 <= instruction(4);
+
 	sig1(2 downto 0) <= "000";
 	sig1(25 downto 3) <= fp1(22 downto 0);
 	sig1(26) <= '1';
@@ -182,9 +185,9 @@ begin
 	sign2 <= fp2(31);
 
 	RF : coRegister_Array port map(
-		cRn, cRm, cRd,
+		cRn, cRm, cRd_temp,
 		cWd, regwrite,
-		fp1, fp2,
+		fp1_temp, fp2_temp,
 		clock
 	);
 
@@ -263,9 +266,9 @@ begin
 		Big_ALU_output, Big_ALU_cout
 	);
 	-- set the Big_ALU c_in and input_control
-	process((ADDITION), sign1, sign2)
+	process(cp_opc, sign1, sign2)
 	begin
-		if (ADDITION) then
+		if cp_opc(3 downto 1)="001" then
 			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
 				Big_ALU_input_control <= '0';
 				Big_ALU_cin <= '0';
@@ -285,9 +288,9 @@ begin
 	end process;
 
 	-- setting final sign bit
-	process((ADDITION), sign1, sign2, fp1_is_greater)
+	process(cp_opc, sign1, sign2, fp1_is_greater)
 	begin
-		if (ADDITION) then
+		if cp_opc(3 downto 1)="001" then
 			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
 				final_sign <= sign1;
 			elsif sign1='0' and sign2='1' then
@@ -295,7 +298,7 @@ begin
 			else 
 				final_sign <= fp1_is_greater;
 			end if;
-		elsif(SUBTRACTION) -- SUBTRACTION
+		elsif cp_opc(3 downto 1)="010" -- SUBTRACTION
 			if (sign1='0' and sign2='1') or (sign1='1' and sign2='0') then
 				final_sign <= sign1;
 			elsif sign1='0' and sign2='0' then
@@ -303,7 +306,7 @@ begin
 			else
 				final_sign <= fp1_is_greater;
 			end if;
-		else(MULTIPLICATION)
+		else --(MULTIPLICATION)
 			final_sign <= sign1 xor sign2;
 		end if;
 	end process;
@@ -449,5 +452,31 @@ begin
 		end if;
 	end process;
 	
+	-- setting regwrite and data inputs
+	process(bit4, fp1_temp, fp2_temp, cp_opc, cRn, cRd)
+	begin
+		if bit4='1' then 
+			if cp_opc(0)='1' then
+				fp1 <= fp1_temp;
+				fp2 <= fp2_temp;
+				regwrite <= '0';
+			else
+				fp1 <= reg_data_in;
+				fp2 <=fp2_temp;
+				cRd_temp <= cRn;
+				regwrite <= '1';
+				cWd <= reg_data_in;
+			end if;
+		else
+			fp1 <= fp1_temp;
+			fp2 <= fp2_temp;
+			cRd_temp <= cRd;
+			regwrite <= '1';
+			if ((MULTIPLY)) then 
+				cWd <= final_addsub; --calculated_value
+			else
+				cWd <= final_addsub;yo --calculated_value
+			end if;
+		end if;
+	end process;
 end Behavioral;
-
