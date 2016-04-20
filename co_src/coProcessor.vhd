@@ -105,15 +105,18 @@ signal regwrite : std_logic;
 signal exp1, exp2 : std_logic_vector(7 downto 0);
 signal sig1, sig2, a, b : std_logic_vector(25 downto 0);
 signal sign1, sign2, signA, signB : std_logic;
+signal fp1_is_greater : std_logic;
 
 signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
-signal comp8_result, comp23_result small_ALU_c_out : std_logic;
+signal comp8_result, comp23_result, small_ALU_c_out : std_logic;
 
 signal shiftR_amt : integer;
 signal shiftR_outp : std_logic_vector(25 downto 0);
 
 signal Big_ALU_cin, Big_ALU_cout, Big_ALU_input_control : std_logic;
 signal Big_ALU_output : std_logic_vector(25 downto 0);
+
+signal final_sign : std_logic;
 
 begin
 	cp_opc <= instruction(23 downto 20);
@@ -173,6 +176,7 @@ begin
 			b <= sig1;
 			signA <= sign2;
 			signB <= sign1;
+			fp1_is_greater <= '1';
 		else
 			if exp_diff = "00000000" then
 				if comp23_result = '1' then
@@ -180,17 +184,20 @@ begin
 					b <= sig1;
 					signA <= sign2;
 					signB <= sign1;
+					fp1_is_greater <= '1';
 				else
 					a <= sig1;
 					b <= sig2;
 					signA <= sign1;
 					signB <= sign2;
+					fp1_is_greater <= '0';
 				end if;
 			else
 				a <= sig1;
 				b <= sig2;
 				signA <= sign1;
 				signB <= sign2;
+				fp1_is_greater <= '0';
 			end if;
 		end if;
 	end process;
@@ -225,6 +232,29 @@ begin
 		end if;
 	end process;
 
+	-- setting final sign bit
+	process((ADDITION), sign1, sign2, fp1_is_greater)
+	begin
+		if (ADDITION) then
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				final_sign <= sign1;
+			elsif sign1='0' and sign2='1' then
+				final_sign <= not fp1_is_greater;
+			else 
+				final_sign <= fp1_is_greater;
+			end if;
+		elsif(SUBTRACTION) -- SUBTRACTION
+			if (sign1='0' and sign2='1') or (sign1='1' and sign2='0') then
+				final_sign <= sign1;
+			elsif sign1='0' and sign2='0' then
+				final_sign <= not fp1_is_greater;
+			else
+				final_sign <= fp1_is_greater;
+			end if;
+		else(MULTIPLICATION)
+			final_sign <= sign1 xor sign2;
+		end if;
+	end process;
 
 end Behavioral;
 
