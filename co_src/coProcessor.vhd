@@ -164,6 +164,7 @@ begin
 	cRn <= instruction(19 downto 16);
 	cRd <= instruction(15 downto 12);
 	cRm <= instruction(3 downto 0);
+	
 	sig1(2 downto 0) <= "000";
 	sig1(25 downto 3) <= fp1(22 downto 0);
 	sig1(26) <= '1';
