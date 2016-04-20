@@ -104,7 +104,7 @@ signal regwrite : std_logic;
 
 signal exp1, exp2 : std_logic_vector(7 downto 0);
 signal sig1, sig2, a, b : std_logic_vector(25 downto 0);
-signal sign1, sign2 : std_logic;
+signal sign1, sign2, signA, signB : std_logic;
 
 signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
 signal comp8_result, comp23_result small_ALU_c_out : std_logic;
@@ -163,14 +163,35 @@ begin
 	);
 
 	--set the value of shiftR_input <= exp_diff
+	shiftR_input <= to_integer(unsigned(exp_diff));
 
 	-- set a and b
-	process()
+	process(sig1, sig2, comp8_result, comp23_result, exp_diff)
 	begin
 		if comp8_result = '1' then 
-			
+			a <= sig2;
+			b <= sig1;
+			signA <= sign2;
+			signB <= sign1;
 		else
-
+			if exp_diff = "00000000" then
+				if comp23_result = '1' then
+					a <= sig2;
+					b <= sig1;
+					signA <= sign2;
+					signB <= sign1;
+				else
+					a <= sig1;
+					b <= sig2;
+					signA <= sign1;
+					signB <= sign2;
+				end if;
+			else
+				a <= sig1;
+				b <= sig2;
+				signA <= sign1;
+				signB <= sign2;
+			end if;
 		end if;
 	end process;
 
@@ -183,8 +204,27 @@ begin
 		Big_ALU_output, Big_ALU_cout
 	);
 	-- set the Big_ALU c_in and input_control
-	process()
+	process((ADDITION), sign1, sign2)
 	begin
+		if (ADDITION) then
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				Big_ALU_input_control <= '0';
+				Big_ALU_cin <= '0';
+			else
+				Big_ALU_input_control <= '1';
+				Big_ALU_cin <= '1';
+			end if;
+		else -- SUBTRACTION
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				Big_ALU_input_control <= '1';
+				Big_ALU_cin <= '1';
+			else
+				Big_ALU_input_control <= '0';
+				Big_ALU_cin <= '0';
+			end if;
+		end if;
 	end process;
+
+
 end Behavioral;
 
