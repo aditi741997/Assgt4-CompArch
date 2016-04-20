@@ -1,0 +1,7 @@
+vhdl work "src/shift8.vhd"
+vhdl work "src/shift4.vhd"
+vhdl work "src/shift2.vhd"
+vhdl work "src/shift16.vhd"
+vhdl work "src/shift1.vhd"
+vhdl work "src/shifter.vhd"
+vhdl work "src/mult_unit.vhd"

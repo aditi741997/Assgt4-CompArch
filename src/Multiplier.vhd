@@ -53,7 +53,7 @@ port(A,B:in std_logic_vector(31 downto 0);
 OTP:out std_logic_vector(31 downto 0));
 end component;
 
-signal otps:std_logic_vector(31 downto 0):=(others => '0');
+--signal otps:std_logic_vector(31 downto 0):=(others => '0');
 
 begin
 
