@@ -30,11 +30,31 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity coAdder_Basic is
+port(
+	a : in std_logic;
+	b : in std_logic;
+	c : in std_logic;
+	input_control : in std_logic;
+	c_out : out std_logic;
+	s : out std_logic
+);
 end coAdder_Basic;
 
 architecture Behavioral of coAdder_Basic is
 
 begin
+process (a,b,c,input_control)
+	variable aa : std_logic;
+begin
+	
+	if input_control = '1' then aa := not a;
+	else aa := a;
+	end if;
+
+	c_out <= (aa and b) or ((aa xor b) and c);
+	s <= aa xor b xor c;
+
+end process;
 
 
 end Behavioral;
