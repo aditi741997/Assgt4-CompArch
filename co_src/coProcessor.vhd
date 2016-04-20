@@ -150,14 +150,19 @@ signal final_sign : std_logic;
 
 
 -- Normalisn
-signal BigALU_norm_in : std_logic_Vector(26 downto 0);
-signal Big_ALU_out_norm : std_logic_vector(25 downto 0);
+signal BigALU_norm_in : std_logic_Vector(27 downto 0);
+signal Big_ALU_out_norm : std_logic_vector(26 downto 0);
 signal norm_shift_Exp : integer range 0 to 26;
 signal norm_shift_lr, norm_iszero : std_logic;
 signal final_ALU_mentissa : std_logic_Vector(22 downto 0);
 signal final_ALU_expo,  ALU_expo_norm1 : std_logic_vector(7 downto 0);
 signal norm_changeExpo : std_logic_vector(7 downto 0);
-signal norm_again : std_logic;
+signal norm_again, round_cin, Rounded_ment_cout : std_logic;
+signal Rounded_mentissa: std_logic_Vector(23 downto 0);
+signal Norm_again_in : std_logic_Vector(27 downto 0);
+signal Norm_again_out : std_logic_VEctor(26 downto 0);
+signal norm2_shift_exp : integer range 0 to 26;
+signal norm2_shift_lr, norm2_iszero : std_logic;
 
 begin
 	cp_opc <= instruction(23 downto 20);
@@ -305,6 +310,7 @@ begin
 
 	BigALU_norm_in(26 downto 0) <= Big_ALU_output(26 downto 0);
 	BigALU_norm_in(27) <= Big_ALU_cout;
+	
 -- Normalisation:
 
 	Normalise : coShiftLR_Nml port map(
@@ -346,8 +352,8 @@ begin
 	
 	-- ALU expo norm 1 is changed expo.
 	
-	-- H/W rounding
-	
+	-- H/W rounding :
+	-- set round_cin
 	Rounding:process(Big_ALU_out_norm)
 	begin
 		if norm_iszero = '0' then
@@ -356,13 +362,28 @@ begin
 				final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
 				final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
 				norm_again <= '0';
+				round_cin <= '0';
 			else
 				if Big_ALU_out_norm(1) = '1' then
 					-- add 1 to LSB
 					norm_again <= '1';
-					
+					round_cin <= '1';				
 				else
-					-- see S bit
+					-- see S bit as R = 0 G=1
+					if Big_ALU_out_norm(0) = '1' then
+						norm_again <= '1';
+						round_cin <= '1';
+					else
+						if Big_ALU_out_norm(3) = '0' then
+							norm_again <= '0';
+							round_cin <= '0';
+							final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
+							final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
+						else
+							norm_again <= '1';
+							round_cin <= '1';							
+						end if;
+					end if;
 				end if;
 			end if;
 		else NULL;
@@ -370,13 +391,62 @@ begin
 	end process;
 	
 	Round_Mentissa: coAdder26 port map(
-		Big_ALU_out_norm(25 downto 3),
-		"00000000000000000000000",
+		Big_ALU_out_norm(26 downto 3),
+		"000000000000000000000000",
 		round_cin,
 		'0',
 		Rounded_mentissa,
 		Rounded_ment_cout		
 	);
+	-- rounded mentissa has 24 bits. to normalise again, add cout+00 in the end
+	Norm_again_in(26 downto 3) <= Rounded_mentissa;
+	Norm_again_in(27) <= Rounded_ment_cout;
+	Norm_again_in(2 downto 0) <= "000";
+	
+	NormaliseAgain : coShiftLR_Nml port map(
+		Norm_again_in,
+		Norm_again_out,
+		norm2_shift_exp,
+		norm2_shift_lr,
+		norm2_iszero
+	);
+	
+	-- normalise again
+	process(norm_again, Norm_again_out, norm2_shift_exp)
+	begin
+		if (norm_again = '1') then
+		-- change expo again
+			final_ALU_mentissa(22 downto 0) <= Norm_again_out(25 downto 3);
+			if (norm2_shift_lr = '0') then
+				norm2_changeExpo <= std_logic_vector(to_unsigned(norm2_shift_exp, 8));
+				expo_norm2_cin <= '0';
+			else
+				norm2_changeExpo <= not (std_logic_vector(to_unsigned(norm2_shift_exp, 8)));
+				expo_norm2_cin <= '1';
+			end if;
+		else
+			-- do nothing
+			norm2_changeExpo <= "00000000";
+			expo_norm2_cin <= '0';
+		end if;
+	end process;
+	
+		AddExpo2 : coAdder8 port map(
+		ALU_expo_norm1,
+		norm2_changeExpo,
+		expo_norm2_cin,
+		'0',
+		ALU_norm2_final,
+		expo_norm2_cout
+	);
+ -- Done with second Norm after Round off.
+ 
+	finalExpo:process(norm_again,ALU_norm2_final)
+	begin
+		if norm_again = '1' then
+			final_ALU_expo <= ALU_norm2_final;
+		end if;
+	end process;
 	
 end Behavioral;
 
