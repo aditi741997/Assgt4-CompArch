@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "D:/Sem4/CompArch/Lab/Assgt4-CompArch/mult_unit_isim_beh.exe" -prj "D:/Sem4/CompArch/Lab/Assgt4-CompArch/mult_unit_beh.prj" "work.mult_unit" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_shiftR_isim_beh.exe" -prj "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_shiftR_beh.prj" "work.Test_shiftR" 
