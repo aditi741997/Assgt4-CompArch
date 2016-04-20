@@ -266,9 +266,9 @@ begin
 		Big_ALU_output, Big_ALU_cout
 	);
 	-- set the Big_ALU c_in and input_control
-	process((ADDITION), sign1, sign2)
+	process(cp_opc, sign1, sign2)
 	begin
-		if (ADDITION) then
+		if cp_opc(3 downto 1)="001" then
 			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
 				Big_ALU_input_control <= '0';
 				Big_ALU_cin <= '0';
@@ -288,9 +288,9 @@ begin
 	end process;
 
 	-- setting final sign bit
-	process((ADDITION), sign1, sign2, fp1_is_greater)
+	process(cp_opc, sign1, sign2, fp1_is_greater)
 	begin
-		if (ADDITION) then
+		if cp_opc(3 downto 1)="001" then
 			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
 				final_sign <= sign1;
 			elsif sign1='0' and sign2='1' then
@@ -298,7 +298,7 @@ begin
 			else 
 				final_sign <= fp1_is_greater;
 			end if;
-		elsif(SUBTRACTION) -- SUBTRACTION
+		elsif cp_opc(3 downto 1)="010" -- SUBTRACTION
 			if (sign1='0' and sign2='1') or (sign1='1' and sign2='0') then
 				final_sign <= sign1;
 			elsif sign1='0' and sign2='0' then
@@ -306,7 +306,7 @@ begin
 			else
 				final_sign <= fp1_is_greater;
 			end if;
-		else(MULTIPLICATION)
+		else --(MULTIPLICATION)
 			final_sign <= sign1 xor sign2;
 		end if;
 	end process;
@@ -474,7 +474,7 @@ begin
 			if ((MULTIPLY)) then 
 				cWd <= final_addsub; --calculated_value
 			else
-				cWd <= final_addsub; --calculated_value
+				cWd <= final_addsub;yo --calculated_value
 			end if;
 		end if;
 	end process;
