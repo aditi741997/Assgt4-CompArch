@@ -1,0 +1,2 @@
+vhdl isim_temp "co_src/coShiftLR_Nml.vhd"
+vhdl isim_temp "co_src/Test_shift_Nml.vhd"

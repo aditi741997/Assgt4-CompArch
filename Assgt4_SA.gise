@@ -31,10 +31,15 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_shiftR_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_shiftR_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_shiftR_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_shift_Nml_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_shift_Nml_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_shift_Nml_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_shift_Nml_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="mult_unit_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
@@ -45,21 +50,65 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1461144066" xil_pn:in_ck="-6624728457413002244" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1461144066">
+    <transform xil_pn:end_ts="1461148372" xil_pn:in_ck="8286734196612124656" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1461148372">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="InputRemoved"/>
-      <status xil_pn:value="OutputChanged"/>
-      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
+      <outfile xil_pn:name="co_src/Test_shift_Nml.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder23.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder8.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder_Basic.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder_Mult.vhd"/>
+      <outfile xil_pn:name="co_src/coMult_Unit.vhd"/>
+      <outfile xil_pn:name="co_src/coMultiplier.vhd"/>
+      <outfile xil_pn:name="co_src/coRegister_Array.vhd"/>
+      <outfile xil_pn:name="co_src/coShiftLR_Nml.vhd"/>
+      <outfile xil_pn:name="co_src/coShiftR_ALU.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult1.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult16.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult2.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult4.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult8.vhd"/>
+      <outfile xil_pn:name="co_src/coShifter_Mult.vhd"/>
+      <outfile xil_pn:name="src/ALU.vhd"/>
+      <outfile xil_pn:name="src/ALU_Basic.vhd"/>
+      <outfile xil_pn:name="src/Adder4.vhd"/>
+      <outfile xil_pn:name="src/Adder4_Unit.vhd"/>
+      <outfile xil_pn:name="src/Branch_Predictor.vhd"/>
+      <outfile xil_pn:name="src/Control.vhd"/>
+      <outfile xil_pn:name="src/DataPath.vhd"/>
+      <outfile xil_pn:name="src/Data_Forward.vhd"/>
+      <outfile xil_pn:name="src/Data_Memory.vhd"/>
+      <outfile xil_pn:name="src/EXMem_Test.vhd"/>
+      <outfile xil_pn:name="src/EX_Mem.vhd"/>
+      <outfile xil_pn:name="src/Flags.vhd"/>
+      <outfile xil_pn:name="src/ID_EX.vhd"/>
+      <outfile xil_pn:name="src/IF_ID.vhd"/>
+      <outfile xil_pn:name="src/IF_ID_Test.vhd"/>
+      <outfile xil_pn:name="src/InMem.vhd"/>
+      <outfile xil_pn:name="src/Mem_WB.vhd"/>
+      <outfile xil_pn:name="src/MicroMux.vhd"/>
+      <outfile xil_pn:name="src/MiniMux.vhd"/>
+      <outfile xil_pn:name="src/Multiplier.vhd"/>
+      <outfile xil_pn:name="src/Mux.vhd"/>
+      <outfile xil_pn:name="src/Mux4.vhd"/>
+      <outfile xil_pn:name="src/PCtr.vhd"/>
+      <outfile xil_pn:name="src/Register_Array.vhd"/>
+      <outfile xil_pn:name="src/Test_Control.vhd"/>
+      <outfile xil_pn:name="src/Test_DataPath.vhd"/>
+      <outfile xil_pn:name="src/mult_unit.vhd"/>
+      <outfile xil_pn:name="src/shift1.vhd"/>
+      <outfile xil_pn:name="src/shift16.vhd"/>
+      <outfile xil_pn:name="src/shift2.vhd"/>
+      <outfile xil_pn:name="src/shift4.vhd"/>
+      <outfile xil_pn:name="src/shift8.vhd"/>
+      <outfile xil_pn:name="src/shifter.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1461142818" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="496447575826930309" xil_pn:start_ts="1461142818">
+    <transform xil_pn:end_ts="1461147842" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="9152486882708589561" xil_pn:start_ts="1461147842">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1461142818" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5761163878020874831" xil_pn:start_ts="1461142818">
+    <transform xil_pn:end_ts="1461147842" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7256358634503375653" xil_pn:start_ts="1461147842">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -67,37 +116,76 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1461144066" xil_pn:in_ck="-6624728457413002244" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1461144066">
+    <transform xil_pn:end_ts="1461148372" xil_pn:in_ck="8286734196612124656" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1461148372">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="InputRemoved"/>
-      <status xil_pn:value="OutputChanged"/>
-      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
+      <outfile xil_pn:name="co_src/Test_shift_Nml.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder23.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder8.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder_Basic.vhd"/>
+      <outfile xil_pn:name="co_src/coAdder_Mult.vhd"/>
+      <outfile xil_pn:name="co_src/coMult_Unit.vhd"/>
+      <outfile xil_pn:name="co_src/coMultiplier.vhd"/>
+      <outfile xil_pn:name="co_src/coRegister_Array.vhd"/>
+      <outfile xil_pn:name="co_src/coShiftLR_Nml.vhd"/>
+      <outfile xil_pn:name="co_src/coShiftR_ALU.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult1.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult16.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult2.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult4.vhd"/>
+      <outfile xil_pn:name="co_src/coShift_Mult8.vhd"/>
+      <outfile xil_pn:name="co_src/coShifter_Mult.vhd"/>
+      <outfile xil_pn:name="src/ALU.vhd"/>
+      <outfile xil_pn:name="src/ALU_Basic.vhd"/>
+      <outfile xil_pn:name="src/Adder4.vhd"/>
+      <outfile xil_pn:name="src/Adder4_Unit.vhd"/>
+      <outfile xil_pn:name="src/Branch_Predictor.vhd"/>
+      <outfile xil_pn:name="src/Control.vhd"/>
+      <outfile xil_pn:name="src/DataPath.vhd"/>
+      <outfile xil_pn:name="src/Data_Forward.vhd"/>
+      <outfile xil_pn:name="src/Data_Memory.vhd"/>
+      <outfile xil_pn:name="src/EXMem_Test.vhd"/>
+      <outfile xil_pn:name="src/EX_Mem.vhd"/>
+      <outfile xil_pn:name="src/Flags.vhd"/>
+      <outfile xil_pn:name="src/ID_EX.vhd"/>
+      <outfile xil_pn:name="src/IF_ID.vhd"/>
+      <outfile xil_pn:name="src/IF_ID_Test.vhd"/>
+      <outfile xil_pn:name="src/InMem.vhd"/>
+      <outfile xil_pn:name="src/Mem_WB.vhd"/>
+      <outfile xil_pn:name="src/MicroMux.vhd"/>
+      <outfile xil_pn:name="src/MiniMux.vhd"/>
+      <outfile xil_pn:name="src/Multiplier.vhd"/>
+      <outfile xil_pn:name="src/Mux.vhd"/>
+      <outfile xil_pn:name="src/Mux4.vhd"/>
+      <outfile xil_pn:name="src/PCtr.vhd"/>
+      <outfile xil_pn:name="src/Register_Array.vhd"/>
+      <outfile xil_pn:name="src/Test_Control.vhd"/>
+      <outfile xil_pn:name="src/Test_DataPath.vhd"/>
+      <outfile xil_pn:name="src/mult_unit.vhd"/>
+      <outfile xil_pn:name="src/shift1.vhd"/>
+      <outfile xil_pn:name="src/shift16.vhd"/>
+      <outfile xil_pn:name="src/shift2.vhd"/>
+      <outfile xil_pn:name="src/shift4.vhd"/>
+      <outfile xil_pn:name="src/shift8.vhd"/>
+      <outfile xil_pn:name="src/shifter.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1461144070" xil_pn:in_ck="-6624728457413002244" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-5509229034680449253" xil_pn:start_ts="1461144066">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="InputRemoved"/>
-      <status xil_pn:value="OutputChanged"/>
-      <status xil_pn:value="OutputRemoved"/>
-    </transform>
-    <transform xil_pn:end_ts="1461144070" xil_pn:in_ck="-9135480104572288146" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1335186843805582664" xil_pn:start_ts="1461144070">
+    <transform xil_pn:end_ts="1461148374" xil_pn:in_ck="8286734196612124656" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-7308300617418926333" xil_pn:start_ts="1461148372">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputRemoved"/>
-      <status xil_pn:value="OutputChanged"/>
-      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="Test_shift_Nml_beh.prj"/>
+      <outfile xil_pn:name="Test_shift_Nml_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1461148375" xil_pn:in_ck="7586542512774315663" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-5446439152752660912" xil_pn:start_ts="1461148374">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Test_shift_Nml_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
     </transform>
   </transforms>
 

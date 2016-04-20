@@ -39,12 +39,20 @@ architecture Behavioral of coAdder_Mult is
 signal Cs:std_logic_vector(32 downto 0):="000000000000000000000000000000000";
 
 component coAdder_Basic is
+port(
+	a : in std_logic;
+	b : in std_logic;
+	c : in std_logic;
+	input_control : in std_logic;
+	c_out : out std_logic;
+	s : out std_logic
+);
 end component;
 
 begin
 
 gen_Adder: for i in 47 downto 0 generate
-				add4: coAdder_Basic port map(A(i),B(i),Cs(i),OTP(i),Cs(i+1));
+				add4: coAdder_Basic port map(A(i),B(i),Cs(i),'0',Cs(i+1),OTP(i));
 				end generate gen_Adder;
 
 
