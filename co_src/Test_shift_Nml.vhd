@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   15:53:01 04/20/2016
+-- Create Date:   16:36:27 04/20/2016
 -- Design Name:   
--- Module Name:   D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/Test_shift_Nml.vhd
+-- Module Name:   D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/Test_Shift_Nml.vhd
 -- Project Name:  Assgt4_SA
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: coShiftLR_Nml
+-- VHDL Test Bench Created by ISE for module: coShift_Nml
 -- 
 -- Dependencies:
 -- 
@@ -32,18 +32,18 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY Test_shift_Nml IS
-END Test_shift_Nml;
+ENTITY Test_Shift_Nml IS
+END Test_Shift_Nml;
  
-ARCHITECTURE behavior OF Test_shift_Nml IS 
+ARCHITECTURE behavior OF Test_Shift_Nml IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT coShiftLR_Nml
+    COMPONENT coShift_Nml
     PORT(
          inp : IN  std_logic_vector(26 downto 0);
          outp : OUT  std_logic_vector(25 downto 0);
-         s_amt : OUT  integer range 0 to 26;
+         s_amt : OUT  integer;
          left_right : OUT  std_logic;
          is_zero : OUT  std_logic
         );
@@ -55,7 +55,7 @@ ARCHITECTURE behavior OF Test_shift_Nml IS
 
  	--Outputs
    signal outp : std_logic_vector(25 downto 0);
-   signal s_amt : integer range 0 to 26;
+   signal s_amt : integer;
    signal left_right : std_logic;
    signal is_zero : std_logic;
    -- No clocks detected in port list. Replace <clock> below with 
@@ -66,7 +66,7 @@ ARCHITECTURE behavior OF Test_shift_Nml IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: coShiftLR_Nml PORT MAP (
+   uut: coShift_Nml PORT MAP (
           inp => inp,
           outp => outp,
           s_amt => s_amt,
@@ -83,7 +83,6 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 100 ns;	
 
-   --   wait for <clock>_period*10;
 		inp <= "100000000000000000000010000";
       -- insert stimulus here 
 		wait for 20 ns;
@@ -97,6 +96,7 @@ BEGIN
 		
 		wait for 20 ns;
 		inp <= "000000000000000000000000000";
+      -- insert stimulus here 
 
       wait;
    end process;

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/Test_shift_Nml.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/Test_Shift_Nml.vhd";
 
 
 
@@ -51,8 +51,8 @@ LAB2:    xsi_set_current_line(84, ng0);
 LAB6:    *((char **)t1) = &&LAB7;
 
 LAB1:    return;
-LAB4:    xsi_set_current_line(87, ng0);
-    t2 = (t0 + 5414);
+LAB4:    xsi_set_current_line(86, ng0);
+    t2 = (t0 + 5306);
     t5 = (t0 + 3216);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -60,7 +60,7 @@ LAB4:    xsi_set_current_line(87, ng0);
     t9 = *((char **)t8);
     memcpy(t9, t2, 27U);
     xsi_driver_first_trans_fast(t5);
-    xsi_set_current_line(89, ng0);
+    xsi_set_current_line(88, ng0);
     t3 = (20 * 1000LL);
     t2 = (t0 + 2640);
     xsi_process_wait(t2, t3);
@@ -72,8 +72,8 @@ LAB5:    goto LAB4;
 
 LAB7:    goto LAB5;
 
-LAB8:    xsi_set_current_line(90, ng0);
-    t2 = (t0 + 5441);
+LAB8:    xsi_set_current_line(89, ng0);
+    t2 = (t0 + 5333);
     t5 = (t0 + 3216);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -81,7 +81,7 @@ LAB8:    xsi_set_current_line(90, ng0);
     t9 = *((char **)t8);
     memcpy(t9, t2, 27U);
     xsi_driver_first_trans_fast(t5);
-    xsi_set_current_line(92, ng0);
+    xsi_set_current_line(91, ng0);
     t3 = (20 * 1000LL);
     t2 = (t0 + 2640);
     xsi_process_wait(t2, t3);
@@ -93,8 +93,8 @@ LAB9:    goto LAB8;
 
 LAB11:    goto LAB9;
 
-LAB12:    xsi_set_current_line(93, ng0);
-    t2 = (t0 + 5468);
+LAB12:    xsi_set_current_line(92, ng0);
+    t2 = (t0 + 5360);
     t5 = (t0 + 3216);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -102,7 +102,7 @@ LAB12:    xsi_set_current_line(93, ng0);
     t9 = *((char **)t8);
     memcpy(t9, t2, 27U);
     xsi_driver_first_trans_fast(t5);
-    xsi_set_current_line(95, ng0);
+    xsi_set_current_line(94, ng0);
     t3 = (20 * 1000LL);
     t2 = (t0 + 2640);
     xsi_process_wait(t2, t3);
@@ -114,8 +114,8 @@ LAB13:    goto LAB12;
 
 LAB15:    goto LAB13;
 
-LAB16:    xsi_set_current_line(96, ng0);
-    t2 = (t0 + 5495);
+LAB16:    xsi_set_current_line(95, ng0);
+    t2 = (t0 + 5387);
     t5 = (t0 + 3216);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -123,7 +123,7 @@ LAB16:    xsi_set_current_line(96, ng0);
     t9 = *((char **)t8);
     memcpy(t9, t2, 27U);
     xsi_driver_first_trans_fast(t5);
-    xsi_set_current_line(98, ng0);
+    xsi_set_current_line(97, ng0);
     t3 = (20 * 1000LL);
     t2 = (t0 + 2640);
     xsi_process_wait(t2, t3);
@@ -135,8 +135,8 @@ LAB17:    goto LAB16;
 
 LAB19:    goto LAB17;
 
-LAB20:    xsi_set_current_line(99, ng0);
-    t2 = (t0 + 5522);
+LAB20:    xsi_set_current_line(98, ng0);
+    t2 = (t0 + 5414);
     t5 = (t0 + 3216);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -165,6 +165,6 @@ LAB27:    goto LAB25;
 extern void work_a_1026918660_2372691052_init()
 {
 	static char *pe[] = {(void *)work_a_1026918660_2372691052_p_0};
-	xsi_register_didat("work_a_1026918660_2372691052", "isim/Test_shift_Nml_isim_beh.exe.sim/work/a_1026918660_2372691052.didat");
+	xsi_register_didat("work_a_1026918660_2372691052", "isim/Test_Shift_Nml_isim_beh.exe.sim/work/a_1026918660_2372691052.didat");
 	xsi_register_executes(pe);
 }

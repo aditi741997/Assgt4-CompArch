@@ -1,2 +1,2 @@
-vhdl work "co_src/coShiftLR_Nml.vhd"
-vhdl work "co_src/Test_shift_Nml.vhd"
+vhdl work "co_src/coShift_Nml.vhd"
+vhdl work "co_src/Test_Shift_Nml.vhd"
