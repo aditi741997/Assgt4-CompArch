@@ -54,22 +54,22 @@ architecture Behavioral of coProcessor is
 
 	component coAdder23 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (26 downto 0);
+		b : in std_logic_vector (26 downto 0);
 		c_in : in std_logic := '0';
 		input_control : in std_logic;
-		c : out std_logic_vector (25 downto 0);
+		c : out std_logic_vector (26 downto 0);
 		c_out : out std_logic
 	);
 	end component;
 
 	component coAdder8 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (7 downto 0);
+		b : in std_logic_vector (7 downto 0);
 		c_in : in std_logic := '0';
 		input_control : in std_logic;
-		c : out std_logic_vector (25 downto 0);
+		c : out std_logic_vector (7 downto 0);
 		c_out : out std_logic
 	);
 	end component;
@@ -84,8 +84,8 @@ architecture Behavioral of coProcessor is
 
 	component coComparer23 is
 	Port(
-		a : in std_logic_vector (25 downto 0);
-		b : in std_logic_vector (25 downto 0);
+		a : in std_logic_vector (26 downto 0);
+		b : in std_logic_vector (26 downto 0);
 		s : out std_logic
 	);
 	end component;
@@ -93,8 +93,15 @@ architecture Behavioral of coProcessor is
 	component coShiftR_ALU is
 	port(
 		s_amt : in integer range 0 to 255;
-		inp: in std_logic_Vector(25 downto 0);
-		outp : out std_logic_Vector(25 downto 0)
+		inp: in std_logic_Vector(26 downto 0);
+		outp : out std_logic_Vector(26 downto 0)
+	);
+	end component;
+
+	component coMultiplier is
+	port(
+		sig1,sig2 : in std_logic_Vector(23 downto 0);
+		mult_out : out std_logic_Vector(26 downto 0)
 	);
 	end component;
 
@@ -123,17 +130,21 @@ signal fp1, fp2, cWd : std_logic_vector(31 downto 0);
 signal regwrite : std_logic;
 
 signal exp1, exp2 : std_logic_vector(7 downto 0);
-signal sig1, sig2, a, b : std_logic_vector(25 downto 0);
-signal sign1, sign2 : std_logic;
+signal sig1, sig2, a, b : std_logic_vector(26 downto 0);
+signal sign1, sign2, signA, signB : std_logic;
+signal fp1_is_greater : std_logic;
 
 signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
 signal comp8_result, comp23_result, small_ALU_c_out : std_logic;
 
 signal shiftR_amt : integer;
-signal shiftR_outp : std_logic_vector(25 downto 0);
+signal shiftR_outp : std_logic_vector(26 downto 0);
 
 signal Big_ALU_cin, Big_ALU_cout, Big_ALU_input_control : std_logic;
-signal Big_ALU_output : std_logic_vector(25 downto 0);
+signal Big_ALU_output : std_logic_vector(26 downto 0);
+
+signal mult_out : std_logic_vector(26 downto 0);
+signal final_sign : std_logic;
 
 
 
@@ -154,11 +165,11 @@ begin
 	cRd <= instruction(15 downto 12);
 	cRm <= instruction(3 downto 0);
 	sig1(2 downto 0) <= "000";
-	sig1(24 downto 3) <= fp1(22 downto 0);
-	sig1(25) <= '1';
+	sig1(25 downto 3) <= fp1(22 downto 0);
+	sig1(26) <= '1';
 	sig2(2 downto 0) <= "000";
-	sig2(24 downto 3) <= fp2(22 downto 0);
-	sig2(25) <= '1';
+	sig2(25 downto 3) <= fp2(22 downto 0);
+	sig2(26) <= '1';
 	exp1 <= fp1(30 downto 23);
 	exp2 <= fp2(30 downto 23);
 	sign1 <= fp1(31);
@@ -169,6 +180,11 @@ begin
 		cWd, regwrite,
 		fp1, fp2,
 		clock
+	);
+
+	MUL : coMultiplier port map(
+		sig1(26 downto 3), sig2(26 downto 3),
+		mult_out
 	);
 
 	Comp8 : coComparer8 port map(
@@ -196,14 +212,39 @@ begin
 	);
 
 	--set the value of shiftR_input <= exp_diff
+	shiftR_input <= to_integer(unsigned(exp_diff));
 
 	-- set a and b
-	process()
+	process(sig1, sig2, comp8_result, comp23_result, exp_diff)
 	begin
 		if comp8_result = '1' then 
-			
+			a <= sig2;
+			b <= sig1;
+			signA <= sign2;
+			signB <= sign1;
+			fp1_is_greater <= '1';
 		else
-
+			if exp_diff = "00000000" then
+				if comp23_result = '1' then
+					a <= sig2;
+					b <= sig1;
+					signA <= sign2;
+					signB <= sign1;
+					fp1_is_greater <= '1';
+				else
+					a <= sig1;
+					b <= sig2;
+					signA <= sign1;
+					signB <= sign2;
+					fp1_is_greater <= '0';
+				end if;
+			else
+				a <= sig1;
+				b <= sig2;
+				signA <= sign1;
+				signB <= sign2;
+				fp1_is_greater <= '0';
+			end if;
 		end if;
 	end process;
 
@@ -216,8 +257,49 @@ begin
 		Big_ALU_output, Big_ALU_cout
 	);
 	-- set the Big_ALU c_in and input_control
-	process()
+	process((ADDITION), sign1, sign2)
 	begin
+		if (ADDITION) then
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				Big_ALU_input_control <= '0';
+				Big_ALU_cin <= '0';
+			else
+				Big_ALU_input_control <= '1';
+				Big_ALU_cin <= '1';
+			end if;
+		else -- SUBTRACTION
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				Big_ALU_input_control <= '1';
+				Big_ALU_cin <= '1';
+			else
+				Big_ALU_input_control <= '0';
+				Big_ALU_cin <= '0';
+			end if;
+		end if;
+	end process;
+
+	-- setting final sign bit
+	process((ADDITION), sign1, sign2, fp1_is_greater)
+	begin
+		if (ADDITION) then
+			if (sign1='0' and sign2='0') or (sign1='1' and sign2='1') then
+				final_sign <= sign1;
+			elsif sign1='0' and sign2='1' then
+				final_sign <= not fp1_is_greater;
+			else 
+				final_sign <= fp1_is_greater;
+			end if;
+		elsif(SUBTRACTION) -- SUBTRACTION
+			if (sign1='0' and sign2='1') or (sign1='1' and sign2='0') then
+				final_sign <= sign1;
+			elsif sign1='0' and sign2='0' then
+				final_sign <= not fp1_is_greater;
+			else
+				final_sign <= fp1_is_greater;
+			end if;
+		else(MULTIPLICATION)
+			final_sign <= sign1 xor sign2;
+		end if;
 	end process;
 
 	BigALU_norm_in(26 downto 0) <= Big_ALU_output(26 downto 0);
@@ -294,6 +376,6 @@ begin
 		Rounded_mentissa,
 		Rounded_ment_cout		
 	);
-
+	
 end Behavioral;
 

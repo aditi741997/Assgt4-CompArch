@@ -31,8 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity coComparer23 is
 Port(
-	a : in std_logic_vector (25 downto 0);
-	b : in std_logic_vector (25 downto 0);
+	a : in std_logic_vector (26 downto 0);
+	b : in std_logic_vector (26 downto 0);
 	s : out std_logic
 );
 end coComparer23;
@@ -48,16 +48,16 @@ architecture Behavioral of coComparer23 is
 	);
 	end component;
 
-	signal carry : std_logic_vector(26 downto 0) := (others => '0');
+	signal carry : std_logic_vector(27 downto 0) := (others => '0');
 
 begin
 
 	GEN:
-	for I in 0 to 25 generate
+	for I in 0 to 26 generate
 		coAdder : coComparer_Basic port map (a(I), b(I), carry(I), carry(I+1));
 	end generate GEN;
 
 	carry(0) <= '0';
-	s <= carry(26);
+	s <= carry(27);
 
 end Behavioral;
