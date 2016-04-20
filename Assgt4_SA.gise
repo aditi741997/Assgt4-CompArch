@@ -53,6 +53,8 @@
     <transform xil_pn:end_ts="1461150517" xil_pn:in_ck="4300515068248316690" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1461150517">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
       <outfile xil_pn:name="co_src/Test_Shift_Nml.vhd"/>
       <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
       <outfile xil_pn:name="co_src/coAdder23.vhd"/>
@@ -119,6 +121,7 @@
     <transform xil_pn:end_ts="1461150517" xil_pn:in_ck="4300515068248316690" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1461150517">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="co_src/Test_Shift_Nml.vhd"/>
       <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
       <outfile xil_pn:name="co_src/coAdder23.vhd"/>
@@ -173,6 +176,9 @@
     <transform xil_pn:end_ts="1461150520" xil_pn:in_ck="4300515068248316690" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="2427597231479509699" xil_pn:start_ts="1461150517">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Test_Shift_Nml_isim_beh.exe"/>
       <outfile xil_pn:name="Test_shift_Nml_beh.prj"/>
       <outfile xil_pn:name="fuse.log"/>
@@ -183,6 +189,9 @@
     <transform xil_pn:end_ts="1461150520" xil_pn:in_ck="1314076165567817519" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3197476332039044624" xil_pn:start_ts="1461150520">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="Test_shift_Nml_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
