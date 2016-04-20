@@ -33,6 +33,7 @@ entity coProcessor is
 port(
 	clock : in std_logic;
 	instruction : in std_logic_vector(31 downto 0);
+	reg_data_in : in std_logic_Vector(31 downto 0);
 	result : out std_logic_vector(31 downto 0)
 );
 end coProcessor;
@@ -155,14 +156,14 @@ signal Big_ALU_out_norm : std_logic_vector(26 downto 0);
 signal norm_shift_Exp : integer range 0 to 26;
 signal norm_shift_lr, norm_iszero : std_logic;
 signal final_ALU_mentissa : std_logic_Vector(22 downto 0);
-signal final_ALU_expo,  ALU_expo_norm1 : std_logic_vector(7 downto 0);
-signal norm_changeExpo : std_logic_vector(7 downto 0);
+signal final_ALU_expo,  ALU_expo_norm1, ALU_norm2_final : std_logic_vector(7 downto 0);
+signal norm_changeExpo, norm2_changeExpo : std_logic_vector(7 downto 0);
 signal norm_again, round_cin, Rounded_ment_cout : std_logic;
 signal Rounded_mentissa: std_logic_Vector(23 downto 0);
 signal Norm_again_in : std_logic_Vector(27 downto 0);
 signal Norm_again_out : std_logic_VEctor(26 downto 0);
 signal norm2_shift_exp : integer range 0 to 26;
-signal norm2_shift_lr, norm2_iszero : std_logic;
+signal norm2_shift_lr, norm2_iszero, expo_norm1_cout, expo_norm2_cout, expo_norm1_cin, expo_norm2_cin : std_logic;
 
 begin
 	cp_opc <= instruction(23 downto 20);
@@ -430,7 +431,7 @@ begin
 		end if;
 	end process;
 	
-		AddExpo2 : coAdder8 port map(
+	AddExpo2 : coAdder8 port map(
 		ALU_expo_norm1,
 		norm2_changeExpo,
 		expo_norm2_cin,
@@ -438,6 +439,7 @@ begin
 		ALU_norm2_final,
 		expo_norm2_cout
 	);
+	
  -- Done with second Norm after Round off.
  
 	finalExpo:process(norm_again,ALU_norm2_final)

@@ -145,6 +145,15 @@ port(
 );
 end component;
 
+component coProcessor is
+port(
+	clock : in std_logic;
+	instruction : in std_logic_vector(31 downto 0);
+	reg_data_in : in std_logic_Vector(31 downto 0);
+	result : out std_logic_vector(31 downto 0)
+);
+end component;
+
 component IF_ID is
 port(
 	instruction_in : in std_logic_vector(31 downto 0);
@@ -309,6 +318,7 @@ end component;
 	signal PC_off_final, PC4_final : std_logic_vector(31 downto 0);
 
 	signal bubble_ins : std_logic_vector(31 downto 0);
+	signal coproc_out : std_logic_vector(31 downto 0);
 	
 	--signal Stall : std_logic;
 begin
@@ -492,6 +502,13 @@ IDEX : ID_EX port map(
 );
 
 -- predicted psrc passed on through 2 walls.
+
+CoProc : coProcessor port map(
+	clk,
+	Instruction_IDEX,
+	rd2_out,
+	coproc_out
+);
 
 ext8(7 downto 0) <= imm8_out_2;
 ext8(31 downto 8) <= "000000000000000000000000";

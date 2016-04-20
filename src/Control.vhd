@@ -69,6 +69,8 @@ port(
 	fwdA, fwdB : out std_logic_vector(1 downto 0);
 	fwdC : out std_logic
 );
+
+
 end component;
 
 	signal mul : std_logic;
@@ -140,7 +142,7 @@ begin
 		fwdB_f,
 		fwdC_f
 	);
-	-- SUNN... Voice call ho sakta hai? haan lol
+		
 	cond <= ins(31 downto 28);
 	instruction_type <= ins(27 downto 26);
 	immediate <= ins(25);
