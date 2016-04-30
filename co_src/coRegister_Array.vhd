@@ -48,7 +48,7 @@ architecture Behavioral of coRegister_Array is
 	type register_array is array (0 to 15) of std_logic_vector(31 downto 0);
 	signal reg : register_array := ( "00000000000000000000000000000000"
 		,"00111111111111111111111111111111" ,
-		 "00111100011000000000000000000001",others => (others => 'U'));
+		 "00111111111000000000000000000001",others => (others => 'U'));
 --		  s--------bb
 begin
 -- 0 01111111 10000000000000000000000

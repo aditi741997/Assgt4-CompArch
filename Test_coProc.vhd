@@ -50,12 +50,18 @@
      tb : PROCESS
      BEGIN
 
-        wait for 100 ns; -- wait until global set/reset completes
-
-        -- Add user defined stimulus here
+        wait for 5 ns;
+      -- insert stimulus here 
+      instruction <= "11101110001000010000000000000010";
+      wait for clock_period;
+      instruction <= "11101110010000010000000000000010";
+		wait for clock_period;
+		instruction <= "00000000000000000000000000000000";
+      wait;
 
         wait; -- will wait forever
      END PROCESS tb;
   --  End Test Bench 
 
   END;
+--1110 1110 0010 0001 0000 00000000 0010

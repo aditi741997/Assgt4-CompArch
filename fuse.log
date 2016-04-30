@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-Running: F:\Xilinx\14.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_isim_beh.exe -prj C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_beh.prj work.testbench 
-=======
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProcessor_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProcessor_beh.prj" "work.Test_coProcessor" 
->>>>>>> Stashed changes
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_isim_beh.exe" -prj "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_beh.prj" "work.testbench" 
 ISim P.49d (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
@@ -27,13 +23,7 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder8.
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder26.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder23.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd" into library work
-<<<<<<< Updated upstream
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProc.vhd" into library work
-Starting static elaboration
-ERROR:HDLCompiler:410 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coMultiplier.vhd" Line 66: Expression has 24 elements ; expected 48
-ERROR:Simulator:777 - Static elaboration of top level VHDL design unit testbench in library work failed
-=======
-Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/Test_coProcessor.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
@@ -61,11 +51,10 @@ Compiling architecture behavioral of entity coAdder23 [coadder23_default]
 Compiling architecture behavioral of entity coShiftLR_Nml [coshiftlr_nml_default]
 Compiling architecture behavioral of entity coAdder26 [coadder26_default]
 Compiling architecture behavioral of entity coProcessor [coprocessor_default]
-Compiling architecture behavior of entity test_coprocessor
+Compiling architecture behavior of entity testbench
 Time Resolution for simulation is 1ps.
-Waiting for 14 sub-compilation(s) to finish...
+Waiting for 13 sub-compilation(s) to finish...
 Compiled 46 VHDL Units
-Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProcessor_isim_beh.exe
-Fuse Memory Usage: 38320 KB
-Fuse CPU Usage: 812 ms
->>>>>>> Stashed changes
+Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_isim_beh.exe
+Fuse Memory Usage: 37624 KB
+Fuse CPU Usage: 890 ms

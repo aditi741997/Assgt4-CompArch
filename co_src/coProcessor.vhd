@@ -328,13 +328,13 @@ begin
 	-- Integrate this with the mult value
 
 	-- setting the normalization value
-	process(cp_opc, BigALU_norm_in_temp, mult_out)
+	process(cp_opc, BigALU_norm_in, mult_out)
 	begin
 		if cp_opc(3 downto 1)="100" then
 			norm_in <= mult_out;
 		else norm_in <= BigALU_norm_in;
 		end if;
-	end process
+	end process;
 	
 -- Normalisation:
 
@@ -495,17 +495,11 @@ begin
 				fp2 <= fp2_temp;
 				cRd_temp <= cRd;
 				regwrite <= '1';
-				cWd <= reg_data_in;
-			end if;
-		else
-			fp1 <= fp1_temp;
-			fp2 <= fp2_temp;
-			cRd_temp <= cRd;
-			regwrite <= '1';
-			if (cp_opc(3 downto 1) = "100") then 	-- mult
-				cWd <= final_addsub; --calculated_value
-			else
-				cWd <= final_addsub; --calculated_value
+				if (cp_opc(3 downto 1) = "100") then 	-- mult
+					cWd <= final_addsub; --calculated_value
+				else
+					cWd <= final_addsub; --calculated_value
+				end if;
 			end if;
 		else regwrite <= '0';
 		end if;

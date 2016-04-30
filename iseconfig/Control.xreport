@@ -1,15 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <ImplementationReportsDirectory>C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch\</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch</ImplementationReportsDirectory>
   <ModuleName>Control</ModuleName>
-<<<<<<< Updated upstream
-  <DateModified>2016-04-30T18:00:06</DateModified>
-=======
-  <DateModified>2016-04-22T00:41:54</DateModified>
->>>>>>> Stashed changes
+  <DateInitialized>2016-04-30T18:55:20</DateInitialized>
+  <DateModified>2016-04-30T18:56:19</DateModified>
   <SavedFilePath>C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/iseconfig/Control.xreport</SavedFilePath>
-  <DateInitialized>2016-04-12T11:38:32</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
 </report-views>
