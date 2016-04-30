@@ -1,6 +1,6 @@
 ISim log file
-Running: C:\Users\Shreyan\Desktop\LOL\Assgt4-CompArch\testbench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_isim_beh.wdb 
-ISim P.49d (signature 0x7708f090)
+Running: D:\Sem4\CompArch\Lab\Assgt4-CompArch\testbench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/Sem4/CompArch/Lab/Assgt4-CompArch/testbench_isim_beh.wdb 
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -15,61 +15,14 @@ at 0 ps, Instance /testbench/uut/RF/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' 
 at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
 at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
 Finished circuit initialization process.
-ISim P.49d (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-at 0 ps, Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 0 ps, Instance /testbench/uut/RF/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-Finished circuit initialization process.
 at 5 ns(6), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(7), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(8), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-at 0 ps, Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 0 ps, Instance /testbench/uut/RF/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-Finished circuit initialization process.
-at 5 ns(6), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(7), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(8), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-at 0 ps, Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 0 ps, Instance /testbench/uut/RF/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
-Finished circuit initialization process.
-at 5 ns(6), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(7), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(8), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -88,7 +41,7 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -107,7 +60,7 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -126,7 +79,7 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -145,7 +98,7 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -164,7 +117,7 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
@@ -183,7 +136,26 @@ at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalu
 at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-ISim P.49d (signature 0x7708f090)
+ISim P.20131013 (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+at 0 ps, Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 0 ps, Instance /testbench/uut/RF/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+at 0 ps, Instance /testbench/uut/RF/ : Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+Finished circuit initialization process.
+at 5 ns(6), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(7), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(8), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(9), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(10), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(11), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+at 5 ns(12), Instance /testbench/uut/ : Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
