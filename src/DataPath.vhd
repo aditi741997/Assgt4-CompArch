@@ -319,6 +319,7 @@ end component;
 
 	signal bubble_ins : std_logic_vector(31 downto 0);
 	signal coproc_out : std_logic_vector(31 downto 0);
+	signal EXMEM_in : std_logic_vector(31 downto 0);
 	
 	--signal Stall : std_logic;
 begin
@@ -577,8 +578,17 @@ ALU_sa : ALU port map(
 	Mul_sel_final
 );
 
+EXMEM_inp:process(alu_out,coproc_out)
+begin
+	if (Instruction_IDEX(27 downto 26) = "11" and Instruction_IDEX(4) = '1' and Instruction_IDEX(20) = '0') then
+		EXMEM_in <= coproc_out;
+	else
+		EXMEM_in <= alu_out;
+	end if;
+end process;
+
 EXMEM : EX_Mem port map(
-	alu_out,
+	EXMEM_in,
 	rd2_out,
 	wad_out_2,
 	temp_2(4), temp_2(3), temp_2(2) and p, temp_2(1) and p, temp_2(0),

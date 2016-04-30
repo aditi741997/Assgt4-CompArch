@@ -56,7 +56,15 @@
       wait for clock_period;
       instruction <= "11101110010000010000000000000010";
 		wait for clock_period;
+		instruction <= "11101110100000111101000000000100";
+		wait for clock_period;
+		instruction <= "11101110001001010111000000000110";
+		wait for clock_period;
+		reg_data_in <= "01010101010101010101010101010101";
+		instruction <= "11101110001011100111000000011110";
+		wait for clock_period;
 		instruction <= "00000000000000000000000000000000";
+
       wait;
 
         wait; -- will wait forever
