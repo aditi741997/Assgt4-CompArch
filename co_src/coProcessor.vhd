@@ -312,7 +312,13 @@ begin
 	end process;
 
 	BigALU_norm_in(26 downto 0) <= Big_ALU_output(26 downto 0);
-	BigALU_norm_in(27) <= Big_ALU_cout;
+	
+--	NormaliseThis:process()
+--	begin
+--		if 
+--	end process;
+	
+	BigALU_norm_in(27) <= Big_ALU_cout; -- NOT IF SUBTRACTION! TODO
 	
 -- Normalisation:
 
@@ -328,11 +334,12 @@ begin
 	ChangeExpo:process(BigALU_norm_in)
 	begin
 		if (norm_iszero = '1') then
-			final_ALU_mentissa <= Big_ALU_out_norm(22 downto 0);
-			final_ALU_expo <= Big_ALU_out_norm(7 downto 0);
 			norm_again <= '0';
+			norm_changeExpo <= Big_ALU_out_norm(7 downto 0);
+			expo_norm1_cin <= '0';
 			-- computation complete, no Round off
 		else
+			norm_again <= '1';
 			if (norm_shift_lr = '0') then
 				norm_changeExpo <= std_logic_vector(to_unsigned(norm_shift_exp, 8));
 				expo_norm1_cin <= '0';
@@ -362,8 +369,8 @@ begin
 		if norm_iszero = '0' then
 			if Big_ALU_out_norm(2) = '0' then
 				--do nothing
-				final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
-				final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
+--				final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
+--				final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
 				norm_again <= '0';
 				round_cin <= '0';
 			else
@@ -380,8 +387,8 @@ begin
 						if Big_ALU_out_norm(3) = '0' then
 							norm_again <= '0';
 							round_cin <= '0';
-							final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
-							final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
+--							final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
+--							final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
 						else
 							norm_again <= '1';
 							round_cin <= '1';							
@@ -399,7 +406,7 @@ begin
 		round_cin,
 		'0',
 		Rounded_mentissa,
-		Rounded_ment_cout		
+		Rounded_ment_cout
 	);
 	-- rounded mentissa has 24 bits. to normalise again, add cout+00 in the end
 	Norm_again_in(26 downto 3) <= Rounded_mentissa;
@@ -419,7 +426,7 @@ begin
 	begin
 		if (norm_again = '1') then
 		-- change expo again
-			final_ALU_mentissa(22 downto 0) <= Norm_again_out(25 downto 3);
+	--		final_ALU_mentissa(22 downto 0) <= Norm_again_out(25 downto 3);
 			if (norm2_shift_lr = '0') then
 				norm2_changeExpo <= std_logic_vector(to_unsigned(norm2_shift_exp, 8));
 				expo_norm2_cin <= '0';
@@ -443,13 +450,12 @@ begin
 		expo_norm2_cout
 	);
 	
- -- Done with second Norm after Round off.
+ -- Done with second Norm after Round off. now set final ALU expo and final ALU ment
  
 	finalExpo:process(norm_again,ALU_norm2_final)
 	begin
-		if norm_again = '1' then
-			final_ALU_expo <= ALU_norm2_final;
-		end if;
+		final_ALU_mentissa <= Norm_again_out(25 downto 3);
+		final_ALU_Expo <= ALU_norm2_final;
 	end process;
 	
 	-- setting regwrite and data inputs

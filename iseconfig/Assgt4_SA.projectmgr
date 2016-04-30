@@ -11,15 +11,24 @@
          <ClosedNode>/Adder4 - Behavioral D:|Sem3|DHD|Assgt4_SA|src|Adder4.vhd</ClosedNode>
          <ClosedNode>/Control - Behavioral C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Control.vhd</ClosedNode>
          <ClosedNode>/Control - Behavioral C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral</ClosedNode>
-         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd</ClosedNode>
          <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/ALU_sa - ALU - Behavioral</ClosedNode>
          <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/Add - Adder4 - Behavioral</ClosedNode>
          <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/Add2_Predict - Adder4 - Behavioral</ClosedNode>
          <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/AddO_Predict - Adder4 - Behavioral</ClosedNode>
+         <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/CoProc - coProcessor - Behavioral</ClosedNode>
          <ClosedNode>/Control - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Control.vhd/DP - DataPath - Behavioral/ShiftIt - shifter - Behavioral</ClosedNode>
          <ClosedNode>/DataPath - Behavioral C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|DataPath.vhd/ALU_sa - ALU - Behavioral</ClosedNode>
          <ClosedNode>/DataPath - Behavioral C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|DataPath.vhd/Add - Adder4 - Behavioral</ClosedNode>
          <ClosedNode>/Multiplier - Behavioral D:|Sem3|DHD|Assgt4_SA|src|Multiplier.vhd</ClosedNode>
+         <ClosedNode>/coMultiplier - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coMultiplier.vhd</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/AddExpo - coAdder8 - Behavioral</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/Big_ALU - coAdder23 - Behavioral</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/Comp23 - coComparer23 - Behavioral</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/Comp8 - coComparer8 - Behavioral</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/Round_Mentissa - coAdder26 - Behavioral</ClosedNode>
+         <ClosedNode>/coProcessor - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coProcessor.vhd/Small_ALU - coAdder8 - Behavioral</ClosedNode>
+         <ClosedNode>/coShifter_Mult - Behavioral D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|coShifter_Mult.vhd</ClosedNode>
          <ClosedNode>/mult_unit - Behavioral D:|Sem3|DHD|Assgt4_SA|src|mult_unit.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
@@ -27,7 +36,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000114000000020000000000000000000000000200000064ffffffff000000810000000300000002000001140000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001bd000000020000000000000000000000000200000064ffffffff000000810000000300000002000001bd0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
       <CurrentItem>xa7a100t-2Icsg324</CurrentItem>
    </ItemView>
@@ -41,7 +50,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000015f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000015f0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001e0000000010000000100000000000000000000000064ffffffff000000810000000000000001000001e00000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -77,16 +86,16 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Check Syntax</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000015f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000015f0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Check Syntax</CurrentItem>
    </ItemView>
-   <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
-   <CurrentView>Implementation</CurrentView>
+   <SourceProcessView>000000ff0000000000000002000001bc0000005a01000000050100000002</SourceProcessView>
+   <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
@@ -96,20 +105,25 @@
          <ClosedNode>/IF_ID_Test - behavior C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|IF_ID_Test.vhd</ClosedNode>
          <ClosedNode>/IF_ID_Test - behavior D:|Sem3|DHD|Assgt4_SA|src|IF_ID_Test.vhd</ClosedNode>
          <ClosedNode>/Test_Control - behavior C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Test_Control.vhd</ClosedNode>
+         <ClosedNode>/Test_Control - behavior D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Test_Control.vhd</ClosedNode>
          <ClosedNode>/Test_DataPath - behavior C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|Mem_WB.vhd</ClosedNode>
          <ClosedNode>/Test_DataPath - behavior C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|Test_DataPath.vhd</ClosedNode>
          <ClosedNode>/Test_DataPath - behavior C:|Users|Shreyan|Desktop|LOL|Assgt4-CompArch|src|Test_DataPath.vhd</ClosedNode>
+         <ClosedNode>/Test_DataPath - behavior D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|Test_DataPath.vhd</ClosedNode>
+         <ClosedNode>/Test_Shift_Nml - behavior D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|Test_Shift_Nml.vhd</ClosedNode>
+         <ClosedNode>/Test_coMult - behavior D:|Sem4|CompArch|Lab|Assgt4-CompArch|co_src|Test_coMult.vhd</ClosedNode>
          <ClosedNode>/testbench - behavior C:|Users|Shreyan|Desktop|Assgt4_SA|Assgt4_SA|src|EXMem_Test.vhd</ClosedNode>
          <ClosedNode>/testbench - behavior D:|Sem3|DHD|Assgt4_SA|src|EXMem_Test.vhd</ClosedNode>
+         <ClosedNode>/testbench - behavior D:|Sem4|CompArch|Lab|Assgt4-CompArch|src|EXMem_Test.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Unassigned User Library Modules</SelectedItem>
+         <SelectedItem>CoProc - coProcessor - Behavioral (D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/coProcessor.vhd)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >5</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001d1000000020000000000000000000000000200000064ffffffff000000810000000300000002000001d10000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001e0000000020000000000000000000000000200000064ffffffff000000810000000300000002000001e00000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>Unassigned User Library Modules</CurrentItem>
+      <CurrentItem>CoProc - coProcessor - Behavioral (D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/coProcessor.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -117,25 +131,25 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000015f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000015f0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001e0000000010000000100000000000000000000000064ffffffff000000810000000000000001000001e00000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000019a000000010000000100000000000000000000000064ffffffff0000008100000000000000010000019a0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001cf000000010000000100000000000000000000000064ffffffff000000810000000000000001000001cf0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
 </Project>
