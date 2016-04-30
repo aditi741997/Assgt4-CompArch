@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coMult_Unit.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/coMult_Unit.vhd";
 extern char *IEEE_P_1242562249;
 
 char *ieee_p_1242562249_sub_180853171_1035706684(char *, char *, int , int );
@@ -99,7 +99,7 @@ LAB3:    t1 = (t0 + 3576);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(61, ng0);
-    t1 = (t0 + 6061);
+    t1 = (t0 + 5973);
     t6 = (t0 + 3720);
     t7 = (t6 + 56U);
     t8 = *((char **)t7);

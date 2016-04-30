@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coShift_Mult2.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/co_src/coShift_Mult2.vhd";
 
 
 
@@ -66,7 +66,7 @@ LAB3:    t1 = (t0 + 2832);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(45, ng0);
-    t1 = (t0 + 4717);
+    t1 = (t0 + 4669);
     t6 = (2U != 2U);
     if (t6 == 1)
         goto LAB5;

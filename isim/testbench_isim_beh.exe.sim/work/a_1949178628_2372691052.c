@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProc.vhd";
+static const char *ng0 = "D:/Sem4/CompArch/Lab/Assgt4-CompArch/Test_coProc.vhd";
 
 
 
@@ -121,7 +121,7 @@ LAB6:    *((char **)t1) = &&LAB7;
 
 LAB1:    return;
 LAB4:    xsi_set_current_line(55, ng0);
-    t2 = (t0 + 5700);
+    t2 = (t0 + 5620);
     t5 = (t0 + 3488);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -144,7 +144,7 @@ LAB5:    goto LAB4;
 LAB7:    goto LAB5;
 
 LAB8:    xsi_set_current_line(57, ng0);
-    t2 = (t0 + 5732);
+    t2 = (t0 + 5652);
     t5 = (t0 + 3488);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
@@ -167,7 +167,7 @@ LAB9:    goto LAB8;
 LAB11:    goto LAB9;
 
 LAB12:    xsi_set_current_line(59, ng0);
-    t2 = (t0 + 5764);
+    t2 = (t0 + 5684);
     t5 = (t0 + 3488);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
