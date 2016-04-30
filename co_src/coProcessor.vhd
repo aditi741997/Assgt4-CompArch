@@ -102,7 +102,7 @@ architecture Behavioral of coProcessor is
 	component coMultiplier is
 	port(
 		sig1,sig2 : in std_logic_Vector(23 downto 0);
-		mult_out : out std_logic_Vector(26 downto 0)
+		mult_out : out std_logic_Vector(27 downto 0)
 	);
 	end component;
 
@@ -144,7 +144,7 @@ signal shiftR_outp : std_logic_vector(26 downto 0);
 signal Big_ALU_cin, Big_ALU_cout, Big_ALU_input_control : std_logic;
 signal Big_ALU_output : std_logic_vector(26 downto 0);
 
-signal mult_out : std_logic_vector(26 downto 0);
+signal mult_out, norm_in : std_logic_vector(27 downto 0);
 signal final_sign : std_logic;
 
 signal final_addsub, final_mul : std_logic_vector(31 downto 0);
@@ -312,14 +312,19 @@ begin
 	end process;
 
 	BigALU_norm_in(26 downto 0) <= Big_ALU_output(26 downto 0);
-	
---	NormaliseThis:process()
---	begin
---		if 
---	end process;
-	
 	BigALU_norm_in(27) <= Big_ALU_cout; -- NOT IF SUBTRACTION! TODO
-	
+	-- BigALU_norm_in stores add sub ka value (28 bit)
+	-- Integrate this with the mult value
+
+	-- setting the normalization value
+	process(cp_opc, BigALU_norm_in_temp, mult_out)
+	begin
+		if cp_opc(3 downto 1)="100" then
+			norm_in <= mult_out;
+		else norm_in <= BigALU_norm_in;
+		end if;
+	end process
+
 -- Normalisation:
 
 	Normalise : coShiftLR_Nml port map(
@@ -369,8 +374,8 @@ begin
 		if norm_iszero = '0' then
 			if Big_ALU_out_norm(2) = '0' then
 				--do nothing
---				final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
---				final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
+				--final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
+				--final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
 				norm_again <= '0';
 				round_cin <= '0';
 			else
@@ -387,8 +392,8 @@ begin
 						if Big_ALU_out_norm(3) = '0' then
 							norm_again <= '0';
 							round_cin <= '0';
---							final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
---							final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
+							--final_ALU_mentissa(22 downto 0) <= Big_ALU_out_norm(25 downto 3);
+							--final_ALU_Expo(7 downto 0) <= ALU_expo_norm1(7 downto 0);
 						else
 							norm_again <= '1';
 							round_cin <= '1';							
@@ -426,7 +431,7 @@ begin
 	begin
 		if (norm_again = '1') then
 		-- change expo again
-	--		final_ALU_mentissa(22 downto 0) <= Norm_again_out(25 downto 3);
+			--final_ALU_mentissa(22 downto 0) <= Norm_again_out(25 downto 3);
 			if (norm2_shift_lr = '0') then
 				norm2_changeExpo <= std_logic_vector(to_unsigned(norm2_shift_exp, 8));
 				expo_norm2_cin <= '0';
@@ -478,11 +483,12 @@ begin
 			fp2 <= fp2_temp;
 			cRd_temp <= cRd;
 			regwrite <= '1';
-			if (cp_opc(3 downto 1) = "100") then 
+			if (cp_opc(3 downto 1) = "100") then 	-- mult
 				cWd <= final_addsub; --calculated_value
 			else
 				cWd <= final_addsub; --calculated_value
 			end if;
 		end if;
 	end process;
+
 end Behavioral;

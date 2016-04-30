@@ -30,6 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 -- OTP is 27 bit because this will be normalised by ShiftLR, which takes 27 bit input.
+-- make that 28 bit now...
 entity coMultiplier is
 port(
 	sig1,sig2 : in std_logic_Vector(23 downto 0);
