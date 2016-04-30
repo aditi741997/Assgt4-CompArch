@@ -148,6 +148,12 @@ signal mult_out, norm_in : std_logic_vector(27 downto 0);
 signal final_sign : std_logic;
 
 signal final : std_logic_vector(31 downto 0);
+<<<<<<< HEAD
+=======
+
+signal sub_mult_cout, add_mult_cout : std_logic;
+signal sub_mult_Exp, final_exp_mult: std_logic_Vector(7 downto 0);
+>>>>>>> 3902fa1a28739a10b8a3fe62b8d5e93d915feafc
 
 
 
@@ -211,6 +217,7 @@ begin
 		exp1, exp2, comp8_result
 	);
 
+
 	Comp23 : coComparer23 port map(
 		sig1, sig2, comp23_result
 	);
@@ -226,11 +233,13 @@ begin
 		end if;
 	end process;
 
+-- small_ALU_exp1 is bigger.
+
 	Small_ALU : coAdder8 port map(
 		small_ALU_exp1, small_ALU_exp2,
 		'1', '1', exp_diff, small_ALU_c_out
 	);
-
+	
 	--set the value of shiftR_input <= exp_diff
 	shiftR_input <= to_integer(unsigned(exp_diff));
 
@@ -465,6 +474,17 @@ begin
 		ALU_norm2_final,
 		expo_norm2_cout
 	);
+	
+	Sub_Mult_Expo : coAdder8 port map(
+		"01111111" , small_ALU_exp1,
+		'1', '1', sub_mult_Exp, sub_mult_cout
+	);
+	
+	Add_Mult_Expo : coAdder8 port map(
+		sub_mult_Exp, small_ALU_exp2,
+		'0', '0', final_exp_mult, add_mult_cout
+	);
+
 	
  -- Done with second Norm after Round off. now set final ALU expo and final ALU ment
  
