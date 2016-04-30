@@ -148,13 +148,8 @@ signal mult_out, norm_in : std_logic_vector(27 downto 0);
 signal final_sign : std_logic;
 
 signal final : std_logic_vector(31 downto 0);
-<<<<<<< HEAD
-=======
-
 signal sub_mult_cout, add_mult_cout : std_logic;
 signal sub_mult_Exp, final_exp_mult: std_logic_Vector(7 downto 0);
->>>>>>> 3902fa1a28739a10b8a3fe62b8d5e93d915feafc
-
 
 
 -- Normalisn
