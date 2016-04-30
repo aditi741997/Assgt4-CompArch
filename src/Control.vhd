@@ -215,13 +215,17 @@ begin
 					end if;
 				when "10" =>
 					mux_4 <= '1';
+				when "11" =>
+					mux_1 <= '1';
+					mux_3 <= '0';
+					mux_4 <= '0';
 				when others => null;
 			end case;
 		end if;
 	end process;
 
 	-- setting register read/ write
-	process(p, instruction_type, ipubwl, opc)
+	process(p, instruction_type, ipubwl, opc, ins)
 	begin
 		if p = '1' then
 			if instruction_type = "00" then
@@ -239,6 +243,14 @@ begin
 				else 
 					mem_write <= '1';
 					regwrite <= '0';
+				end if;
+			elsif instruction_type = "11" then
+				if (ins(4) = '1' and ins(20) = '0') then
+					regwrite <= '1';
+					mem_write <= '0';
+				else
+					regwrite <= '0';
+					mem_write <= '0';
 				end if;
 			else
 				mem_write <= '0';

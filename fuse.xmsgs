@@ -5,5 +5,26 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<<<<<<< HEAD
+=======
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 410: Actual for formal port <arg fmt="%s" index="1">instruction_in</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 426: Actual for formal port <arg fmt="%s" index="1">enable</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 471: Actual for formal port <arg fmt="%s" index="1">rw_in</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 479: Actual for formal port <arg fmt="%s" index="1">psrc_in</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 480: Actual for formal port <arg fmt="%s" index="1">psrc_actual_in</arg> is neither a static name nor a globally static expression
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="946" delta="unknown" >"D:/Sem4/CompArch/Lab/Assgt4-CompArch/src/DataPath.vhd" Line 594: Actual for formal port <arg fmt="%s" index="1">rw_in</arg> is neither a static name nor a globally static expression
+</msg>
+
+>>>>>>> 8ff6e9f1cf5c58b028bfa7849c6bb180432d3877
 </messages>
 
