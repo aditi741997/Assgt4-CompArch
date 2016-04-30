@@ -217,6 +217,7 @@ begin
 					mux_4 <= '1';
 				when "11" =>
 					mux_1 <= '1';
+					mux_2 <= '0';
 					mux_3 <= '0';
 					mux_4 <= '0';
 				when others => null;
@@ -245,7 +246,7 @@ begin
 					regwrite <= '0';
 				end if;
 			elsif instruction_type = "11" then
-				if (ins(4) = '1' and ins(20) = '0') then
+				if (ins(4) = '1' and ins(20) = '1') then
 					regwrite <= '1';
 					mem_write <= '0';
 				else

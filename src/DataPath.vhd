@@ -504,13 +504,6 @@ IDEX : ID_EX port map(
 
 -- predicted psrc passed on through 2 walls.
 
-CoProc : coProcessor port map(
-	clk,
-	Instruction_IDEX,
-	rd2_out,
-	coproc_out
-);
-
 ext8(7 downto 0) <= imm8_out_2;
 ext8(31 downto 8) <= "000000000000000000000000";
 
@@ -560,6 +553,13 @@ ALUMux2 : Mux4 port map(
 	alu2_in
 );
 
+CoProc : coProcessor port map(
+	clk,
+	Instruction_IDEX,
+	alu2_in,
+	coproc_out
+);
+
 ShiftIt : shifter port map(
 	s_type_final,
 	s_amt_final,
@@ -578,9 +578,9 @@ ALU_sa : ALU port map(
 	Mul_sel_final
 );
 
-EXMEM_inp:process(alu_out,coproc_out)
+EXMEM_inp:process(alu_out,coproc_out, Instruction_IDEX)
 begin
-	if (Instruction_IDEX(27 downto 26) = "11" and Instruction_IDEX(4) = '1' and Instruction_IDEX(20) = '0') then
+	if (Instruction_IDEX(27 downto 26) = "11" and Instruction_IDEX(4) = '1' and Instruction_IDEX(20) = '1') then
 		EXMEM_in <= coproc_out;
 	else
 		EXMEM_in <= alu_out;

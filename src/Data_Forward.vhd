@@ -80,6 +80,8 @@ begin
 		else
 			EXMEM_rw <= '0';
 		end if;
+	elsif inst_type_EXMEM = "11" and Instruction_EXMEM(4) = '1' and Instruction_EXMEM(20) = '1' then
+		EXMEM_rw <= '1';
 	else
 		EXMEM_rw <= '0';
 	end if;
@@ -99,6 +101,8 @@ begin
 		else
 			MEMWB_rw <= '0';
 		end if;
+	elsif Instruction_MEMWB = "11" and Instruction_MEMWB(4) = '1' and Instruction_MEMWB(20) = '1' then
+		MEMWB_rw <= '1';
 	else
 		MEMWB_rw <= '0';
 	end if;
@@ -139,9 +143,13 @@ begin
 end process;
 --WHY IS STALL NOT WORKING?
 
-fwB:process(immediate_idex,is_str, Instruction_IDEX, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
+fwB:process(immediate_idex,is_str, Instruction_IDEX, IDEX_Rm, Instruction_EXMEM, Instruction_MEMWB, EXMEM_rw, MEMWB_rw, EXMEM_Rd, MEMWB_rd, inst_type_EXMEM)
 begin
-	if immediate_idex = '1' then fwdB <= "00"; else
+	if Instruction_IDEX(27 downto 26) = "11" and Instruction_IDEX(4) = '1' and Instruction_IDEX(20) = '0' then
+		if EXMEM_Rd = Instruction_IDEX(15 downto 12) AND (NOT (EXMEM_Rd = "UUUU")) then
+			fwdB <= "10";
+		end if;
+	elsif immediate_idex = '1' then fwdB <= "00"; else
 		if (EXMEM_rw = '1') then
 			if EXMEM_Rd = IDEX_Rm AND (NOT (EXMEM_Rd = "UUUU")) then
 				fwdB <= "10";
