@@ -18,7 +18,7 @@
 		DM_ad:out std_logic_vector(31 downto 0);
 		DM_wd:out std_logic_vector(31 downto 0);
 		clk,enable:in std_logic);
-		END COMPONENT;          
+		END COMPONENT;
 		
 		signal alu_in,rd2,DM_wd,DM_ad: std_logic_Vector(31 downto 0);
 		signal wad_in,wad_out: std_logic_vector(3 downto 0);
