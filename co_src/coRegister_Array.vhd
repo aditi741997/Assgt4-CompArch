@@ -45,10 +45,13 @@ port(
 end coRegister_Array;
 
 architecture Behavioral of coRegister_Array is
-	type register_array is array (15 downto 0) of std_logic_vector(31 downto 0);
-	signal reg : register_array := (others => (others => '0'));
+	type register_array is array (0 to 15) of std_logic_vector(31 downto 0);
+	signal reg : register_array := ( "00000000000000000000000000000000"
+		,"00111111111111111111111111111111" ,
+		 "00111100011000000000000000000001",others => (others => 'U'));
+--		  s--------bb
 begin
-
+-- 0 01111111 10000000000000000000000
 process(clock)
 begin
 	if clock = '0' and clock'event and regwrite = '1' then 

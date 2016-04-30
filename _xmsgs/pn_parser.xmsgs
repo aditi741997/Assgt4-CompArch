@@ -8,7 +8,14 @@
 <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<<<<<<< Updated upstream
 <msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coMultiplier.vhd&quot; into library work</arg>
+=======
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coRegister_Array.vhd&quot; into library work</arg>
+>>>>>>> Stashed changes
 </msg>
 
 </messages>

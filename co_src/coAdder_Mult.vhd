@@ -36,7 +36,7 @@ end coAdder_Mult;
 
 architecture Behavioral of coAdder_Mult is
 
-signal Cs:std_logic_vector(32 downto 0):="000000000000000000000000000000000";
+signal Cs:std_logic_vector(48 downto 0):="0000000000000000000000000000000000000000000000000";
 
 component coAdder_Basic is
 port(

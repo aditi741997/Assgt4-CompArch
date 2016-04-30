@@ -47,7 +47,7 @@ inp:in std_logic_vector(47 downto 0);
 outp:out std_logic_vector(47 downto 0));
 end component;
 
-signal a0:std_logic_vector(31 downto 0);
+signal a0:std_logic_vector(47 downto 0);
 signal x:std_logic_vector(4 downto 0);
 
 begin

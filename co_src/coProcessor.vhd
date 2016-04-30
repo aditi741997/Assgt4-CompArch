@@ -93,7 +93,7 @@ architecture Behavioral of coProcessor is
 
 	component coShiftR_ALU is
 	port(
-		s_amt : in integer range 0 to 255;
+		s_amt : in integer;
 		inp: in std_logic_Vector(26 downto 0);
 		outp : out std_logic_Vector(26 downto 0)
 	);
@@ -108,8 +108,8 @@ architecture Behavioral of coProcessor is
 
 	component coShiftLR_Nml is
 	port(
-		inp : in std_logic_vector(26 downto 0);
-		outp : out std_logic_vector(25 downto 0);
+		inp : in std_logic_vector(27 downto 0);
+		outp : out std_logic_vector(26 downto 0);
 		s_amt : out integer range 0 to 26;
 		left_right, is_zero : out std_logic
 	);
@@ -117,23 +117,23 @@ architecture Behavioral of coProcessor is
 	
 	component coAdder26 is
 	Port(
-		a : in std_logic_vector (22 downto 0);
-		b : in std_logic_vector (22 downto 0);
+		a : in std_logic_vector (23 downto 0);
+		b : in std_logic_vector (23 downto 0);
 		c_in : in std_logic := '0';
 		input_control : in std_logic;
-		c : out std_logic_vector (22 downto 0);
+		c : out std_logic_vector (23 downto 0);
 		c_out : out std_logic
 	);
 	end component;
 
-signal cp_opc, cRn, cRd, cRm, cRd_temp : std_logic_vector(3 downto 0);
+signal cp_opc, cRn, cRd, cRm, cRd_temp, ins_type : std_logic_vector(3 downto 0);
 signal fp1_temp, fp2_temp, fp1, fp2, cWd : std_logic_vector(31 downto 0);
 signal regwrite : std_logic;
 
 signal exp1, exp2 : std_logic_vector(7 downto 0);
 signal sig1, sig2, a, b : std_logic_vector(26 downto 0);
 signal sign1, sign2, signA, signB : std_logic;
-signal fp1_is_greater : std_logic;
+signal fp1_is_greater, fp1_is_zero, fp2_is_zero : std_logic;
 
 signal small_ALU_exp1, small_ALU_exp2, exp_diff : std_logic_vector(7 downto 0);
 signal comp8_result, comp23_result, small_ALU_c_out : std_logic;
@@ -168,6 +168,7 @@ signal norm2_shift_lr, norm2_iszero, expo_norm1_cout, expo_norm2_cout, expo_norm
 
 begin
 	cp_opc <= instruction(23 downto 20);
+	ins_type <= instruction(27 downto 24);
 	cRn <= instruction(19 downto 16);
 	cRd <= instruction(15 downto 12);
 	cRm <= instruction(3 downto 0);
@@ -183,6 +184,16 @@ begin
 	exp2 <= fp2(30 downto 23);
 	sign1 <= fp1(31);
 	sign2 <= fp2(31);
+
+	process(fp1, fp2)
+	begin
+		if fp1 = "00000000000000000000000000000000" then fp1_is_zero <= '1';
+		else fp1_is_zero <= '0';
+		end if;
+		if fp2 = "00000000000000000000000000000000" then fp2_is_zero <= '1';
+		else fp2_is_zero <= '0';
+		end if;
+	end process;
 
 	RF : coRegister_Array port map(
 		cRn, cRm, cRd_temp,
@@ -312,7 +323,7 @@ begin
 	end process;
 
 	BigALU_norm_in(26 downto 0) <= Big_ALU_output(26 downto 0);
-	BigALU_norm_in(27) <= Big_ALU_cout; -- NOT IF SUBTRACTION! TODO
+	BigALU_norm_in(27) <= Big_ALU_cout and not Big_ALU_input_control;
 	-- BigALU_norm_in stores add sub ka value (28 bit)
 	-- Integrate this with the mult value
 
@@ -324,11 +335,11 @@ begin
 		else norm_in <= BigALU_norm_in;
 		end if;
 	end process
-
+	
 -- Normalisation:
 
 	Normalise : coShiftLR_Nml port map(
-		BigALU_norm_in, Big_ALU_out_norm,
+		norm_in, Big_ALU_out_norm,
 		norm_shift_exp,
 		norm_shift_lr,
 		norm_iszero
@@ -336,7 +347,7 @@ begin
 	
 	-- Big_ALU_out_norm contains G,R,S
 	
-	ChangeExpo:process(BigALU_norm_in)
+	ChangeExpo:process(BigALU_norm_in, norm_iszero, Big_ALU_out_norm, norm_shift_lr, norm_shift_exp)
 	begin
 		if (norm_iszero = '1') then
 			norm_again <= '0';
@@ -369,7 +380,7 @@ begin
 	
 	-- H/W rounding :
 	-- set round_cin
-	Rounding:process(Big_ALU_out_norm)
+	Rounding:process(Big_ALU_out_norm,norm_iszero,ALU_expo_norm1)
 	begin
 		if norm_iszero = '0' then
 			if Big_ALU_out_norm(2) = '0' then
@@ -466,15 +477,23 @@ begin
 	-- setting regwrite and data inputs
 	process(bit4, fp1_temp, fp2_temp, cp_opc, cRn, cRd)
 	begin
-		if bit4='1' then 
-			if cp_opc(0)='1' then
+		if ins_type="1110" then
+			if bit4='1' then 
+				if cp_opc(0)='1' then
+					fp1 <= fp1_temp;
+					fp2 <= fp2_temp;
+					regwrite <= '0';
+				else
+					fp1 <= reg_data_in;
+					fp2 <=fp2_temp;
+					cRd_temp <= cRn;
+					regwrite <= '1';
+					cWd <= reg_data_in;
+				end if;
+			else
 				fp1 <= fp1_temp;
 				fp2 <= fp2_temp;
-				regwrite <= '0';
-			else
-				fp1 <= reg_data_in;
-				fp2 <=fp2_temp;
-				cRd_temp <= cRn;
+				cRd_temp <= cRd;
 				regwrite <= '1';
 				cWd <= reg_data_in;
 			end if;
@@ -488,6 +507,7 @@ begin
 			else
 				cWd <= final_addsub; --calculated_value
 			end if;
+		else regwrite <= '0';
 		end if;
 	end process;
 

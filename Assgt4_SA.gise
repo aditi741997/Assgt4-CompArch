@@ -29,15 +29,29 @@
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_Control_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_Control_isim_beh.wdb"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_Shift_Nml_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_coProcessor_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_coProcessor_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_coProcessor_isim_beh.wdb"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_shiftR_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Test_shiftR_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_shiftR_isim_beh.wdb"/>
+<<<<<<< Updated upstream
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Test_shift_Nml_isim_beh.wdb"/>
+=======
+>>>>>>> Stashed changes
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Test_shift_Nml_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="coProcessor.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="coProcessor.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="coProcessor.xst"/>
+<<<<<<< Updated upstream
+=======
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="coProcessor_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="coProcessor_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="coProcessor_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+>>>>>>> Stashed changes
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="mult_unit_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
@@ -49,12 +63,23 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
+<<<<<<< Updated upstream
     <transform xil_pn:end_ts="1462020732" xil_pn:in_ck="-4805422664649753866" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1462020732">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Test_coProc.vhd"/>
+=======
+    <transform xil_pn:end_ts="1461267033" xil_pn:in_ck="-3475193784478873302" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1461267033">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+>>>>>>> Stashed changes
       <outfile xil_pn:name="co_src/Test_Shift_Nml.vhd"/>
       <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
+      <outfile xil_pn:name="co_src/Test_coProcessor.vhd"/>
       <outfile xil_pn:name="co_src/coAdder23.vhd"/>
       <outfile xil_pn:name="co_src/coAdder26.vhd"/>
       <outfile xil_pn:name="co_src/coAdder8.vhd"/>
@@ -110,11 +135,19 @@
       <outfile xil_pn:name="src/shift8.vhd"/>
       <outfile xil_pn:name="src/shifter.vhd"/>
     </transform>
+<<<<<<< Updated upstream
     <transform xil_pn:end_ts="1462019731" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="4434870115928851094" xil_pn:start_ts="1462019731">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1462019731" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-3218649680959166270" xil_pn:start_ts="1462019731">
+=======
+    <transform xil_pn:end_ts="1461267033" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="5120395561383008871" xil_pn:start_ts="1461267033">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1461267033" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="1915603357559112595" xil_pn:start_ts="1461267033">
+>>>>>>> Stashed changes
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -122,12 +155,17 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
+<<<<<<< Updated upstream
     <transform xil_pn:end_ts="1462020732" xil_pn:in_ck="-4805422664649753866" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1462020732">
+=======
+    <transform xil_pn:end_ts="1461267033" xil_pn:in_ck="-3475193784478873302" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1461267033">
+>>>>>>> Stashed changes
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="Test_coProc.vhd"/>
       <outfile xil_pn:name="co_src/Test_Shift_Nml.vhd"/>
       <outfile xil_pn:name="co_src/Test_coMult.vhd"/>
+      <outfile xil_pn:name="co_src/Test_coProcessor.vhd"/>
       <outfile xil_pn:name="co_src/coAdder23.vhd"/>
       <outfile xil_pn:name="co_src/coAdder26.vhd"/>
       <outfile xil_pn:name="co_src/coAdder8.vhd"/>
@@ -183,17 +221,43 @@
       <outfile xil_pn:name="src/shift8.vhd"/>
       <outfile xil_pn:name="src/shifter.vhd"/>
     </transform>
+<<<<<<< Updated upstream
     <transform xil_pn:end_ts="1462020735" xil_pn:in_ck="-4805422664649753866" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="3249951867259737917" xil_pn:start_ts="1462020732">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1461150520" xil_pn:in_ck="1314076165567817519" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3197476332039044624" xil_pn:start_ts="1461150520">
       <status xil_pn:value="AbortedRun"/>
+=======
+    <transform xil_pn:end_ts="1461267038" xil_pn:in_ck="-3475193784478873302" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-7665512560570370529" xil_pn:start_ts="1461267033">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Test_coProcessor_beh.prj"/>
+      <outfile xil_pn:name="Test_coProcessor_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1461267039" xil_pn:in_ck="-591874326039016305" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3019698399132427372" xil_pn:start_ts="1461267038">
+      <status xil_pn:value="SuccessfullyRun"/>
+>>>>>>> Stashed changes
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+<<<<<<< Updated upstream
       <status xil_pn:value="OutOfDateForced"/>
       <outfile xil_pn:name="Test_shift_Nml_isim_beh.wdb"/>
+=======
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Test_coProcessor_isim_beh.wdb"/>
+>>>>>>> Stashed changes
       <outfile xil_pn:name="isim.cmd"/>
     </transform>
   </transforms>

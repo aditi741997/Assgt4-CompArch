@@ -1,5 +1,5 @@
-set -tmpdir "D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst/projnav.tmp"
-set -xsthdpdir "D:/Sem4/CompArch/Lab/Assgt4-CompArch/xst"
+set -tmpdir "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/xst"
 run -compileonly yes
 -p xa7a100t-2I-csg324
 -top coProcessor

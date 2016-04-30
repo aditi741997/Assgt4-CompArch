@@ -31,7 +31,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity coShiftR_ALU is
 port(
-	s_amt : in integer range 0 to 255;
+	s_amt : in integer;
 	inp: in std_logic_Vector(26 downto 0);
 	outp : out std_logic_Vector(26 downto 0)
 );
@@ -40,7 +40,7 @@ end coShiftR_ALU;
 architecture Behavioral of coShiftR_ALU is
 
 
-signal shift_amt_int : integer range 0 to 255;
+signal shift_amt_int : integer;
 signal ans: std_logic_vector(26 downto 0);
 signal shift: std_logic_vector(7 downto 0) := "00000000";
 signal zeroes :std_logic_vector(26 downto 0) := "000000000000000000000000000";

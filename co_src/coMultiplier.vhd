@@ -47,6 +47,8 @@ type AV is array(23 downto 0) of std_logic_vector(47 downto 0);
 signal As:AV:=(others => (others => '0'));
 signal Ans:AV:=(others => (others => '0'));
 
+signal ext_sig1, ext_sig2 : std_logic_vector(47 downto 0);
+
 component coMult_Unit is
 port(A:in std_logic_vector(47 downto 0);
 Bi:in std_logic;
@@ -61,9 +63,14 @@ end component;
 
 begin
 
+ext_sig1(23 downto 0) <= sig1;
+ext_sig1(47 downto 24) <= "000000000000000000000000";
+
+ext_sig2(23 downto 0) <= sig2;
+ext_sig2(47 downto 24) <= "000000000000000000000000";
 
 gen_mul: for i in 23 downto 0 generate
-			x:coMult_Unit port map(sig1,sig2(i),i,As(i));
+			x:coMult_Unit port map(ext_sig1,ext_sig2(i),i,As(i));
 			end generate gen_mul;
 			
 add_all: for i in 23 downto 1 generate
