@@ -147,7 +147,7 @@ signal Big_ALU_output : std_logic_vector(26 downto 0);
 signal mult_out, norm_in : std_logic_vector(27 downto 0);
 signal final_sign : std_logic;
 
-signal final_addsub, final_mul : std_logic_vector(31 downto 0);
+signal final : std_logic_vector(31 downto 0);
 
 
 
@@ -468,14 +468,41 @@ begin
 	
  -- Done with second Norm after Round off. now set final ALU expo and final ALU ment
  
-	finalExpo:process(norm_again,ALU_norm2_final)
+	finalExpo:process(Norm_again_out, ALU_norm2_final, final_sign, cp_opc)
 	begin
-		final_ALU_mentissa <= Norm_again_out(25 downto 3);
-		final_ALU_Expo <= ALU_norm2_final;
+		if(cp_opc(3 downto 1)="100") then
+			if fp1_is_zero='1' or fp2_is_zero='1' then
+				final <= "00000000000000000000000000000000";
+			else
+				final(30 downto 23) <= final_exp_mult;
+				final(22 downto 0) <= Norm_again_out(25 downto 3);
+				final(31) <= final_sign;
+			end if;
+		else
+			if fp2_is_zero='1' then
+				final <= fp1;
+			elsif fp1_is_zero='1' then
+				if cp_opc(3 downto 1)="001" then
+					final <= fp2;
+				else 
+					final(30 downto 0) <= fp2(30 downto 0);
+					final(31) <= not fp2(31);
+				end if;
+			else
+				if norm_iszero='1' or norm2_iszero='1' then
+					final <= "00000000000000000000000000000000";
+				else
+					final(22 downto 0) <= Norm_again_out(25 downto 3);
+					final(30 downto 23) <= ALU_norm2_final;
+					final(31) <= final_sign;
+				end if;
+			end if;
+		end if;
 	end process;
 	
+	
 	-- setting regwrite and data inputs
-	process(bit4, fp1_temp, fp2_temp, cp_opc, cRn, cRd)
+	process(ins_type, bit4, cp_opc, fp1_temp, fp2_temp, reg_data_in,cRn, cRd, final)
 	begin
 		if ins_type="1110" then
 			if bit4='1' then 
@@ -495,11 +522,7 @@ begin
 				fp2 <= fp2_temp;
 				cRd_temp <= cRd;
 				regwrite <= '1';
-				if (cp_opc(3 downto 1) = "100") then 	-- mult
-					cWd <= final_addsub; --calculated_value
-				else
-					cWd <= final_addsub; --calculated_value
-				end if;
+				cWd <= final; --calculated_value
 			end if;
 		else regwrite <= '0';
 		end if;

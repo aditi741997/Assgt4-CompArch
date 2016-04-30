@@ -23,38 +23,6 @@ Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder8.
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder26.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coAdder23.vhd" into library work
 Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd" into library work
-Parsing VHDL file "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/Test_coProc.vhd" into library work
-Starting static elaboration
-Completed static elaboration
-Compiling package standard
-Compiling package std_logic_1164
-Compiling package numeric_std
-Compiling package std_logic_arith
-Compiling package std_logic_unsigned
-Compiling architecture behavioral of entity coRegister_Array [coregister_array_default]
-Compiling architecture behavioral of entity coShift_Mult1 [coshift_mult1_default]
-Compiling architecture behavioral of entity coShift_Mult2 [coshift_mult2_default]
-Compiling architecture behavioral of entity coShift_Mult4 [coshift_mult4_default]
-Compiling architecture behavioral of entity coShift_Mult8 [coshift_mult8_default]
-Compiling architecture behavioral of entity coShift_Mult16 [coshift_mult16_default]
-Compiling architecture behavioral of entity coShifter_Mult [coshifter_mult_default]
-Compiling architecture behavioral of entity coMult_Unit [comult_unit_default]
-Compiling architecture behavioral of entity coAdder_Basic [coadder_basic_default]
-Compiling architecture behavioral of entity coAdder_Mult [coadder_mult_default]
-Compiling architecture behavioral of entity coMultiplier [comultiplier_default]
-Compiling architecture behavioral of entity coComparer_Basic [cocomparer_basic_default]
-Compiling architecture behavioral of entity coComparer8 [cocomparer8_default]
-Compiling architecture behavioral of entity coComparer23 [cocomparer23_default]
-Compiling architecture behavioral of entity coAdder8 [coadder8_default]
-Compiling architecture behavioral of entity coShiftR_ALU [coshiftr_alu_default]
-Compiling architecture behavioral of entity coAdder23 [coadder23_default]
-Compiling architecture behavioral of entity coShiftLR_Nml [coshiftlr_nml_default]
-Compiling architecture behavioral of entity coAdder26 [coadder26_default]
-Compiling architecture behavioral of entity coProcessor [coprocessor_default]
-Compiling architecture behavior of entity testbench
-Time Resolution for simulation is 1ps.
-Waiting for 13 sub-compilation(s) to finish...
-Compiled 46 VHDL Units
-Built simulation executable C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/testbench_isim_beh.exe
-Fuse Memory Usage: 37624 KB
-Fuse CPU Usage: 890 ms
+ERROR:HDLCompiler:69 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd" Line 477: <final_exp_mult> is not declared.
+ERROR:HDLCompiler:854 - "C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd" Line 41: Unit <behavioral> ignored due to previous errors.
+VHDL file C:/Users/Shreyan/Desktop/LOL/Assgt4-CompArch/co_src/coProcessor.vhd ignored due to errors
